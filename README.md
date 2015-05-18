@@ -17,3 +17,10 @@ Study category theory with Scala
 
 # Slides
 - [Category theory for beginners](http://www.slideshare.net/kenbot/category-theory-for-beginners)
+
+# Shapeless
+## HList
+> HList provides many operations to create and manipulate heterogenous lists (HLists) whose length and element types are known at compile-time.
+
+## Blogs
+- [Cool Monday: HList and Shapeless](http://www.edofic.com/posts/2012-10-29-hlist-shapeless.html)
