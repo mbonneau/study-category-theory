@@ -10,6 +10,29 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Haskell - Download the platform for Windows/Mac/Linux](https://www.haskell.org/platform/windows.html)
 - [Learn you a Haskell](http://learnyouahaskell.com/)
 
+## Install on the mac
+If you have a Mac, and use [Homebrew](http://brew.sh/) for easy packet management, and use the [Homebrew Cask](https://github.com/caskroom/homebrew-cask) extension, installation is easy:
+
+```
+brew cask install ghc
+```
+
+## Sublime text and Haskell
+To install sublime text on a Mac:
+
+```
+brew cask install sublime-text
+```
+
+Follow the installation instructions on [SublimeHaskell](https://github.com/SublimeHaskell/SublimeHaskell).
+
+# GHC - Glasgow Haskell Compiler
+> The Glorious Glasgow Haskell Compilation System, more commonly known as the Glasgow Haskell Compiler or simply GHC, is an open source native code compiler for the functional programming language Haskell. It provides a cross-platform environment for the writing and testing of Haskell code and it supports numerous extensions, libraries, and optimizations that streamline the process of generating and executing code. The lead developers are Simon Peyton Jones and Simon Marlow. It is distributed along with the Haskell Platform.
+-- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Glasgow_Haskell_Compiler)</quote>
+
+## Links
+- [GHC](http://ghcformacosx.github.io/)
+
 # Scala
 > Scala is an object-functional programming language for general software applications. Scala has full support for functional programming and a very strong static type system. This allows programs written in Scala to be very concise and thus smaller in size than other general-purpose programming languages. Many of Scala's design decisions were inspired by criticism of the shortcomings of [Java]().
 -- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Scala_(programming_language))</quote>
