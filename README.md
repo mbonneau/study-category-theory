@@ -23,10 +23,19 @@ if [ -d "$GHC_DOT_APP" ]; then
 fi
 ```
 
-## Command line interface
-When you have installed `ghc` and setup the `.bash_profile` correctly, you 
-
 You can now launch GHC with `CMD+SPACE`, type `ghc` and launch it (enter). 
+
+## GHC Command line interface
+I use [iTerm](https://www.iterm2.com) on the Mac to interact with the terminal. Its a great replacement for the default OSX terminal and I highly recommand you use it as well. You can install it by typing: `brew cask install iterm2`. 
+
+When you have installed Haskell by tying: `brew cask install ghc` you should be able to launch the Haskell REPL by typing `ghci` on the terminal and typing `:quit` to quit the REPL. Please note the colon `:`.
+
+```bash
+$ ghci
+GHCi, version 7.10.1: http://www.haskell.org/ghc/  :? for help
+Prelude> :quit
+Leaving GHCi.
+```
 
 ## Sublime text and Haskell
 To install sublime text on a Mac, type: `brew cask install sublime-text`
