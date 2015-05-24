@@ -17,6 +17,11 @@ If you have a Mac, and use [Homebrew](http://brew.sh/) for easy packet managemen
 brew cask install ghc
 ```
 
+Add the following to your `~/.bash_profile`:
+
+```
+
+```
 ## Sublime text and Haskell
 To install sublime text on a Mac:
 
