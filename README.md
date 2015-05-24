@@ -11,23 +11,25 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Learn you a Haskell](http://learnyouahaskell.com/)
 
 ## Install on the mac
-If you have a Mac, and use [Homebrew](http://brew.sh/) for easy packet management, and use the [Homebrew Cask](https://github.com/caskroom/homebrew-cask) extension, installation is easy:
-
-```
-brew cask install ghc
-```
+If you have a Mac, and use [Homebrew](http://brew.sh/) for easy packet management, and use the [Homebrew Cask](https://github.com/caskroom/homebrew-cask) extension, installation is easy, just type: 
+`brew cask install ghc`.
 
 Add the following to your `~/.bash_profile`:
 
 ```
-
+export GHC_DOT_APP="/opt/homebrew-cask/Caskroom/ghc/7.10.1-r0/ghc-7.10.1.app"
+if [ -d "$GHC_DOT_APP" ]; then
+  export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
 ```
+
+## Command line interface
+When you have installed `ghc` and setup the `.bash_profile` correctly, you 
+
+You can now launch GHC with `CMD+SPACE`, type `ghc` and launch it (enter). 
+
 ## Sublime text and Haskell
-To install sublime text on a Mac:
-
-```
-brew cask install sublime-text
-```
+To install sublime text on a Mac, type: `brew cask install sublime-text`
 
 Follow the installation instructions on [SublimeHaskell](https://github.com/SublimeHaskell/SublimeHaskell).
 
