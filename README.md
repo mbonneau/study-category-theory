@@ -56,6 +56,13 @@ Follow the installation instructions on [SublimeHaskell](https://github.com/Subl
 # Scalaz
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
 
+# Functional Programming
+> Functional programming is a programming paradigm - a style of building the structure and elements of computer programs - that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. It is a declarative programming paradigm, which means programming is done with expressions. In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time. Eliminating side effects, i.e. changes in state that do not depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming.
+-- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Functional_programming)</quote>
+
+> Functional programming is a restriction on how we write programs, but not on what programs we can write - we can still use side-effects. (ie. write to a file, printing to the console, reading user input, drawing on a screen, alter state). As it turns out that accepting this restriction is tremendously beneficial because of the increase in that we gain `modularity` from programming with pure functions. Because of their modularity, pure functions are easier to test, to reuse, to parallelize, to generalize, and to reason about. 
+-- <quote>[Functional Programming in Scala](http://www.manning.com/bjarnason/)</quote>
+
 # Video
 - [Youtube - Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
 - [Youtube - Brian Beckman: The Zen of Stateless State - The State Monad](https://www.youtube.com/watch?v=XxzzJiXHOJs)
