@@ -54,6 +54,10 @@ Follow the installation instructions on [SublimeHaskell](https://github.com/Subl
 -- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Scala_(programming_language))</quote>
 
 # Scalaz
+> Scalaz is a Scala library for functional programming. It provides purely functional data structures to complement those from the Scala standard library. It defines a set of foundational type classes (e.g. Functor, Monad) and corresponding instances for a large number of data structures.
+-- <quote>[Scalaz](https://github.com/scalaz/scalaz)</quote>
+
+## Links
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
 
 ## Video
