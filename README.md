@@ -56,6 +56,28 @@ Follow the installation instructions on [SublimeHaskell](https://github.com/Subl
 # Scalaz
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
 
+## Video
+- [Youtube - Learning Scalaz](https://www.youtube.com/watch?v=jyMIvcUxOJ0)
+- [Youtube - Scalaz - The good parts](https://www.youtube.com/watch?v=jPdHQZnF56A)
+- [Youtube - Scalaz - The State Monad](https://www.youtube.com/watch?v=Jg3Uv_YWJqI)
+- [Youtube - Scalaz for the rest of us at Yelp](https://www.youtube.com/watch?v=kcfIH3GYXMI)
+- [Youtube - Scalaz for the rest of us](https://www.youtube.com/watch?v=J3Mrwp_BzrI)
+- [Youtube - Explorations in Variance](https://www.youtube.com/watch?v=VZWLRepyNvo)
+
+# Shapeless
+> Shapeless is a type class and dependent type based generic programming library for Scala.
+-- <quote>[Shapeless](https://github.com/milessabin/shapeless)</quote>
+
+## Youtube 
+- [Youtube - Shapeless: Exploring Generic Programming in Scala](https://www.youtube.com/watch?v=GDbNxL8bqkY)
+
+# Slick
+> [Slick](http://slick.typesafe.com) is a modern database query and access library for Scala. It allows you to work with stored data almost as if you were using Scala collections while at the same time giving you full control over when a database access happens and which data is transferred. You can write your database queries in Scala instead of SQL, thus profiting from the static checking, compile-time safety and compositionality of Scala. Slick features an extensible query compiler which can generate code for different backends. From version 3.0 and up, Slick is reactive and asynchronous. It has a lot of [new features](http://slick.typesafe.com/news/2015/04/29/slick-3.0.0-released.html) most notably: A new API for composing and executing database actions, support for the [Reactive Streams API](http://www.reactive-streams.org) for streaming results from the database and improved configuration of database connections via Typesafe Config, including built-in support for HikariCP.
+-- <quote>[Slick](http://slick.typesafe.com)</quote>
+
+## Video
+- [Youtube - Database access with Slick](https://www.youtube.com/watch?v=BDVpvneFNeI)
+
 # Functional Programming
 > Functional programming is a programming paradigm - a style of building the structure and elements of computer programs - that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. It is a declarative programming paradigm, which means programming is done with expressions. In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time. Eliminating side effects, i.e. changes in state that do not depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming.
 -- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Functional_programming)</quote>
