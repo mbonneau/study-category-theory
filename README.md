@@ -9,6 +9,9 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Youtube - Category Theory Foundations, Lecture 3](https://www.youtube.com/watch?v=BOynNljjbeg)
 - [Youtube - Category Theory Foundations, Lecture 4](https://www.youtube.com/watch?v=8fZmdhLLgs4)
 
+## Links
+- [Functor](http://www.encyclopediaofmath.org/index.php/Functor)
+
 ## Monads
 - [Youtube - Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
 - [Youtube - Brian Beckman: The Zen of Stateless State - The State Monad](https://www.youtube.com/watch?v=XxzzJiXHOJs)
