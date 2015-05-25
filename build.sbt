@@ -1,12 +1,25 @@
-name := """study-category-theory"""
+name := "study-category-theory"
 
-version := "1.0"
+version := "1.0.0"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.6"
 
-// Change this to another test framework if you prefer
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+resolvers += "dnvriend at bintray" at "http://dl.bintray.com/dnvriend/maven"
 
-// Uncomment to use Akka
-//libraryDependencies += "com.typesafe.akka" % "akka-actor_2.11" % "2.3.9"
+libraryDependencies ++= {
+  val akkaVersion  = "2.3.11"
+  val streamVersion = "1.0-RC3"
+  Seq(
+    "com.typesafe.akka"  %%  "akka-actor"                       % akkaVersion,
+    "com.typesafe.akka"  %%  "akka-slf4j"                       % akkaVersion,
+    "com.typesafe.akka"  %%  "akka-stream-experimental"         % streamVersion,
+    "com.typesafe.akka"  %%  "akka-http-core-experimental"      % streamVersion,
+    "io.spray"           %%  "spray-json"                       % "1.3.2",
+    "com.typesafe.akka"      %% "akka-testkit"                   % akkaVersion % Test,
+    "org.scalatest"          %% "scalatest"                      % "2.2.4"     % Test
+  )
+}
 
+fork in Test := true
+
+parallelExecution in Test := false
