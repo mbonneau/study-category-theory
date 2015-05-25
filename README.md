@@ -1,6 +1,20 @@
 # study-category-theory
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
+# Category Theory
+
+## Video
+- [Youtube - Category Theory Foundations, Lecture 1](https://www.youtube.com/watch?v=ZKmodCApZwk)
+- [Youtube - Category Theory Foundations, Lecture 2](https://www.youtube.com/watch?v=TQYjekxqw-Q)
+- [Youtube - Category Theory Foundations, Lecture 3](https://www.youtube.com/watch?v=BOynNljjbeg)
+- [Youtube - Category Theory Foundations, Lecture 4](https://www.youtube.com/watch?v=8fZmdhLLgs4)
+
+## Monads
+- [Youtube - Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+- [Youtube - Brian Beckman: The Zen of Stateless State - The State Monad](https://www.youtube.com/watch?v=XxzzJiXHOJs)
+- [Youtube - Expert to Expert: Brian Beckman and Erik Meijer - Inside the .NET Reactive Framework (Rx)](https://www.youtube.com/watch?v=looJcaeboBY)
+- [Youtube - Monads and Gonads](https://www.youtube.com/watch?v=b0EF0VTs9Dc)
+
 # Functional Programming
 > Functional programming is a programming paradigm - a style of building the structure and elements of computer programs - that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. It is a declarative programming paradigm, which means programming is done with expressions. In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time. Eliminating side effects, i.e. changes in state that do not depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming.
 -- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Functional_programming)</quote>
@@ -9,9 +23,6 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 -- <quote>[Functional Programming in Scala](http://www.manning.com/bjarnason/)</quote>
 
 # Video
-- [Youtube - Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
-- [Youtube - Brian Beckman: The Zen of Stateless State - The State Monad](https://www.youtube.com/watch?v=XxzzJiXHOJs)
-- [Youtube - Expert to Expert: Brian Beckman and Erik Meijer - Inside the .NET Reactive Framework (Rx)](https://www.youtube.com/watch?v=looJcaeboBY)
 - [YouTube - Introduction to Type-Level Programming](https://www.youtube.com/watch?v=WZOzxAP8NpI)
 - [YouTube - Type-Level Programming: The Subspace of Scala](https://www.youtube.com/watch?v=MjzBPIvgB24)
 - [YouTube - PNWS 2014 - What every (Scala) programmer should know about category theory](https://www.youtube.com/watch?v=W67LYX_1J_M)
@@ -34,9 +45,10 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 -- <quote>[Scalaz](https://github.com/scalaz/scalaz)</quote>
 
 ## Links
-- [Learning Scalaz](http://eed3si9n.com/learning-scalaz/)
+- [Learning Scalaz](http://eed3si9n.com/learning-scalaz/) -  [PDF](http://eed3si9n.com/learning-scalaz/learning-scalaz.pdf)
 
 ## Video
+- [Vimeo - Scalaz Presentation - Nick Partridge](https://vimeo.com/10482466)
 - [Youtube - Learning Scalaz](https://www.youtube.com/watch?v=jyMIvcUxOJ0)
 - [Youtube - Scalaz - The good parts](https://www.youtube.com/watch?v=jPdHQZnF56A)
 - [Youtube - Scalaz - The State Monad](https://www.youtube.com/watch?v=Jg3Uv_YWJqI)
