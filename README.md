@@ -4,6 +4,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 # Category Theory
 
 ## Video
+- [ScalaDays - SF - Type level programming 101](https://www.parleys.com/tutorial/type-level-programming-scala-101)
 - [Youtube - Category Theory Foundations, Lecture 1](https://www.youtube.com/watch?v=ZKmodCApZwk)
 - [Youtube - Category Theory Foundations, Lecture 2](https://www.youtube.com/watch?v=TQYjekxqw-Q)
 - [Youtube - Category Theory Foundations, Lecture 3](https://www.youtube.com/watch?v=BOynNljjbeg)
