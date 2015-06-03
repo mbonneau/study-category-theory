@@ -1,6 +1,16 @@
 # study-category-theory
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
+# Scala
+- [Jim McBeath - Class/Trait linearization](http://jim-mcbeath.blogspot.nl/2009/08/scala-class-linearization.html)
+
+# Akka
+- [Akka patterns](http://www.slideshare.net/romantimushev/akka-patterns)
+- [Jonas Boner Presentations](http://www.slideshare.net/jboner?utm_campaign=profiletracking&utm_medium=sssite&utm_source=ssslideview)
+- [Jonas Boner - Akka: Simpler Scalability, Fault-Tolerance, Concurrency & Remoting through Actors](http://www.slideshare.net/jboner/akka-simpler-scalability-faulttolerance-concurrency-remoting-through-actors)
+- [Patrik Norwal - Akka persistence webinar](http://www.slideshare.net/patriknw/akka-persistence-webinar)
+- [Konrad Malawski - Akka persistence == event sourcing in 30 minutes](http://www.slideshare.net/ktoso/akka-persistence-event-sourcing-in-30-minutes)
+
 # Category Theory
 
 ## Video
