@@ -1,4 +1,4 @@
-package com.github.dnvriend.oo
+package com.github.dnvriend.fp
 
 import com.github.dnvriend.TestSpec
 
