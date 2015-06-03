@@ -6,14 +6,14 @@ import com.github.dnvriend.TestSpec
  * This is a Scala adaptation from the example I took from
  * http://howtonode.org/what-is-this
  */
-class LexicalScopeTest extends TestSpec {
+class LexicalScopeTest extends TestSpec { // this is the global scope
   // It's all about where you are..
 
   // this is the global scope
   val globalName = "global"
   val globalAge = 15
 
-  def localScope(): Unit = {
+  def localScope(): Unit = { // a code block '{ .. }' creates a new scope
     val localName = "local"
     val localAge = 16
   }
@@ -54,7 +54,7 @@ class LexicalScopeTest extends TestSpec {
    * function () => String closes over those two variables and can be referenced from within
    * that function.
    */
-    def myModule: () => () => String = () => {
+    def myModule: () => () => String = () => { // create a new scope using code block '{ .. }'
       // lexical scope of the function 'greet'
       val name = "tim"
       val age = 28
@@ -65,5 +65,19 @@ class LexicalScopeTest extends TestSpec {
   "closure 'greet'" should "reference the variables in its lexical scope" in {
     val greeter = myModule()
     greeter() shouldBe "Hello tim. Wow, you are 28 years old."
+  }
+
+  def loops(max: Int): () => String = {
+    var i = 0
+    () => { // note; this is a Function0[String]
+      while(i < max)
+        i += 1
+      i.toString
+      }
+  }
+
+  "loops" should "close over the free variable 'i' in its lexical scope" in {
+    loops(10)() shouldBe "10"
+    loops(10) shouldBe a [Function0[_]]
   }
 }
