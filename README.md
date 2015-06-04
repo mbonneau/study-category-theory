@@ -2,6 +2,8 @@
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
 # Scala
+- [Daniel Westheide - The Neophyte(Beginner)'s Guide to Scala](http://danielwestheide.com/scala/neophytes.html)
+- [Dick Wall - Effective Scala (3hrs)](https://www.parleys.com/tutorial/effective-scala-2)
 - [Jim McBeath - Class/Trait linearization](http://jim-mcbeath.blogspot.nl/2009/08/scala-class-linearization.html)
 
 # Akka
