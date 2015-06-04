@@ -1,6 +1,8 @@
 package com.github.dnvriend.fp
 
-import com.github.dnvriend.TestSpec
+import java.text.SimpleDateFormat
+
+import com.github.dnvriend.{Person, TestSpec}
 
 class PatternMatchTest extends TestSpec {
 
@@ -215,10 +217,187 @@ class PatternMatchTest extends TestSpec {
     determineMailProgram(user) shouldBe "SpamProgram: Daniel"
   }
 
+  /**
+   * What kind of match expressions are there?
+   */
 
+  "Wildcard pattern" should "match everything" in {
+    def identify(any: Any): String = any match {
+      case x => "Anything matches"
+    }
+    identify(new SimpleDateFormat()) shouldBe "Anything matches"
 
+    // Use cases:
+    // * Use _ as a wildcard to match everything
+    // * Use the wildcard as last alternative to avoid MatchErrors
+  }
 
+  "Variable pattern" should "match everthing" in {
+    def identify(any: Any): String = any match {
+      case x => s"Matched: $x"
+    }
+    identify(Person("John Doe", 50)) shouldBe "Matched: Person(John Doe,50)"
 
+    // Use cases:
+    // Use an identifier starting with a small letter to
+    //  * Match everything
+    //  * Capture the value
+    // The variable pattern is useful in combination with other patterns
+  }
 
+  "Typed pattern" should "match only certain types" in {
+    def identify(any: Any): String = any match {
+      case p: Person => "Person matched"
+      case _ => "don't know what it is"
+    }
+    identify(Person("John Doe", 50)) shouldBe "Person matched"
 
+    // Use cases:
+    // * Use a type annotation to match only certain types
+    // * Typed pattern needs to be composed with the wildcard or variable pattern
+  }
+
+  "Constant pattern" should "match only constant things" in {
+    def identify(any: Any): String = any match {
+      case Person("John Doe", 49) => "John Doe age 49 matched"
+      case Person("John Doe", 50) => "John Doe age 50 matched"
+      case p: Person => "Person matched"
+      case _ => "don't know what it is"
+    }
+
+    identify(Person("John Doe", 50)) shouldBe "John Doe age 50 matched"
+
+    // Use cases:
+    // * Use a stable identifier to match something constant
+  }
+
+  "Stable identifier pattern" should "match only constant things" in {
+    val time = "12:00"
+    def identify(any: Any): String = any match {
+      case `time` => "matched small letter with backticks"
+      case "12:50" => "matched a literal 12:50"
+      case 50 => "matched the literal 50"
+      case _ => "don't know what it is"
+    }
+
+    identify(time) shouldBe "matched small letter with backticks"
+
+    // Usage:
+    // Stable identifiers are
+    //  * Literals
+    //  * Identifiers for vals or singleton objects starting with
+    //    * Capital letter
+    //    *  Small letter enclosed in backticks
+  }
+
+  "Tuple pattern" should "match only tuples" in {
+    def identify(any: Any): String = any match {
+      case (x, "12:00") => s"From $x to high noon"
+      case _ => "don't know what it is"
+    }
+
+    identify(("dusk", "12:00")) shouldBe "From dusk to high noon"
+
+    // Usage:
+    // * Use tuple syntax to match and decompose tuples
+    // * Tuple pattern is composed with other patterns,
+    //   e.g. with the constant or variable pattern
+  }
+
+  "Constructor pattern" should "match case classes" in {
+    def identify(any: Any): String = any match {
+      case Person(name, age) => s"Person: $name, $age"
+      case _ => "don't know what it is"
+    }
+
+    identify(Person("John Doe", 50)) shouldBe "Person: John Doe, 50"
+
+    // use case:
+    // * Use constructor syntax to match and decompose case classes
+    // * The constructor pattern is composed with other patterns
+    // * You can build deeply nested structures
+  }
+
+  "Sequence pattern" should "match sequences" in {
+    def identify(any: Any): String = any match {
+      case Seq(1, 2, 3) => "1 to 3"
+      case x +: Nil => s"Only element is $x"
+      case _ :+ x => s"Last element is $x"
+      case Nil => "Empty sequence"
+      case _ => "don't know what it is"
+    }
+
+    identify(1 to 3) shouldBe "1 to 3"
+    identify(Vector(1)) shouldBe "Only element is 1"
+    identify(Vector(1, 2, 3, 4)) shouldBe "Last element is 4"
+    identify(Nil) shouldBe "Empty sequence"
+
+    // usage:
+    // Use sequence constructors or append or prepend operators
+    // to match and decompose sequences
+  }
+
+  "Pattern alternatives" should "match various patterns" in {
+    def identify(any: Any): String = any match {
+      case "00:00" | "12:00" => "Midnight or high noon"
+      case _ => "don't know what it is"
+    }
+    identify("00:00") shouldBe "Midnight or high noon"
+  }
+
+  "Pattern binders" should "bind a variable to a pattern" in {
+    def identify(any: Any): String = any match {
+      case p @ Person(_, age) => s"Person is age: $age"
+      case _ => "don't know what it is"
+    }
+
+    identify(Person("John Doe", 50)) shouldBe "Person is age: 50"
+
+    // usage:
+    // * Use @ to bind a variable to a pattern
+    // * This is useful if a combined pattern like a constructor pattern or
+    //   sequence pattern must be captured as a whole
+  }
+
+  "Pattern guards" should "" in {
+    def identify(any: Any): String = any match {
+      case person: Person if person.age == 50 => s"Person is 50 years old"
+      case _ => "don't know what it is"
+    }
+
+    identify(Person("John Doe", 50)) shouldBe "Person is 50 years old"
+
+    // usage:
+    // * Composing patterns gives you great control over matching
+    // * If that's not enough, use the if keyword to define a pattern guard
+  }
+
+  "val with patterns" should "match" in {
+    val (person1, person2) = Person("FooBar", 10) -> Person("Bazzoo", 15)
+    person1 shouldBe Person("FooBar", 10)
+    person2 shouldBe Person("Bazzoo", 15)
+
+    intercept [MatchError] { // non-exhaustive match
+      val Person("John Doe", age) = Person("Bazzoo", 50)
+    }
+
+    // usage:
+    // * Use patterns to define vals
+    // * Pay attention to non exhaustive matches (MatchError)
+  }
+
+  "Generators" should "support pattern match" in {
+    val result = for((key, value) <- Vector(1 -> "a", 2 -> "b")) yield s"$key,$value"
+    result shouldBe Vector("1,a", "2,b")
+  }
+
+  "ExceptionHandling" should "support pattern match" in {
+    def calculate(s: String): Int = try {
+      s.toInt
+    } catch {
+      case _: NumberFormatException => 0
+    }
+
+    calculate("abc") shouldBe 0
+  }
 }
