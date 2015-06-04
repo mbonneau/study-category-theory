@@ -8,13 +8,14 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 ## Video
 - [Dick Wall - Effective Scala (3hrs)](https://www.parleys.com/tutorial/effective-scala-2)
 
-## Trait Linearization
+## Class Linearization
 > To support inheritance Scala has introduced a concept called [trait](http://www.artima.com/pins1ed/traits.html) almost similar to Java's [interface](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html). But unlike Java interfaces - which is not true anymore because of [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) - Scala traits can actually define any concrete methods. From this it seems apparently that Scala supports [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem); but that is not the case. To avoid multiple inheritance Scala uses a technique called [linearization](http://www.artima.com/pins1ed/traits.html#12.6) to flatten the calls to super classes. -- <quote>[Tech Pro](http://tech.pro/blog/2114/scala-linearization-technique-to-avoid-multiple-inheritance)</quote>
  
 ### Sources
+- [Scala Language Spec 5.1.2 - Class Linearization](http://www.scala-lang.org/files/archive/spec/2.11/05-classes-and-objects.html#class-linearization)
 - [Programming in Scala - Traits](http://www.artima.com/pins1ed/traits.html)
 - [Tech Pro - Dipta Pratim Banerjee - Scala: Linearization technique to avoid multiple inheritance](http://tech.pro/blog/2114/scala-linearization-technique-to-avoid-multiple-inheritance)
-- [Jim McBeath - Class/Trait linearization](http://jim-mcbeath.blogspot.nl/2009/08/scala-class-linearization.html)
+- [Jim McBeath - Class Linearization](http://jim-mcbeath.blogspot.nl/2009/08/scala-class-linearization.html)
 
 # Akka
 - [Akka patterns](http://www.slideshare.net/romantimushev/akka-patterns)
