@@ -9,8 +9,8 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Dick Wall - Effective Scala (3hrs)](https://www.parleys.com/tutorial/effective-scala-2)
 
 ## Trait Linearization
-> To support inheritance Scala has introduced a concept called `[trait](http://www.artima.com/pins1ed/traits.html)` 
-almost similar to Java's `[interface](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)`. 
+> To support inheritance Scala has introduced a concept called [trait](http://www.artima.com/pins1ed/traits.html) 
+almost similar to Java's [interface](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html). 
 But unlike Java interfaces - which is not true anymore because of [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)), 
 Scala traits can actually define any concrete methods. From this it seems apparently that Scala supports 
 [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem); but that is not the case. 
