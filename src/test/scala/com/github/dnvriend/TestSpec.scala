@@ -20,7 +20,7 @@ trait TestSpec extends FlatSpec with Matchers with ScalaFutures with BeforeAndAf
   implicit val ec: ExecutionContext = system.dispatcher
   implicit val flowMaterializer: FlowMaterializer = ActorFlowMaterializer()
   implicit val log: LoggingAdapter = Logging(system, this.getClass)
-  implicit val orderJsonFormat = jsonFormat2(Person)
+  implicit val personJsonFormat = jsonFormat2(Person)
   implicit val pc: PatienceConfig = PatienceConfig(timeout = 50.seconds)
 
   implicit class FutureToTry[T](f: Future[T]) {
