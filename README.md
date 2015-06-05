@@ -75,6 +75,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Learning Scalaz](http://eed3si9n.com/learning-scalaz/) -  [PDF](http://eed3si9n.com/learning-scalaz/learning-scalaz.pdf)
 
 ## Video
+- [Parleys - Scala Days San Fransisco 2015 - A Skeptic's Look at scalaz' "Gateway Drugs"](https://www.parleys.com/tutorial/a-skeptics-look-scalaz-gateway-drugs) - [Brendan McAdams Twitter](https://twitter.com/rit) - [Brendan McAdams Github](https://github.com/bwmcadams)
 - [Vimeo - Scalaz Presentation - Nick Partridge](https://vimeo.com/10482466)
 - [Youtube - Learning Scalaz](https://www.youtube.com/watch?v=jyMIvcUxOJ0)
 - [Youtube - Scalaz - The good parts](https://www.youtube.com/watch?v=jPdHQZnF56A)
