@@ -6,6 +6,8 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 ## Video
 - [Scaladays - SF - Improving Correctness with Types](https://www.parleys.com/tutorial/improving-correctness-with-types)
 - [ScalaDays - SF - Type level programming 101](https://www.parleys.com/tutorial/type-level-programming-scala-101)
+- [Scala Typeclassopedia with John Kodumal](https://www.youtube.com/watch?v=IMGCDph1fNY)
+- [Dan Rosen - Scala Monads: Declutter Your Code With Monadic Design](https://www.youtube.com/watch?v=Mw_Jnn_Y5iA)
 - [Youtube - Category Theory Foundations, Lecture 1](https://www.youtube.com/watch?v=ZKmodCApZwk)
 - [Youtube - Category Theory Foundations, Lecture 2](https://www.youtube.com/watch?v=TQYjekxqw-Q)
 - [Youtube - Category Theory Foundations, Lecture 3](https://www.youtube.com/watch?v=BOynNljjbeg)
@@ -81,6 +83,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Daniel Westheide - The Neophyte(Beginner)'s Guide to Scala](http://danielwestheide.com/scala/neophytes.html)
 
 ## Video
+- [Scala Variance](https://www.youtube.com/watch?v=pgCD10nu_30)
 - [Dick Wall - Effective Scala (3hrs)](https://www.parleys.com/tutorial/effective-scala-2)
 
 ## Class Linearization
@@ -104,3 +107,10 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Jonas Boner - Akka: Simpler Scalability, Fault-Tolerance, Concurrency & Remoting through Actors](http://www.slideshare.net/jboner/akka-simpler-scalability-faulttolerance-concurrency-remoting-through-actors)
 - [Patrik Norwal - Akka persistence webinar](http://www.slideshare.net/patriknw/akka-persistence-webinar)
 - [Konrad Malawski - Akka persistence == event sourcing in 30 minutes](http://www.slideshare.net/ktoso/akka-persistence-event-sourcing-in-30-minutes)
+
+## Distributed
+- [Distributed Systems Are a UX Problem](http://bravenewgeek.com/distributed-systems-are-a-ux-problem/)
+- [There is no Now](https://queue.acm.org/detail.cfm?id=2745385)
+- [Paper Trail - A Brief Tour of FLP Impossibility](http://the-paper-trail.org/blog/a-brief-tour-of-flp-impossibility/)
+- [The FLP paper - Impossibility of Distributed Consensuswith One Faulty Process](http://cs-www.cs.yale.edu/homes/arvind/cs425/doc/fischer.pdf)
+- [Google Research - Spanner](http://research.google.com/archive/spanner.html)
