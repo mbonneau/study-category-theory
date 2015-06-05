@@ -86,6 +86,12 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 ## Class Linearization
 > To support inheritance Scala has introduced a concept called [trait](http://www.artima.com/pins1ed/traits.html) almost similar to Java's [interface](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html). But unlike Java interfaces - which is not true anymore because of [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) - Scala traits can actually define any concrete methods. From this it seems apparently that Scala supports [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem); but that is not the case. To avoid multiple inheritance Scala uses a technique called [linearization](http://www.artima.com/pins1ed/traits.html#12.6) to flatten the calls to super classes. -- <quote>[Tech Pro](http://tech.pro/blog/2114/scala-linearization-technique-to-avoid-multiple-inheritance)</quote>
  
+## Value Classes
+> Value classes are a new mechanism in Scala to avoid allocating runtime objects. This is accomplished through the definition of new AnyVal subclasses.
+-- <quote>[Scaladoc](http://docs.scala-lang.org/overviews/core/value-classes.html)</quote>
+
+- [Boldradius - Value classes in Scala](http://boldradius.com/blog-post/VUEhpCgAACcrIm1S/value-classes-in-scala)
+ 
 ### Sources
 - [Scala Language Spec 5.1.2 - Class Linearization](http://www.scala-lang.org/files/archive/spec/2.11/05-classes-and-objects.html#class-linearization)
 - [Programming in Scala - Traits](http://www.artima.com/pins1ed/traits.html)
