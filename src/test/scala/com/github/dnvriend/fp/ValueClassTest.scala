@@ -6,7 +6,7 @@ import com.github.dnvriend.TestSpec
 
 case class UserId(id: String = UUID.randomUUID.toString) extends AnyVal
 case class UserName(name: String) extends AnyVal
-case class Person(id: UserId, name: UserName)
+case class TypedPerson(id: UserId, name: UserName)
 
 class ValueClassTest extends TestSpec {
   /**
@@ -51,9 +51,9 @@ class ValueClassTest extends TestSpec {
    *
    * case class UserId(id: String = UUID.randomUUID.toString)
    * case class UserName(name: String)
-   * case Person(id: UserId, name: UserName)
+   * case TypedPerson(id: UserId, name: UserName)
    *
-   * val person = Person(UserId(), UserName("John Doe"))
+   * val person = TypedPerson(UserId(), UserName("John Doe"))
    *
    * The compiler now sees a Person(UserId, UserName) and does all the work for us making sure that no username will
    * be placed into the id field and vice versa. Basically tiny types are wrappers around the basic types.
@@ -76,7 +76,7 @@ class ValueClassTest extends TestSpec {
    */
 
   "Person" should "be defined using tiny types" in {
-    val person = Person(UserId("abc"), UserName("John Doe"))
+    val person = TypedPerson(UserId("abc"), UserName("John Doe"))
 
     person.name shouldBe UserName("John Doe") // note the typed result, not the String value, start thinking in types
   }
