@@ -2,6 +2,9 @@
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
 # Category Theory
+## Slides
+- [Category Theory for Beginners](http://www.slideshare.net/kenbot/category-theory-for-beginners)
+- [Your data structures are made of math](http://www.slideshare.net/kenbot/your-data-structures-are-made-of-maths)
 
 ## Video
 - [Scaladays - SF - Improving Correctness with Types](https://www.parleys.com/tutorial/improving-correctness-with-types)
