@@ -15,7 +15,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [F-Bound Polymorphism](http://work.tinou.com/2009/07/wtf-is-fbounded-polymorphism.html)
 
 # Libraries
-- [Rapture.io](http://rapture.io)
+- [Rapture.io](http://rapture.io)x
 - [ClassTag matching](http://dcsobral.blogspot.nl/2013/01/pattern-matching-on-abstract-types-with.html)
 
 
@@ -141,7 +141,6 @@ Vector has good chars
 - [Paper Trail - A Brief Tour of FLP Impossibility](http://the-paper-trail.org/blog/a-brief-tour-of-flp-impossibility/)
 - [The FLP paper - Impossibility of Distributed Consensuswith One Faulty Process](http://cs-www.cs.yale.edu/homes/arvind/cs425/doc/fischer.pdf)
 - [Google Research - Spanner](http://research.google.com/archive/spanner.html)
-<<<<<<< HEAD
 
 ## Heiko Seeberge's blog
 - [Attention: Seq is not immutable](http://hseeberger.github.io/blog/2013/10/25/attention-seq-is-not-immutable/)
@@ -149,6 +148,3 @@ Vector has good chars
 ## Scala Collections
 - [Scala Collection Performance Chars](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
 - [Scala Immutable Collections](http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html#vectors)
-
-=======
->>>>>>> e9cbd68aa4c13597acfb1f4761b7fd5ca3680dd9
