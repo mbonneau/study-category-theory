@@ -21,6 +21,9 @@ Vector has good chars
 //
 
 # Category Theory
+## Slides
+- [Category Theory for Beginners](http://www.slideshare.net/kenbot/category-theory-for-beginners)
+- [Your data structures are made of math](http://www.slideshare.net/kenbot/your-data-structures-are-made-of-maths)
 
 ## Video
 - [Scaladays - SF - Improving Correctness with Types](https://www.parleys.com/tutorial/improving-correctness-with-types)
@@ -133,6 +136,7 @@ Vector has good chars
 - [Paper Trail - A Brief Tour of FLP Impossibility](http://the-paper-trail.org/blog/a-brief-tour-of-flp-impossibility/)
 - [The FLP paper - Impossibility of Distributed Consensuswith One Faulty Process](http://cs-www.cs.yale.edu/homes/arvind/cs425/doc/fischer.pdf)
 - [Google Research - Spanner](http://research.google.com/archive/spanner.html)
+<<<<<<< HEAD
 
 ## Heiko Seeberge's blog
 - [Attention: Seq is not immutable](http://hseeberger.github.io/blog/2013/10/25/attention-seq-is-not-immutable/)
@@ -141,3 +145,5 @@ Vector has good chars
 - [Scala Collection Performance Chars](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
 - [Scala Immutable Collections](http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html#vectors)
 
+=======
+>>>>>>> e9cbd68aa4c13597acfb1f4761b7fd5ca3680dd9
