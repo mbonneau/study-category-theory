@@ -1,6 +1,25 @@
 # study-category-theory
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
+# Type Systems
+- [Type Theory](http://en.wikipedia.org/wiki/Type_theory)
+- [Type System](http://en.wikipedia.org/wiki/Type_system)
+- [Structural Type System](http://en.wikipedia.org/wiki/Structural_type_system)
+- [Covariance](http://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science))
+- [Scala lang reference](http://www.scala-lang.org/docu/files/ScalaReference.pdf)
+- [Value classes](http://docs.scala-lang.org/sips/completed/value-classes.html)
+- [Reactive Programming](https://medium.com/reactive-programming/what-is-reactive-programming-bc9fa7f4a7fc)
+- [Scala collection](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
+- [Concrete Immutable Collection Classes](http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html#vectors)
+- [Heiko - Seq is not immutable](http://hseeberger.github.io/blog/2013/10/25/attention-seq-is-not-immutable/)
+- [F-Bound Polymorphism](http://work.tinou.com/2009/07/wtf-is-fbounded-polymorphism.html)
+
+// notes
+Seq.apply creates a list, they have poor chars (append, reverse, all O(n)); use it to traverse it once, head/tail
+Vector has good chars
+- Do use Map and Set apply methods
+//
+
 # Category Theory
 
 ## Video
@@ -114,3 +133,11 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Paper Trail - A Brief Tour of FLP Impossibility](http://the-paper-trail.org/blog/a-brief-tour-of-flp-impossibility/)
 - [The FLP paper - Impossibility of Distributed Consensuswith One Faulty Process](http://cs-www.cs.yale.edu/homes/arvind/cs425/doc/fischer.pdf)
 - [Google Research - Spanner](http://research.google.com/archive/spanner.html)
+
+## Heiko Seeberge's blog
+- [Attention: Seq is not immutable](http://hseeberger.github.io/blog/2013/10/25/attention-seq-is-not-immutable/)
+
+## Scala Collections
+- [Scala Collection Performance Chars](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
+- [Scala Immutable Collections](http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html#vectors)
+

@@ -5,27 +5,37 @@ import com.github.dnvriend.TestSpec
 class TypeParameterizationTest extends TestSpec {
 
   /**
+   * This is basically a study into Polymorphism.
+   *
+   * There are two forms of polymorphism:
+   *  1. Subtyping (which is used in OO first)
+   *  2. Generics (which is used by FP first)
+   *
+   *  How subtyping and generics interact:
+   *
+   *  1. Type Bounds - subject type parameters to subtype constraints A <: B (upperbound) and A >: B (A is a supertype of B) (lowerbound)
+   *  2. Variance - how parameterized types behave under subtyping
+   *
    * In programming, type parameterization allows you to define methods or classes in
    * terms of a type that will be specified later.
+   *
+   * Liskov substitution principle
+   *
+   * if A <: B, (A is-a-subtype of B) then everything one can do with
+   * a value of type B one should also be able to do with a value of type A
    */
 
-  trait Animal
-  class Bird extends Animal
-  class Elephant extends Animal
-
-  class InvariantCage[A] {
-    def put(animal: A): Unit = {}
-  }
-
-  class CovariantCage[+A]
-
-  class ContraVariantCage[-A] {
-    def put(animal: A): Unit = {}
-  }
-
-  "InvariantCage" should "be created with specific type" in {
-    val cage: CovariantCage[Animal] = new CovariantCage[Bird]
-  }
+  /**
+   * Definition of variance
+   * Say, C[T] is a parameterized type and A, B are types such that A <: B
+   *
+   * In general there are 3 possible relationships between C[A] and C[B]:
+   *
+   * 1. C[A] <: C[B] then C is `covariant`
+   * 2. C[A] >: C[B] then C is `contravariant`
+   * 3. neither C[A] nor C[B] is a subtype of the other then C is `nonvariant`
+   *
+   */
 
   /**
    * +A = Covariant
