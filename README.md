@@ -14,6 +14,11 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Heiko - Seq is not immutable](http://hseeberger.github.io/blog/2013/10/25/attention-seq-is-not-immutable/)
 - [F-Bound Polymorphism](http://work.tinou.com/2009/07/wtf-is-fbounded-polymorphism.html)
 
+# Libraries
+- [Rapture.io](http://rapture.io)
+- [ClassTag matching](http://dcsobral.blogspot.nl/2013/01/pattern-matching-on-abstract-types-with.html)
+
+
 // notes
 Seq.apply creates a list, they have poor chars (append, reverse, all O(n)); use it to traverse it once, head/tail
 Vector has good chars
