@@ -32,7 +32,8 @@ Vector has good chars
 - [Your data structures are made of math](http://www.slideshare.net/kenbot/your-data-structures-are-made-of-maths)
 
 ## Video
-- [Scaladays - SF - Improving Correctness with Types](https://www.parleys.com/tutorial/improving-correctness-with-types)
+- [Scaladays - SF](https://www.parleys.com/channel/scala-days-san-francisco-2015)
+- [Scaladays - SF - Improving Correctness with Types](https	://www.parleys.com/tutorial/improving-correctness-with-types)
 - [ScalaDays - SF - Type level programming 101](https://www.parleys.com/tutorial/type-level-programming-scala-101)
 - [Scala Typeclassopedia with John Kodumal](https://www.youtube.com/watch?v=IMGCDph1fNY)
 - [Dan Rosen - Scala Monads: Declutter Your Code With Monadic Design](https://www.youtube.com/watch?v=Mw_Jnn_Y5iA)
