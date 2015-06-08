@@ -3,10 +3,11 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 
 # Type Systems
 - [Type Theory](http://en.wikipedia.org/wiki/Type_theory)
-- [Type System](http://en.wikipedia.org/wiki/Type_system)
+- [Type System](http://en.wikipedia.org/wiki/Type_system) - [Comparison of Type Systems](http://en.wikipedia.org/wiki/Comparison_of_type_systems)
 - [Structural Type System](http://en.wikipedia.org/wiki/Structural_type_system)
-- [Covariance](http://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science))
+- [Covariance and ContraVariance](http://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science))
 - [Scala lang reference](http://www.scala-lang.org/docu/files/ScalaReference.pdf)
+- [Programming in Scala - Type Parameterization](http://www.artima.com/pins1ed/type-parameterization.html)
 - [Value classes](http://docs.scala-lang.org/sips/completed/value-classes.html)
 - [Reactive Programming](https://medium.com/reactive-programming/what-is-reactive-programming-bc9fa7f4a7fc)
 - [Scala collection](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
