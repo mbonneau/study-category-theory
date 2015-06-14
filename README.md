@@ -16,15 +16,8 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [F-Bound Polymorphism](http://work.tinou.com/2009/07/wtf-is-fbounded-polymorphism.html)
 
 # Libraries
-- [Rapture.io](http://rapture.io)x
+- [Rapture.io](http://rapture.io)
 - [ClassTag matching](http://dcsobral.blogspot.nl/2013/01/pattern-matching-on-abstract-types-with.html)
-
-
-// notes
-Seq.apply creates a list, they have poor chars (append, reverse, all O(n)); use it to traverse it once, head/tail
-Vector has good chars
-- Do use Map and Set apply methods
-//
 
 # Category Theory
 ## Slides

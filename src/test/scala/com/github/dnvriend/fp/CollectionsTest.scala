@@ -5,20 +5,22 @@ import com.github.dnvriend.TestSpec
 class CollectionsTest extends TestSpec {
 
   /* scala has the following collection hierarchy
+   see: http://stackoverflow.com/questions/1722137/scala-2-8-collections-design-tutorial
 
                      Traversable
                          |
                          |
                       Iterable
                          |
-      +------------------+--------------------+
-     Map                Set                  Seq
-      |                  |                    |
-      |             +----+----+         +-----+------+
-    Sorted Map  SortedSet   BitSet   IndexedSeq   LineairSeq
+      +------------------+---------------------------+
+     Map                Set                         Seq
+      |                  |                           |
+      |             +----+----+         +-----------------------+
+    Sorted Map  SortedSet   BitSet   IndexedSeq              LineairSeq
+                               (Vector, Range, String)  (List, Stream, Queue, Stack)
    */
 
-  "IndexedSeq" should "have map, flatMap and Filter" in {
+  "IndexedSeq (Vector)" should "have map, flatMap and Filter" in {
     // IndexedSeq collections are optimized for contant-time or near constant-time access
     // and length computations. It provides random access and updates in constant time, as
     // well as very fast append and prepend.
@@ -81,7 +83,30 @@ class CollectionsTest extends TestSpec {
     Vector(5, 6, 7).zipWithIndex shouldBe Vector((5, 0), (6, 1), (7, 2))
   }
 
-  "Arrays" should "have map, flatMap and Filter" in {
+  "Lineair Seq (List)" should "have map, flatMap and Filter" in {
+    // Lists are optimized for Sequential Scan (it is a LineairSeq)
+    val xs: List[Int] = List(1, 2, 3, 4, 5)
+    xs.head shouldBe 1
+    xs.last shouldBe 5
+    xs.drop(1) shouldBe List(2, 3, 4, 5)
+    xs.drop(1).dropRight(1) shouldBe List(2, 3, 4)
+    xs.filter(_ % 2 == 0) shouldBe List(2, 4)
+    xs.filterNot(_ % 2 == 0) shouldBe List(1, 3, 5)
+    xs.map(_ * 2).find(_ == 5) shouldBe None
+    xs.map(_ * 2).find(_ == 10) shouldBe Some(10)
+
+    xs.sum shouldBe 1 + 2 + 3 + 4 + 5
+
+    val xx = for (x <- xs) yield x * 2
+    xx shouldBe List(2, 4, 6, 8, 10)
+
+    val xz = for(x <- 1 to 5 if x > 2) yield x
+    xz shouldBe List(3, 4, 5)
+
+    xs.foldLeft(1) { _ * _ } shouldBe 120
+  }
+
+  "Arrays (mutable)" should "have map, flatMap and Filter" in {
     // an Array is a *mutable* indexed collection of values, and is 100%
     // compatible with Java's Array, the T[]
     val xs: Array[Int] = Array(1, 2, 3, 4, 5)
@@ -105,26 +130,62 @@ class CollectionsTest extends TestSpec {
     xs.foldLeft(1) { _ * _ } shouldBe 120
   }
 
-  "List" should "have map, flatMap and Filter" in {
-    // Lists are optimized for Sequential Scan (it is a LineairSeq)
-    val xs: List[Int] = List(1, 2, 3, 4, 5)
-    xs.head shouldBe 1
-    xs.last shouldBe 5
-    xs.drop(1) shouldBe List(2, 3, 4, 5)
-    xs.drop(1).dropRight(1) shouldBe List(2, 3, 4)
-    xs.filter(_ % 2 == 0) shouldBe List(2, 4)
-    xs.filterNot(_ % 2 == 0) shouldBe List(1, 3, 5)
-    xs.map(_ * 2).find(_ == 5) shouldBe None
-    xs.map(_ * 2).find(_ == 10) shouldBe Some(10)
 
-    xs.sum shouldBe 1 + 2 + 3 + 4 + 5
+  // manual map, flatMap and filter
 
-    val xx = for (x <- xs) yield x * 2
-    xx shouldBe List(2, 4, 6, 8, 10)
+  def filter[A](seq: Seq[A])(p: A => Boolean): Seq[A] = {
+    def helper(src: Seq[A], xs: Seq[A]): Seq[A] = src match {
+      case Nil => xs
+      case head +: tail => if (p(head)) helper(tail, xs :+ head) else helper(tail, xs)
+    }
+    helper(seq, Nil)
+  }
 
-    val xz = for(x <- 1 to 5 if x > 2) yield x
-    xz shouldBe List(3, 4, 5)
+  def map[A, B](seq: Seq[A])(f: A => B): Seq[B] = {
+    def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
+      case Nil => xs
+      case head +: tail => helper(tail, xs :+ f(head))
+    }
+    helper(seq, Nil)
+  }
 
-    xs.foldLeft(1) { _ * _ } shouldBe 120
+  def flatMap[A, B](seq: Seq[A])(f: A => Seq[B]): Seq[B] = {
+    def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
+      case Nil => xs
+      case head +: tail => helper(tail, xs ++ f(head))
+    }
+    helper(seq, Nil)
+  }
+
+  "manual map" should "evaluate correctly" in {
+    map(Seq(1, 2, 3)) { _.toDouble } shouldBe Seq(1, 2, 3).map(_.toDouble)
+  }
+
+  "manual flatMap" should "evaluate correctly" in {
+    flatMap(Seq(1, 2, 3)) { _ => Seq(1, 2, 3) } shouldBe Seq(1, 2, 3).flatMap(_ => Seq(1, 2, 3))
+  }
+
+  "manual filter" should "evaluate correctly" in {
+    filter(Seq(1, 2, 3)) { _ % 2 == 0 } shouldBe Seq(1, 2, 3).filter(_ % 2 == 0)
   }
 }
+
+//class TestSeq[+A]private(private val xs: Seq[A]) {
+//  def map[B](f: A => B): TestSeq[B] = {
+//    def helper(underlying: Seq[A]): Seq[B] = underlying match {
+//      case Nil => Nil
+//      case head +: tail => f(head) +: helper(tail)
+//    }
+//    new TestSeq(helper(xs))
+//  }
+//
+//  def flatMap[B](f: A => Seq[B]): Seq[B] = xs match {
+//    case Nil => Nil
+//    case head :: tail => f(head) ++ flatMap(f)
+//  }
+//
+//  def filter(p: A => Boolean): Seq[A] = xs match {
+//    case Nil => Nil
+//    case head :: tail => if(p(xs.head)) xs.head +: filter(p) else filter(p)
+//  }
+//}
