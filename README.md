@@ -25,6 +25,8 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Your data structures are made of math](http://www.slideshare.net/kenbot/your-data-structures-are-made-of-maths)
 
 ## Video
+- [Youtube - Michael Pilquist - Type constructors, Functors and Kind Projector](https://www.youtube.com/watch?v=Dsd4pc99FSY)
+- [Youtube - The Catsters - Category Theory](https://www.youtube.com/user/TheCatsters)
 - [Scaladays - SF](https://www.parleys.com/channel/scala-days-san-francisco-2015)
 - [Scaladays - SF - Improving Correctness with Types](https	://www.parleys.com/tutorial/improving-correctness-with-types)
 - [ScalaDays - SF - Type level programming 101](https://www.parleys.com/tutorial/type-level-programming-scala-101)

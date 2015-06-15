@@ -168,6 +168,8 @@ class CollectionsTest extends TestSpec {
   "manual filter" should "evaluate correctly" in {
     filter(Seq(1, 2, 3)) { _ % 2 == 0 } shouldBe Seq(1, 2, 3).filter(_ % 2 == 0)
   }
+
+
 }
 
 //class TestSeq[+A]private(private val xs: Seq[A]) {
