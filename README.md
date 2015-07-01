@@ -60,6 +60,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [YouTube - Miles Sabin - Shapeless: Exploring Generic Programming in Scala](https://www.youtube.com/watch?v=GDbNxL8bqkY)
 - [YouTube - Jared Roesch - Demystifying Shapeless: An Exploration of Dependent Types in Scala](https://www.youtube.com/watch?v=VF-ISUiXIY0)
 - [YouTube - Scalaz - The good parts](https://www.youtube.com/watch?v=jPdHQZnF56A)
+- [Youtube - Scalaz - A Skeptic’s Look at scalaz’ Gateway Drugs: A Practical Exploration](https://www.youtube.com/watch?v=8FmsSy6YB7k)
 
 # Blogs
 - [CakeSolutions - Category theory patterns in Scala](http://www.cakesolutions.net/teamblogs/category-theory-patterns-in-scala)
@@ -145,3 +146,7 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 ## Scala Collections
 - [Scala Collection Performance Chars](http://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
 - [Scala Immutable Collections](http://docs.scala-lang.org/overviews/collections/concrete-immutable-collection-classes.html#vectors)
+
+# JVM
+- [Jamie Allen - The Mutability Matrix of Pain: An Accessible Exploration of the JVM Heap](https://www.youtube.com/watch?v=C94014DbZvA)
+- [The Changing Face of Communications: IoT, REST, & Reactive - Todd Montgomery](https://www.youtube.com/watch?v=xMcx48QwvAE)
