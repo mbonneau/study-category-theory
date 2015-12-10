@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Dennis Vriend
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.dnvriend.fp
 
 import com.github.dnvriend.TestSpec
@@ -46,20 +62,20 @@ class CollectionsTest extends TestSpec {
     // do *all* the elements conform to the predicate?
     xs.forall(_ < 10) shouldBe true
 
-    xs.foldLeft(1)(_+_)
+    xs.foldLeft(1)(_ + _)
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x <- xs) yield x * 2
+    val xx = for (x ← xs) yield x * 2
     xx shouldBe Vector(2, 4, 6, 8, 10)
 
     // the Vector can also be created like this
-    val xy = for(x <- 1 to 5) yield x * 2
+    val xy = for (x ← 1 to 5) yield x * 2
     xy shouldBe Vector(2, 4, 6, 8, 10)
 
-    val xz = for(x <- 1 to 5 if x > 2) yield x
+    val xz = for (x ← 1 to 5 if x > 2) yield x
     xz shouldBe Vector(3, 4, 5)
 
-    xs.foldLeft(1)(_*_) shouldBe 120
+    xs.foldLeft(1)(_ * _) shouldBe 120
     xs.product shouldBe 120
 
     // reduceLeft is a special case of foldLeft, in which the type of the
@@ -97,10 +113,10 @@ class CollectionsTest extends TestSpec {
 
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x <- xs) yield x * 2
+    val xx = for (x ← xs) yield x * 2
     xx shouldBe List(2, 4, 6, 8, 10)
 
-    val xz = for(x <- 1 to 5 if x > 2) yield x
+    val xz = for (x ← 1 to 5 if x > 2) yield x
     xz shouldBe List(3, 4, 5)
 
     xs.foldLeft(1) { _ * _ } shouldBe 120
@@ -121,38 +137,37 @@ class CollectionsTest extends TestSpec {
 
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x <- xs) yield x * 2
+    val xx = for (x ← xs) yield x * 2
     xx shouldBe Array(2, 4, 6, 8, 10)
 
-    val xz = for(x <- 1 to 5 if x > 2) yield x
+    val xz = for (x ← 1 to 5 if x > 2) yield x
     xz shouldBe Array(3, 4, 5)
 
     xs.foldLeft(1) { _ * _ } shouldBe 120
   }
 
-
   // manual map, flatMap and filter
 
-  def filter[A](seq: Seq[A])(p: A => Boolean): Seq[A] = {
+  def filter[A](seq: Seq[A])(p: A ⇒ Boolean): Seq[A] = {
     def helper(src: Seq[A], xs: Seq[A]): Seq[A] = src match {
-      case Nil => xs
-      case head +: tail => if (p(head)) helper(tail, xs :+ head) else helper(tail, xs)
+      case Nil          ⇒ xs
+      case head +: tail ⇒ if (p(head)) helper(tail, xs :+ head) else helper(tail, xs)
     }
     helper(seq, Nil)
   }
 
-  def map[A, B](seq: Seq[A])(f: A => B): Seq[B] = {
+  def map[A, B](seq: Seq[A])(f: A ⇒ B): Seq[B] = {
     def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
-      case Nil => xs
-      case head +: tail => helper(tail, xs :+ f(head))
+      case Nil          ⇒ xs
+      case head +: tail ⇒ helper(tail, xs :+ f(head))
     }
     helper(seq, Nil)
   }
 
-  def flatMap[A, B](seq: Seq[A])(f: A => Seq[B]): Seq[B] = {
+  def flatMap[A, B](seq: Seq[A])(f: A ⇒ Seq[B]): Seq[B] = {
     def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
-      case Nil => xs
-      case head +: tail => helper(tail, xs ++ f(head))
+      case Nil          ⇒ xs
+      case head +: tail ⇒ helper(tail, xs ++ f(head))
     }
     helper(seq, Nil)
   }
@@ -162,13 +177,12 @@ class CollectionsTest extends TestSpec {
   }
 
   "manual flatMap" should "evaluate correctly" in {
-    flatMap(Seq(1, 2, 3)) { _ => Seq(1, 2, 3) } shouldBe Seq(1, 2, 3).flatMap(_ => Seq(1, 2, 3))
+    flatMap(Seq(1, 2, 3)) { _ ⇒ Seq(1, 2, 3) } shouldBe Seq(1, 2, 3).flatMap(_ ⇒ Seq(1, 2, 3))
   }
 
   "manual filter" should "evaluate correctly" in {
     filter(Seq(1, 2, 3)) { _ % 2 == 0 } shouldBe Seq(1, 2, 3).filter(_ % 2 == 0)
   }
-
 
 }
 

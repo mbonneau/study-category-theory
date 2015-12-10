@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Dennis Vriend
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.dnvriend.fp
 
 import com.github.dnvriend.TestSpec
@@ -8,8 +24,8 @@ class SimpleClassesTest extends TestSpec {
   class SimpleClass
 
   "SimpleClass" should "be instantiated" in {
-    new SimpleClass shouldBe a [SimpleClass]
-    new SimpleClass shouldBe a [AnyRef] // note, AnyRef is used when no superclass is extended explicitly
+    new SimpleClass shouldBe a[SimpleClass]
+    new SimpleClass shouldBe a[AnyRef] // note, AnyRef is used when no superclass is extended explicitly
   }
 
   class SimpleClass2 {
@@ -63,7 +79,7 @@ class SimpleClassesTest extends TestSpec {
   "SimpleClass6" should "have immutable field (class parameter promoted to a field)" in {
     val sc = new SimpleClass6("message")
     sc.message shouldBe "message"
-//    sc.message = ""  // does not work, it does not have a setter
+    //    sc.message = ""  // does not work, it does not have a setter
   }
 
   class SimpleClass7(var message: String)
@@ -82,7 +98,7 @@ class SimpleClassesTest extends TestSpec {
   "SimpleClass8" should "have immutable field" in {
     val sc = new SimpleClass8()
     sc.message shouldBe "foobar"
-//    sc.message = ""  // does not work, it does not have a setter
+    //    sc.message = ""  // does not work, it does not have a setter
   }
 
   class SimpleClass9 {
