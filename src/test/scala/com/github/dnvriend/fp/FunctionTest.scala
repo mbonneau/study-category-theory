@@ -218,6 +218,10 @@ class FunctionTest extends TestSpec {
     }
   }
 
+  "An empty partial function" should "should not be defined at any value" in {
+    PartialFunction.empty.isDefinedAt(1) shouldBe false
+  }
+
   //
   // In Scala, collections are also functions, and therefor they can be evaluated:
   //
