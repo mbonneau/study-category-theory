@@ -1,6 +1,50 @@
 # study-category-theory
 Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
 
+# Definitions
+Note: The following is in context of programming and not mathematically correct, and should 
+- __Functional Programming__: The practice of composing programs using functions [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming),
+- __Category Theory__: the study of collections of concepts (types) and arrows (functions/morphisms) and the relationships between them [Wikipedia](https://en.wikipedia.org/wiki/Category_theory), 
+- __Concept__: a concept is a type, like String, Int, and so on,
+- __Arrow__: an arrow is a morphism between concepts (types), something that converts from one concept (type) to another. Usually a morphism, 
+which is a function defined against two types, that converts one type to another type, 
+- __Category__: a category is a grouping of concepts (types) and arrows (functions/morphisms)
+- __Functor__: functors are transformations from one category (grouping of types) to another category (grouping of types), 
+that can also transform and preserve morphisms. A functor would be something that convert cats into dogs.
+- __Morphism__: A morphism is the changing of one value in a category (grouping of types) to another in the same category 
+(grouping of types), thus a morphism is a function that converts from one type to another. For example, a morphism is 
+something that can change a fat cat into a slim cat [Wikipedia](https://en.wikipedia.org/wiki/Morphism)
+
+# A little bit of category theory
+Source: http://blogs.atlassian.com/2013/01/covariance-and-contravariance-in-scala/
+
+To get the cool stuff in all its generality, we’re going to need to start thinking about things in terms of categories. 
+Fortunately, it’s pretty non-scary categories stuff. A [category](http://en.wikipedia.org/wiki/Category_%28mathematics%29) `C` 
+is just some objects and some arrows (which we usually gloss as “functions”). 
+
+Arrows go from one object to another, and the only requirements for being a category are that you have some binary 
+operation on arrows (usually glossed as “composition”), that makes new arrows that go from and to the right places; 
+and that you have an “identity” arrow on every object that does just what you’d expect.
+
+The category we’re mostly interested in is the category of types: types like Int, Person, Map[Foo, Bar] are the objects, 
+and arrows are precisely functions.
+
+The other concept we’re going to need is that of a functor. A functor F: C -> D is a mapping between categories. 
+However, there’s no reason you can’t have functors from categories to themselves (“helpfully” called “endofunctors”), 
+and those are the ones we’re going to be interested in. 
+
+Functors have to turn objects in the source category into objects in the target category, and they also have to turn 
+arrows into new arrows. Again, functors have to obey certain laws, but don’t worry too much about that.
+
+Okay, so who cares about functors? The answer is that type constructors are basically functors on the category of types. 
+How is that? Well, they turn types (which are our objects) into other types: check! But what about the arrows (i.e. functions). 
+Don’t functors have to map those over as well? Yes, they do, but in Scala we don’t call the function that comes out of the 
+List functor List[f], we call it map(f).
+
+One final concept and then I promise this will start to get relevant. Some mappings between categories look a lot like 
+functors, except that they reverse the direction of arrows. So instead of getting F(f): FX -> FY. So these got a special 
+name, they’re called contravariant functors. To distiguish them, normal functors are called covariant functors.
+
 # Type Systems
 - [Type Theory](http://en.wikipedia.org/wiki/Type_theory)
 - [Type System](http://en.wikipedia.org/wiki/Type_system) - [Comparison of Type Systems](http://en.wikipedia.org/wiki/Comparison_of_type_systems)
