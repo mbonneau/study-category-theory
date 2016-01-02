@@ -96,6 +96,8 @@ class FunctionTest extends TestSpec {
     g(2) shouldBe 4
   }
 
+  // see: http://www.purplemath.com/modules/fcncomp3.htm
+
   it should "be applied in sequence" in {
     val f: Int ⇒ Int = (x: Int) ⇒ x * x
     val g: Int ⇒ Int = (x: Int) ⇒ x + x + x
