@@ -46,6 +46,18 @@ Study Functional Programming and Category Theory with [Scala](http://www.scala-l
 - [Youtube - Expert to Expert: Brian Beckman and Erik Meijer - Inside the .NET Reactive Framework (Rx)](https://www.youtube.com/watch?v=looJcaeboBY)
 - [Youtube - Monads and Gonads](https://www.youtube.com/watch?v=b0EF0VTs9Dc)
 
+## Category Theory
+- [Hacker News - Category Theory for Dummies](https://news.ycombinator.com/item?id=3032233)
+- [Hacker News - Category Theory for Beginners](https://news.ycombinator.com/item?id=9099820)
+- [Category Theory for Beginners Slides](http://www.slideshare.net/kenbot/category-theory-for-beginners)
+
+## Category Theory Books
+- [Category theory for scientists](http://arxiv.org/abs/1302.6946)
+- [An introduction to Category Theory for Software Engineers](http://www.cs.toronto.edu/~sme/presentations/cat101.pdf)
+- [Basic Category Theory](http://www.staff.science.uu.nl/~ooste110/syllabi/catsmoeder.pdf)
+- [Physics, Topology, Logic and Computation: A Rosetta Stone](http://arxiv.org/abs/0903.0340)
+- [Conceptual Mathematics: A first introduction to categories by Lawvere and Schanuel](http://fef.ogu.edu.tr/matbil/eilgaz/kategori.pdf)
+
 # Functional Programming
 > Functional programming is a programming paradigm - a style of building the structure and elements of computer programs - that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. It is a declarative programming paradigm, which means programming is done with expressions. In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time. Eliminating side effects, i.e. changes in state that do not depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming.
 -- <quote>[Wikipedia](http://en.wikipedia.org/wiki/Functional_programming)</quote>

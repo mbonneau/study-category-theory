@@ -8,7 +8,7 @@ scalaVersion := "2.11.7"
 
 libraryDependencies ++= {
   val akkaVersion = "2.4.1"
-  val akkaStreamAndHttpVersion = "2.0-M2"
+  val akkaStreamAndHttpVersion = "2.0.1"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
@@ -44,8 +44,8 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
 import de.heikoseeberger.sbtheader.license.Apache2_0
 
 headers := Map(
-  "scala" -> Apache2_0("2015", "Dennis Vriend"),
-  "conf" -> Apache2_0("2015", "Dennis Vriend", "#")
+  "scala" -> Apache2_0("2016", "Dennis Vriend"),
+  "conf" -> Apache2_0("2016", "Dennis Vriend", "#")
 )
 
 enablePlugins(AutomateHeaderPlugin)
