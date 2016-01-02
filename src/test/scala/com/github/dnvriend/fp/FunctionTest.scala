@@ -107,6 +107,10 @@ class FunctionTest extends TestSpec {
     // evaluation which is first 'f' andThen 'g':
     g(f(2)) shouldBe 12
 
+    // functions can be nested, and the sequence can also be reversed,
+    // ie. composed, first 'g' then 'f'
+    f(g(2)) shouldBe 36
+
     // the function 'h' does the same as the evaluation on line 91,
     // but it is defined as a function, thus we can easily evaluate it
     // by applying a number to it, like 2:
