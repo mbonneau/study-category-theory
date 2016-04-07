@@ -19,12 +19,16 @@ package com.github.dnvriend.fp
 import com.github.dnvriend.TestSpec
 
 class MonadTest extends TestSpec {
+
   /**
    * Data structures with `map` and `flatMap` are common in Scala and
    * functional programming. There is a name for this class of
    * data structures together with some algebraic laws that they
    * `should` have. They are called `monads`. It is the name of
    * a functional design pattern.
+   *
+   * A monad is something that can be flattened. Option is a monad because it has
+   * both a flatten and flatMap operation that abide by the monadic laws. (more below)
    */
 
   /**
@@ -35,8 +39,13 @@ class MonadTest extends TestSpec {
   trait M[T] {
     self ⇒
     def get: T
-    def flatMap[U](f: T ⇒ M[U]): M[U] // flatMap method is also called 'bind'
-    def map[U](f: T ⇒ U): M[U] // in scala every monad also has a 'map' function
+
+    def flatMap[U](f: T ⇒ M[U]): M[U]
+
+    // flatMap method is also called 'bind'
+    def map[U](f: T ⇒ U): M[U]
+
+    // in scala every monad also has a 'map' function
     def unit(x: T): M[T] // the Monad constructor, most often placed in the companion object of the monad
   }
 

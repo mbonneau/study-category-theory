@@ -23,7 +23,7 @@ import akka.event.{ Logging, LoggingAdapter }
 import akka.stream.{ ActorMaterializer, Materializer }
 import akka.util.Timeout
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{ GivenWhenThen, BeforeAndAfterAll, FlatSpec, Matchers }
+import org.scalatest._
 import spray.json.DefaultJsonProtocol
 
 import scala.concurrent.duration._
@@ -32,7 +32,7 @@ import scala.util.Try
 
 case class Person(name: String, age: Int)
 
-trait TestSpec extends FlatSpec with GivenWhenThen with Matchers with ScalaFutures with BeforeAndAfterAll with DefaultJsonProtocol {
+trait TestSpec extends FlatSpec with GivenWhenThen with Matchers with OptionValues with ScalaFutures with BeforeAndAfterAll with DefaultJsonProtocol {
   implicit val timeout: Timeout = Timeout(5.seconds)
   implicit val system: ActorSystem = ActorSystem()
   implicit val ec: ExecutionContext = system.dispatcher

@@ -4,22 +4,18 @@ organization := "com.github.dnvriend"
 
 version := "1.0.0"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= {
-  val akkaVersion = "2.4.1"
-  val akkaStreamAndHttpVersion = "2.0.1"
+  val akkaVersion = "2.4.3"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
-    "com.typesafe.akka" %% "akka-stream-experimental" % akkaStreamAndHttpVersion,
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaStreamAndHttpVersion,
-    "org.scalaz" %% "scalaz-core" % "7.2.0",
-    "org.spire-math" %% "cats" % "0.3.0",
-    "org.scalacheck" %% "scalacheck" % "1.12.5" % Test,
+    "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
+    "org.scalaz" %% "scalaz-core" % "7.2.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-    "org.scalatest" %% "scalatest" % "2.2.4" % Test,
-    "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % Test
+    "org.scalatest" %% "scalatest" % "2.2.5" % Test
   )
 }
 

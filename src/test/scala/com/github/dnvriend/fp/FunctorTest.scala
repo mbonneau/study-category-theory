@@ -22,11 +22,55 @@ class FunctorTest extends TestSpec {
 
   // Now for some Functors :)
   // see: http://eed3si9n.com/learning-scalaz/Functor+Laws.html
+
+  /**
+   * Functors are transformations from one category to another that can also transform and preserve morphisms.
+   * A morphism is the changing of one value in a category to another in the same category. In the example of the
+   * category of cats, a morphism would be akin to a box that takes a dim cat and converts it into a neon glowing cat.
+   *
+   * In the category of types, the most commonly used in computer science, a morphism is a function that converts
+   * from one type to another type. The functor would be something that converts cats into dogs. The functor would be able
+   * to convert dim cats into dim dogs and glowing cats into glowing dogs. The functor could also convert the box so
+   * that it can convert dim dogs into glowing dogs.
+   */
+
+  /**
+   * ==Overview==
+   * A Functors is a design pattern that exhibit certain kinds of
+   * functor-like properties and behaviors.
+   *
+   * ==Property 1==
+   * A functor should, for any type `A` in the original category,
+   * construct a type `T[A]` in the new category.
+   *
+   * ==Property 2==
+   * A functor must, given a type `T[A]` in the new category,
+   * and a morphism (A => B) in the original category,
+   * create a value `T[B]` in the new category.
+   */
+  trait Functor[T[_]] {
+    def apply[A](x: A): T[A]
+    def map[A, B](x: T[A])(f: A ⇒ B): T[B]
+  }
+
+  // example
+
+  class Box[+A](x: A) {
+    def get: A = x
+    def map[B](f: A ⇒ B): Box[B] = Box(f(x))
+    def flatMap[B](f: A ⇒ Box[B]) = f(x)
+  }
+
+  object Box {
+    def apply[A](x: A) = new Box(x)
+  }
+
+  class BoxAsFunctor extends Functor[Box] {
+    override def apply[A](x: A): Box[A] = Box(x)
+    override def map[A, B](x: Box[A])(f: (A) ⇒ B): Box[B] = x.map(f)
+  }
 }
 
-/**
- * A Functors is a design pattern that exhibit certain kinds of functor-like properties and behaviors.
- */
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(f: A ⇒ B): F[B]
 }

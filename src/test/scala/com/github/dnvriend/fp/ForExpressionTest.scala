@@ -19,6 +19,24 @@ package com.github.dnvriend.fp
 import com.github.dnvriend.TestSpec
 
 class ForExpressionTest extends TestSpec {
+
+  /**
+   * Scala language has .map and .flatMap methods that help you to keep your code functional and concise.
+   *
+   * Each <- of the for expression is converted into a map or flatMap call. These methods are each associated
+   * with a concept in category theory. The `map` method is associated with `functors`, and the `flatMap`
+   * method is associated with `monads`.
+   *
+   * For expressions make an excellent way to define workflows, it allows you to focus your
+   * attention (and mental energy) on the expression, the thing you want to happen, which is the workflow,
+   * and define the steps that defines the workflow in a more abstract way, and leave the technical details
+   * (eg. calling .map / .flatMap)
+   *
+   * Another benefit is, when defining the workflow in a more technical way (by calling .map / .flatMap)
+   * the code you write will slide to one side, most often the right side. A for-expression fixes this nested
+   * effect.
+   */
+
   case class Person(name: String, isMale: Boolean, children: Person*)
 
   val lara = Person("Lara", isMale = false)
@@ -36,16 +54,16 @@ class ForExpressionTest extends TestSpec {
     // yield a pair which contains the name of the mother
     // and the name of the child
     type MotherAndChildName = (String, String)
-    val xs: List[MotherAndChildName] =
-      for {
-        p ← persons
-        if !p.isMale
-        c ← p.children
-      } yield (p.name, c.name)
+    val xs: List[MotherAndChildName] = for {
+      p ← persons
+      if !p.isMale
+      c ← p.children
+    } yield (p.name, c.name)
     xs shouldBe List(("Julie", "Lara"), ("Julie", "Bob"))
   }
 
   case class Book(title: String, authors: String*)
+
   val books: List[Book] =
     List(
       Book(
@@ -71,22 +89,20 @@ class ForExpressionTest extends TestSpec {
     )
 
   it should "find the title of all books whose author's last name is Gosling" in {
-    val result =
-      for {
-        b ← books
-        a ← b.authors
-        if a.startsWith("Gosling")
-      } yield b.title
+    val result = for {
+      b ← books
+      a ← b.authors
+      if a.startsWith("Gosling")
+    } yield b.title
 
     result shouldBe List("The Java Language Specification")
   }
 
   it should "find the titles of all books that have the string 'Program' in their title" in {
-    val result =
-      for {
-        b ← books
-        if b.title.indexOf("Program") >= 0
-      } yield b.title
+    val result = for {
+      b ← books
+      if b.title.indexOf("Program") >= 0
+    } yield b.title
 
     result shouldBe List(
       "Structure and Interpretation of Computer Programs",
@@ -96,15 +112,14 @@ class ForExpressionTest extends TestSpec {
   }
 
   it should "find the names of all authors that have written at least two books in the database" in {
-    val result =
-      for {
-        b1 ← books
-        b2 ← books
-        if b1 != b2;
-        a1 ← b1.authors
-        a2 ← b2.authors
-        if a1 == a2
-      } yield a1
+    val result = for {
+      b1 ← books
+      b2 ← books
+      if b1 != b2;
+      a1 ← b1.authors
+      a2 ← b2.authors
+      if a1 == a2
+    } yield a1
 
     result shouldBe List("Ullman, Jeffrey", "Ullman, Jeffrey")
 

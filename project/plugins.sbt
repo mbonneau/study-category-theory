@@ -9,4 +9,4 @@ addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
 
 // enable updating file headers eg. for copyright
-addSbtPlugin("de.heikoseeberger" % "sbt-header"      % "1.5.0")
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.5.0")
