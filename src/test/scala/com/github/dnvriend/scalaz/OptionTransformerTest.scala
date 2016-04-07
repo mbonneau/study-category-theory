@@ -25,57 +25,87 @@ import scala.concurrent.Future
 
 class OptionTransformerTest extends TestSpec {
 
-  it should "compose Future(None) and Future(None)" in {
-    val f: Future[Option[Int]] = (for {
-      a ← optionT(Future.successful(Option.empty[Int]))
-      b ← optionT(Future.successful(Option.empty[Int]))
-    } yield a + b).run
-    f.futureValue should not be 'defined
-  }
+  def fut[A](a: Option[A]): Future[Option[A]] = Future.successful(a)
 
-  it should "compose Future(None) and Future(Option(2))" in {
+  it should "shortcircuit on a" in {
     val f: Future[Option[Int]] = (for {
       a ← optionT(Future.successful(Option.empty[Int]))
       b ← optionT(Future.successful(2.some))
-    } yield a + b).run
+      c ← optionT(Future.successful(3.some))
+    } yield a + b + c).run
     f.futureValue should not be 'defined
   }
 
-  it should "compose Future(Option(1)) and Future(None)" in {
+  it should "shortcircuit on b" in {
     val f: Future[Option[Int]] = (for {
       a ← optionT(Future.successful(1.some))
       b ← optionT(Future.successful(Option.empty[Int]))
-    } yield a + b).run
+      c ← optionT(Future.successful(3.some))
+    } yield a + b + c).run
     f.futureValue should not be 'defined
   }
 
-  it should "compose Future(Option(1)) and Future(Option(2))" in {
+  it should "shortcircuit on c" in {
     val f: Future[Option[Int]] = (for {
       a ← optionT(Future.successful(1.some))
       b ← optionT(Future.successful(2.some))
-    } yield a + b).run
-    f.futureValue.value shouldBe 3
+      c ← optionT(Future.successful(Option.empty[Int]))
+    } yield a + b + c).run
+    f.futureValue should not be 'defined
   }
 
-  it should "map Future(Some)" in {
-    def determine[A]: PartialFunction[Option[A], Future[Unit]] = {
-      case Some(_) ⇒ Future.successful(println("some-1"))
-      case _       ⇒ Future.successful(println("none-1"))
-    }
-    for {
-      x ← Future.successful(Some(1))
-      y ← determine(x)
-    } yield ()
+  it should "compose a + b + c" in {
+    val f: Future[Option[Int]] = (for {
+      a ← optionT(Future.successful(1.some))
+      b ← optionT(Future.successful(2.some))
+      c ← optionT(Future.successful(3.some))
+    } yield a + b + c).run
+    f.futureValue.value shouldBe 6
   }
 
-  it should "map Future(None)" in {
-    def determine[A]: PartialFunction[Option[A], Future[Unit]] = {
-      case Some(_) ⇒ Future.successful(println("some-2"))
-      case _       ⇒ Future.successful(println("none-2"))
+  case class Address(addressId: Long = 1)
+  case class Person(address: Option[Address] = Address().some)
+  class PersonRepository(find: Boolean) {
+    def findPerson(personId: Long): Future[Option[Person]] = Future.successful {
+      if (find) Person().some else None
     }
-    for {
-      x ← Future.successful(Option.empty)
-      y ← determine(x)
-    } yield ()
+  }
+
+  case class Country(code: Option[String] = "NL".some)
+  class CountryRepository(find: Boolean) {
+    def findCountry(countryId: Long): Future[Option[Country]] = Future.successful {
+      if (find) Country().some else None
+    }
+  }
+
+  /**
+   * Note, only Future[Option] can be composed
+   */
+  class DetermineCountryCodeService(personRepository: PersonRepository, countryRepository: CountryRepository) {
+    def determineCountryCode(personId: Long): Future[Option[String]] = {
+      val result: OptionT[Future, String] = for {
+        person ← OptionT(personRepository.findPerson(1))
+        address ← OptionT(Future.successful(person.address))
+        country ← OptionT(countryRepository.findCountry(address.addressId))
+        code ← OptionT(Future.successful(country.code))
+      } yield code
+      result.run
+    }
+  }
+
+  def withService(findPerson: Boolean = true, findCountry: Boolean = true)(f: DetermineCountryCodeService ⇒ Unit): Unit = {
+    f(new DetermineCountryCodeService(new PersonRepository(findPerson), new CountryRepository(findCountry)))
+  }
+
+  "Determine Country Code Service" should "compose when person and country are found" in withService() { service ⇒
+    service.determineCountryCode(1).futureValue.value shouldBe "NL"
+  }
+
+  it should "not compose when no person could be found" in withService(findPerson = false) { service ⇒
+    service.determineCountryCode(1).futureValue should not be 'defined
+  }
+
+  it should "not compose when no country could be found" in withService(findCountry = false) { service ⇒
+    service.determineCountryCode(1).futureValue should not be 'defined
   }
 }
