@@ -47,4 +47,51 @@ class EitherTest extends TestSpec {
         |} yield x
       """.stripMargin)
   }
+
+  /**
+   * Either is cumbersome to use. Whenever you flatMap on an Either you have to decide which of the left and right cases
+   * is considered that success case (the so-called left and right projections).
+   * This is tedious and, since the right case is always considered the successful case, only serves to introduce bugs.
+   * Here’s an example of use, showing the continual need to specify the projection.
+   */
+
+  it should "be able to be used in sequence computations" in {
+    val result: Either[String, Int] = try {
+      Right("foo".toInt)
+    } catch {
+      case ex: NumberFormatException ⇒
+        Left("Please enter a number")
+    }
+
+    val success: Either[String, Int] = Right(1)
+
+    // right biased flatMap, but returns a left
+    for (x ← result.right) yield x should matchPattern {
+      case Left(_) ⇒
+    }
+
+    // either is also fail fast
+    for {
+      x ← success.right
+      y ← result.right
+      z ← success.right
+    } yield (x + y + z) should matchPattern {
+      case Left(_) ⇒
+    }
+
+    // left biased flatMap
+    for (x ← result.left) yield x should matchPattern {
+      case x: String ⇒
+    }
+
+    // either is not default biased, we must configure the left or right
+    // biased nature of the Either Monad, which is cumbersome
+    (for {
+      x ← result.right
+      y ← result.right
+      z ← result.right
+    } yield x + y + z) should matchPattern {
+      case Left(_) ⇒
+    }
+  }
 }

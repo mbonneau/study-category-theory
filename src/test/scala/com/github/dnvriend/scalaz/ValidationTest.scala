@@ -213,37 +213,90 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
   }
 
   /**
-   * Dealing with Errors is always a challenge, but there are a few ways in Scala:
-   *  - we can use the try/catch, but let's don't use that,
-   *  - we can use scala.util.Try that materialized to a Success or a Failure,
-   *  - but there is also a .fromTryCatchTrowable higher order function on Disjunction \/,
-   *    - this will catch any exception you specify,
-   *    - and return a disjunction
-   *    - you must specify a return type
-   *    - and you must specify the types of exceptions to catch,
-   *    - and then a function body; something to call
+   * For example, we want to validate whether a List[String] can be converted to Ints
    */
 
-  "dealing with errors" should "not deal with NumberFormatException when nothing is done about it" in {
+  "List of String" should "be converted to Int" in {
+    def toInt(mayBeInts: List[String]): List[Int] = mayBeInts map (_.toInt)
     intercept[NumberFormatException] {
-      "foo".toInt
+      toInt(List("x", "y", "1"))
     }
 
-    it should "deal with errors using a Try" in {
-      Try("foo".toInt) should be a 'failure
+    toInt(List("1", "2", "3")) shouldBe List(1, 2, 3)
+  }
+
+  it should "be converted to Int using Try for each element" in {
+    def toInt(mayBeInts: List[String]): List[Try[Int]] = mayBeInts.map(x ⇒ Try(x.toInt))
+    toInt(List("x", "y", "1")) should matchPattern {
+      case List(scala.util.Failure(_), scala.util.Failure(_), scala.util.Success(_)) ⇒
     }
 
-    it should "deal with errors using a Disjunction" in {
-      val result: NumberFormatException \/ Int = \/.fromTryCatchThrowable[Int, NumberFormatException] {
-        "foo".toInt
+    toInt(List("x", "y", "1")).exists(_.isFailure) should be(true)
+    toInt(List("x", "y", "1")).exists(_.isSuccess) should be(true)
+
+    // this is better, we can now accrue the errors, and we have one success!
+  }
+
+  it should "be converted as a whole to failure or success using Try" in {
+    def toInt(mayBeInts: List[String]): Try[List[Int]] = Try(mayBeInts map (_.toInt))
+    toInt(List("x", "y", "1")) should matchPattern {
+      case scala.util.Failure(_) ⇒
+    }
+
+    // it only gave us one failure and failed fast. Not able to accrue errors
+  }
+
+  it should "be converted and errors accrued using ValidationNel" in {
+    def toInts(maybeInts: List[String]): ValidationNel[Throwable, List[Int]] = {
+      val validationList = maybeInts map { s ⇒
+        Validation.fromTryCatchNonFatal(s.toInt :: Nil).toValidationNel
       }
-      result should be(left)
+      validationList reduce (_ +++ _)
     }
 
-    it should "deal with errors when non fatal else they will be thrown" in {
-      \/.fromTryCatchNonFatal[Int] {
-        "foo".toInt
-      } should be(left)
+    // validate all cases and reduce the list of validations into
+    // a single result where we can access either the successful value
+    // or all errors found when parsing
+    toInts(List("1", "2", "3")) should matchPattern {
+      case Success(List(1, 2, 3)) ⇒
+    }
+
+    toInts(List("1", "2", "3", "x", "z")) should matchPattern {
+      case Failure(NonEmptyList(_, _)) ⇒
     }
   }
+
+  /**
+   * Surely it must be able to generalize further than the simple String => Int conversion.
+   */
+
+  it should "convert using a general validate method" in {
+    def validate[F[_]: Foldable, A, B: Monoid](in: F[A])(out: A ⇒ B): ValidationNel[Throwable, B] = {
+      in.foldMap(a ⇒ Validation.fromTryCatchNonFatal[B](out(a)).toValidationNel)
+    }
+    def toInts(maybeInts: List[String]): ValidationNel[Throwable, List[Int]] =
+      validate(maybeInts)(_.toInt :: Nil)
+
+    toInts(List("1", "2", "3")) should matchPattern {
+      case Success(List(1, 2, 3)) ⇒
+    }
+
+    validate(Option("x"))(_.toInt) should matchPattern {
+      case Failure(NonEmptyList(_)) ⇒
+    }
+
+    validate(Option("1"))(_.toInt) should matchPattern {
+      case Success(1) ⇒
+    }
+
+    validate(Vector("1"))(_.toInt) should matchPattern {
+      case Success(1) ⇒
+    }
+  }
+
+  /**
+   * Validation is similar (isomorphic) to Either or \/ (Disjunction), but unlike those it has the advantage of
+   * allowing error accumulation instead of the *default* fail fast strategy of other types commonly used for
+   * error handling.
+   */
 }
