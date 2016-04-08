@@ -15,6 +15,7 @@ libraryDependencies ++= {
     "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
     "org.scalaz" %% "scalaz-core" % "7.2.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+    "org.typelevel" %% "scalaz-scalatest" % "0.3.0" % Test,
     "org.scalatest" %% "scalatest" % "2.2.5" % Test
   )
 }
