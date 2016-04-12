@@ -44,9 +44,73 @@ consists of `containers`, `components` and `classes/code`.
  * In JavaScript: A component could be a JavaScript `module`, which is made up of a number of `objects` and `functions`,
  * In a RDBMS: A component could be a logical grouping of functionality; based upon a number of tables, views, stored procedures, functions, triggers, etc,
  
-## Why use Scalaz? 
-That's a good question, let me get back on that.
+# Haskell
+[GHC](https://www.haskell.org/ghc/) (Glorious Glasgow Haskell Compilation System), is a state-of-the-art, open source, 
+compiler and interactive environment (ghci) for the functional language [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language)).
+
+## Installing
+Using brew:
+
+```bash
+brew install ghc cabal-install
+brew link ghc
+brew link --overwrite ghc
+cabal update
+cabal install ghc-mod
+```
+ 
+Downloading, installing and compiling/building `ghc-mod` can take some time and heat up your CPU a little. 
+ 
+Launch the interactive console:
+ 
+```bash
+ghci
+```
+
+For a very cool tutorial (buy the book): [Learn you a Haskell for great good!](http://learnyouahaskell.com/). You can also
+[read the whole book online for free](http://learnyouahaskell.com/chapters).
+ 
+## Cabal 
+[Cabal](https://www.haskell.org/cabal/) (Common Architecture for Building Applications and Libraries) is a system for building and packaging 
+Haskell libraries and programs. It defines a common interface for package authors and distributors to easily build their applications in a 
+portable way. Cabal is part of a larger infrastructure for distributing, organizing, and cataloging Haskell libraries and programs. 
+
+* [Cabal Documentation](https://downloads.haskell.org/~ghc/7.0.3/docs/html/Cabal/index.html)
+
+## ghc-mod and ghc-modi
+The [ghc-mod](http://www.mew.org/~kazu/proj/ghc-mod/en/ghc-mod.html) command and [ghc-modi](http://www.mew.org/~kazu/proj/ghc-mod/en/ghc-modi.html) command 
+are backend commands to enrich Haskell programming on editors including Emacs, Vim, and Sublime. 
+
+## Installing the Haskell plugin for IntelliJ
+Search for Haskell in the plugins section and install it.
+
+hmm.. still doesn't work. GHC is being installed in: `~/Library/Haskell/bin`
+
+* [Intellij, Haskell: configure SDK](http://stackoverflow.com/questions/28134667/intellij-haskell-configure-sdk)
+ 
+# GHCi
+[GHCi](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-introduction) is GHC's interactive environment, 
+in which Haskell expressions can be interactively evaluated and programs can be interpreted. Let's configure it. Create
+the file `~/.ghci` and put the following in it:
+
+```bash
+:set prompt "ghci> "
+```
+ 
+Now launch the GHC interactive console: 
+ 
+```bash
+ghci
+```
+
+Let's [learn us a Haskell](http://learnyouahaskell.com/).
+
+# Why use Scalaz? 
+That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
+time let me [learn Scalaz](http://eed3si9n.com/learning-scalaz/). 
 
  - Validation of input,
- - Aggregating results in a simple well structured way,
+ - Disjunctions (useful in for-comprehensions),
  - Message passing between modules using for comprehension,
+ - Monad transformers :)
+ 
