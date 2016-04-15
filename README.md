@@ -80,13 +80,6 @@ portable way. Cabal is part of a larger infrastructure for distributing, organiz
 ## ghc-mod and ghc-modi
 The [ghc-mod](http://www.mew.org/~kazu/proj/ghc-mod/en/ghc-mod.html) command and [ghc-modi](http://www.mew.org/~kazu/proj/ghc-mod/en/ghc-modi.html) command 
 are backend commands to enrich Haskell programming on editors including Emacs, Vim, and Sublime. 
-
-## Installing the Haskell plugin for IntelliJ
-Search for Haskell in the plugins section and install it.
-
-hmm.. still doesn't work. GHC is being installed in: `~/Library/Haskell/bin`
-
-* [Intellij, Haskell: configure SDK](http://stackoverflow.com/questions/28134667/intellij-haskell-configure-sdk)
  
 # GHCi
 [GHCi](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-introduction) is GHC's interactive environment, 
@@ -104,6 +97,16 @@ ghci
 ```
 
 Let's [learn us a Haskell](http://learnyouahaskell.com/).
+
+## Haskell books
+The following are **free** resources online to learn Haskell:
+
+- [Learn You a Haskell for Great Good! by Miran Lipovača](http://learnyouahaskell.com/chapters)
+- [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](http://book.realworldhaskell.org/read/)
+
+The following are **non free** books:
+
+- [Haskell Programming from First Principles by Christopher Allen and Julie Moronuki](https://gumroad.com/l/haskellbook)
 
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
