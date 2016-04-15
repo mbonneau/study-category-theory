@@ -105,35 +105,76 @@ ghci> let f x = x + 1
 ghci> f 1
 2
 ```
+  
+## Function Composition
+[Function composition](https://wiki.haskell.org/Function_composition) is the act of pipelining 
+the result of one function, to the input of another, creating an entirely new function.
 
+So, functions can be composed to produce new functions. This means that these
+new functions can also be composed because they are also functions, etc, etc.
 
+Please take a moment to think about this, because we will leverage function composition
+in every aspect of our every day programming work from now on! Functions are the ultimate
+building blocks because they can be composed to create new building blocks.
 
---- draft
- 
- 
-## Composition
-Let f and g be functions:  f: A => B and g: B => C
+For example:
+Let **f** and **g** be functions:  
 
-We can compose those 2 functions in Scala by using the compose method to get a new function. 
+- f: A => B  
+- g: B => C
+- h: f compose g = A => C
 
+We can **compose** those 2 functions in Scala by using the [compose method](http://www.scala-lang.org/api/current/#scala.Function1),
+which is just a method of the [Function1](http://www.scala-lang.org/api/current/#scala.Function1) class compose these two functions
+and get a new function from A => C:
 
-Using Ammonite (brew install ammonite-repl):
-amm@ val f = (_:Int) + 1
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
+
+```scala
+$ scala
+
+Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_77).
+Type in expressions for evaluation. Or try :help.
+
+scala> val f = (_:Int) + 1
 f: Int => Int = <function1>
-amm@ val g = (_:Int) + 2
+
+scala> val g = (_:Int) + 2
 g: Int => Int = <function1>
-amm@ val h = g compose f // yields a function of type A => C
+
+scala> val h = f compose g
 h: Int => Int = <function1>
-amm@ h(1)
-res1: Int = 4
 
-Now we just need the special element called identity which basically is a function that does nothing. It just takes a value and returns it unmodified. So when we compose a function f with identity we get back a function that is equivalent to f and it should not matter if we compose f with identity or identity with f. 
+scala> h(1)
+res0: Int = 4
+```
 
+Haskell uses the [dot operator](https://wiki.haskell.org/Function_composition) to compose 
+functions:
 
-Now we know what a category is, it is a mathematical structure, it is of a certain type, it is formalized in terms of a collection of objects (values/concepts), which are all the possible values of the category’s type, and a second collection that consists of all the possible morphisms (functions/arrows) that go between values,  it has a special element the identity function, and it can compose morphisms (functions/arrows).
+Using the [Haskell](https://www.haskell.org/) REPL: (brew install ghc):
 
+```haskell
+$ ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+ghci> let f x = x + 1
+ghci> let g x = x + 2
+ghci> let h = g . f
+ghci> h(1)
+4
+```
+
+To return to our **category** discussion, we just need the special element called **identity** which basically is a function that does nothing. 
+It just takes a value and returns it unmodified. So when we compose a function **f** with **identity** we get back a function that is 
+equivalent to **f** and it should not matter if we compose f with identity or identity with f. 
+
+Now we know what a **category** is, it is a mathematical structure, it is of a certain type, it is formalized in terms of a collection of **objects** 
+(values/concepts), which are all the possible values of the category’s type, and a second collection that consists of all the possible **morphisms** 
+(functions/arrows) that go between values, it has a special element the **identity function**, and it can **compose morphisms** (functions/arrows).
 
-Enter Higher-Kinded-Types 
+-- draft
+
+## Enter Higher-Kinded-Types 
 What is a kind? We know what types and values are. You can think of them as levels. A value like 1 and x => x (a function value) live a the value level while types like Int and the type Int => Int live at the type level. We group values into types. true and false are both values of type Boolean (think of types as sets of values). 
 
 OK, if we group values into types, can we group types? Yes, we can! We can group types into kinds, so kinds are a grouping of types. 
