@@ -61,16 +61,34 @@ When the category is broader, for example the category “the category of all ty
 
 Let’s look at function composition next.
 
-Using [Ammonite](https://github.com/lihaoyi/Ammonite) (brew install ammonite-repl):
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
 
 ```scala
+$ scala
+Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_77).
+Type in expressions for evaluation. Or try :help.
+
+scala> val f = (_:Int) + 1
+f: Int => Int = <function1>
+
+scala> f(1)
+res0: Int = 2
+```
+
+Using the [Ammonite](https://github.com/lihaoyi/Ammonite) REPL: (brew install ammonite-repl):
+
+```scala
+$ amm
+Welcome to the Ammonite Repl 0.5.7
+(Scala 2.11.8 Java 1.8.0_77)
+
 amm@ val f = (_:Int) + 1
 f: Int => Int = <function1>
 amm@ f(1)
 res1: Int = 2
 ```
 
-Using Haskell (brew install ghc):
+Using the [Haskell](https://www.haskell.org/) REPL: (brew install ghc):
 
 ```haskell
 $ ghci
