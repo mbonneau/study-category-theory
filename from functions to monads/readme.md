@@ -1,4 +1,4 @@
-#  From Functions to Monads in Scala
+#  From Functions to Monads
 
 ## Introduction
 "Monad" that's a word you hear quite often these days. There is a lot of unjustified Fear Uncertainty and Doubt whenever this word pops up. 
