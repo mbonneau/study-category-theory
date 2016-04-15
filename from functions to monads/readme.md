@@ -180,30 +180,64 @@ Now we know what a **category** is, it is a mathematical structure, it is of a c
 (values/concepts), which are all the possible values of the category’s type, and a second collection that consists of all the possible **morphisms** 
 (functions/arrows) that go between values, it has a special element the **identity function**, and it can **compose morphisms** (functions/arrows).
 
--- draft
+## What is a kind? 
+What is a kind? We know what types and values are. You can think of them as levels. A value like **1** and **x => x** (a function value) live a the **value level** 
+while types like **Int**, **String** and the type **Int => Int** live at the **type level**. We **group values into types**. 
+For example, `true` and `false` are both **values** of type **Boolean** (**think of types as sets of values**). 
 
-## Enter Higher-Kinded-Types 
-What is a kind? We know what types and values are. You can think of them as levels. A value like 1 and x => x (a function value) live a the value level while types like Int and the type Int => Int live at the type level. We group values into types. true and false are both values of type Boolean (think of types as sets of values). 
+OK, if we group values into types, can we group types? Yes, we can! **We can group types into kinds, so kinds are a grouping of types**. 
 
-OK, if we group values into types, can we group types? Yes, we can! We can group types into kinds, so kinds are a grouping of types. 
+## Type Constructors
+We now have a basic idea of what **kinds** are (a grouping of types), so what are higher kinded types? Like high order functions 
+(functions that take functions as arguments and yield functions), higher kinded types are types that take [type constructors](http://debasishg.blogspot.nl/2009/01/higher-order-abstractions-in-scala-with.html) 
+as arguments and yield types.
 
+## Higher kinded types
+Think about a Scala List. It's not a type by itself, you need to feed it a type as an argument to get a type. This is called a **Type Constructor**. List takes one type in 
+its type constructor and returns a type. The Scala notation for a type constructor like List is `List[_]`. 
+For example to create a list of type String you’ll have to type: `List[String]`. 
 
-We now have a basic idea of what kinds are, so what are higher kinded types? Like High-Order-Functions (functions that take functions as arguments and yield functions), higher kinded types are types that take type constructors as arguments and yield types.
+So a higher kinded type looks something like this: `trait Functor[F[_]]` where `F` could be a `List[_]`, `Option[_]`, `Future[_]` or any other **type constructor** 
+that takes one argument.
 
-Think about a Scala List. It's not a type by itself, you need to feed it a type as an argument to get a type. This is called a Type Constructor. List takes one type in its type constructor and returns a type. The Scala notation for a type constructor like List is List[_]. For example to create a list of type String you’ll have to type: List[String]. 
+## Functors (Morphisms between categories)
+Now that we have **higher kinded types**, let's take a look at our functions **f** and **g** from the beginning and let's add a **type constructor** `F[_]` to the mix 
+(this is Scala notation and means: _takes one type and yield a type_). We can now produce a whole **new set of types** with this higher kind (e.g. `F[Int]`, `F[String]` etc.). 
 
-So a higher kinded type looks something like this: trait Functor[F[_]] where F could be a List[_], Option[_], Future[_] or any other type constructor that takes one argument.
+We could now create functions that work with these types... hey I know this. This sounds like... a **category**! Yes, it is! It's actually a **subcategory*
+of the **category “all-types-in-the-scala-language”**. Let's call this new category **D** (so we don't confuse it with the **type constructor** F). 
 
-
-Functors (Morphisms between categories)
-Now that we have higher kinded types, let's take a look at our functions f and g from the beginning and let's add a type constructor F[_] to the mix (this is Scala notation and means: takes one type and yield a type). We can now produce a whole new set of types with this higher kind (e.g. F[Int], F[String] etc.). We could now create functions that work with these types… hey I know this. This sounds like… a category! Yes, it is! It's actually a subcategory of the category “all-types-in-the-scala-language”, a subset if you like. Let's call this new category D (so we don't confuse it with the type constructor F). So elements of ob(D) would be something like F[A] and for hom(D) it would be something like F[A] => F[B].
+So elements of _ob(**D**)_ would be something like `F[A]` and for _hom(**D**)_ (the morphisms, functions/arrows) it would be something like `F[A] => F[B]`.
+  
+Now wouldn't it be cool if there was a morphism between those two categories, one that preserves composition and the identity rule? Something that could convert a function of 
+type `A => B` to a function of type `F[A] => F[B]`? That's what we call a **Functor**, **it's a morphism that operates between categories**. Wait what? Well, `F[A]` is a category, 
+“**the category of A’s**” and `F[B]` is a category, ”**the category of B’s**”.  The Functor is a mathematical constructs that makes it possible to apply a function `A => B` to objects of the 
+“**category-of-A’s**” and point to an object of the “**category-of-B’s**”, between the two categories, so it is now possible to get an `F[B]` by applying the function `A => B` with 
+preservation of the composition and identity rule. 
 
-Now wouldn't it be cool if there was a morphism between those two categories, one that preserves composition and the identity rule? Something that could convert a function of type A => B to a function of type F[A] => F[B]? That's what we call a Functor, it's a morphism that operates between categories. Wait what? Well, F[A] is a category, “the category of A’s” and F[B] is a category, ”the category of B’s”.  The functor is a mathematical constructs that makes it possible to apply a function A => B to objects of the “category-of-A’s” and point to an object of the “category-of-B’s”, between the two categories, so it is now possible to get an F[B] by applying the function A => B with preservation of the composition and identity rule. Please note that F[A] does not know about B’s, it is the “category-of-A’s”, it only knows of ‘A’s’ so in that ‘world’ it would be impossible to apply the function A => B, but the functor makes it possible because the functor knows how to convert a plain old function A => B to a function of F[A] => F[B].  For example if F[A] is an Option[Int],  then some of the possible values of this category are Some(1), Some(2500), Some(10), Option.empty[Int], and so on. If F[B] is an Option[String], possible values of this category are Some(“foo”), Some(“bar”), Some(“baz”), Option.empty[String]. There is no way for the function A => B to operate on these categories. It has first to be converted to eg. Option[A] => Option[B], then it can operate on the values. It preserves the composition and identity rule.
+Please note that `F[A]` does not know about B’s, it is the “category-of-A’s”, it only knows of ‘A’s’ so in that ‘world’ it would be impossible to apply the function `A => B`, 
+but the Functor makes it possible because the Functor **knows how to convert** a plain old function `A => B` to a function of `F[A] => F[B]`.  
 
-"Why is this useful?" you might ask. Just think about the kind of code reuse you could achieve, when we could define only one type of function that could be applied to all types without having to take into account that there are many subcategories (domains/partitions) in systems that could not support the function. We have to create custom functions for that subcategory, for example, a function that can only operate on Option, or only on List or only on Future, that would be a pain! Let's look at Option as a concrete example. So how do we convert a function of type Int => Int to a function of type Option[Int] => Option[Int] using the functor Option? In Scala all functors have the map method, that method converts a plain function A => B to a function of F[A] => F[B], taking into account the type of the functor, so if we use the map method of the functor Option we would convert the function A => B to Option[A] => Option[B], and using the map method of the functor List we would convert the function A => B to List[A] => List[B] and so on.
+For example if `F[A]` is an `Option[Int]`, then some of the possible values of this category are `Some(1)`, `Some(2500)`, `Some(10)`, `Option.empty[Int]`, and so on. 
+If `F[B]` is an `Option[String]`, possible values of this category are `Some(“foo”)`, `Some(“bar”)`, `Some(“baz”)`, `Option.empty[String]`. 
+
+There is no way for the function `A => B` to operate on these categories. It has first to be converted to eg. `Option[A] => Option[B]`, then it can operate on the values. 
+The Functor is the mathematical construct that knows how to convert the function `A => B` to `F[A] => F[B]` and preserves the composition and identity rule.
+
+"Why is this useful?" you might ask. Just think about the kind of code reuse you could achieve, when we could define only one type of function that could be applied to all 
+types without having to take into account that there are many subcategories (domains/partitions) in systems that could not support the function. We have to create custom 
+functions for that subcategory, for example, a function that can only operate on Option, or only on List or only on Future, that would be a pain! 
+
+Let's look at Option as a concrete example. So how do we convert a function of type `Int => Int` to a function of type `Option[Int] => Option[Int]` using the Functor Option? 
+
+In Scala all Functors have the map method, that method converts a plain function `A => B` to a function of `F[A] => F[B]`, taking into account the type of the Functor, so if we 
+use the map method of the Functor Option we would convert the function `A => B` to `Option[A] => Option[B]`, and using the map method of the Functor List we would convert the 
+function `A => B` to `List[A] => List[B]` and so on.
 
 Let's check it out, first we define a function.
 
+
+-- draft
 
 Using Ammonite (brew install ammonite-repl):
 amm@ val f = (_:Int) + 1
