@@ -70,9 +70,15 @@ amm@ f(1)
 res1: Int = 2
 ```
 
+Using Haskell (brew install ghc):
 
-
-
+```haskell
+$ ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+ghci> let f x = x + 1
+ghci> f 1
+2
+```
 
 
 
