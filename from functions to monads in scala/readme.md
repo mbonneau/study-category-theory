@@ -68,11 +68,19 @@ $ scala
 Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_77).
 Type in expressions for evaluation. Or try :help.
 
-scala> val f = (_:Int) + 1
+scala> val f: Int => Int = (x: Int) => x + 1
 f: Int => Int = <function1>
 
 scala> f(1)
 res0: Int = 2
+
+scala> // or shorter
+
+scala> val f = (_:Int) + 1
+f: Int => Int = <function1>
+
+scala> f(1)
+res1: Int = 2
 ```
 
 Using the [Ammonite](https://github.com/lihaoyi/Ammonite) REPL: (brew install ammonite-repl):
