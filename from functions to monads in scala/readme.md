@@ -106,6 +106,14 @@ ghci> f 1
 2
 ```
   
+Note: I get the nice `ghci> ` instead of the `Prelude> ` prompt because I have created a file `~/.ghci` with the following content:
+  
+```bash
+:set prompt "ghci> "
+```
+
+[Ghci](https://wiki.haskell.org/GHC/GHCi) will load all the contents of this file each time it is started.
+  
 ## Function Composition
 [Function composition](https://wiki.haskell.org/Function_composition) is the act of pipelining 
 the result of one function, to the input of another, creating an entirely new function.
