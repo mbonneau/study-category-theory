@@ -36,3 +36,29 @@ We can now launch the binary `hello`:
 $ ./hello
 Hello World!
 ```
+
+# Writing to files
+The book [Real World Haskell - Chapter 7. I/O](http://book.realworldhaskell.org/read/io.html) which
+is available online for free has an example on how to write to a file. Create a file `writefile.hs` 
+and put the following in it:
+
+```haskell
+import Data.Char(toUpper)
+main :: IO ()
+main = do
+       let name = "dennis"
+       writeFile "writefile.txt" (map toUpper name)
+```
+
+Compile and run it:
+
+```bash
+$ ghc writefile.hs
+[1 of 1] Compiling Main             ( writefile.hs, writefile.o )
+Linking writefile ...
+$ ./writefile
+$ cat writefile.txt
+DENNIS
+```
+
+Nice it works :)

@@ -6,3 +6,7 @@
 /target/
 /.idea/
 *.iml
+*.hi
+*.o
+writefile
+writefile.txt
