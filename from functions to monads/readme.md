@@ -374,55 +374,99 @@ Monad-like behaviour, but are not actually. Let’s consider some of them using 
 
 `Try` and `Future` are typically not considered actual Monads from a category theory perspective. For the developer, this usually makes no difference, 
 but for those interested, one may consult [stack-overflow](http://stackoverflow.com/questions/27454798/is-future-in-scala-a-monad) and the blog ['Scala's Either, Try and the M word' by Maurício Linhares](http://mauricio.github.io/2014/02/17/scala-either-try-and-the-m-word.html).
-
--- draft
 
-Scala Typeclassopedia
-Haskell is a functional programming language. Haskell uses type classes to help structure functional code by means of functional design patterns, which is a structured way to solve common problems in functional code. The Scala programming language’s standard library however, does not contain these type classes, so it is not possible for a functional programmer using Scala to leverage these design patterns. Scalaz is a library that tries to bring some of the concepts from Haskell into the Scala world. The following graph is the Typeclassopedia (encyclopedia of type classes)  that Scalaz brings to the scala world. The Typeclassopedia is a set of interrelated type classes that have proven extremely handy for structuring functional code. These type classes help you solve common problems in functional code in a structured way. 
+##  Scala Typeclassopedia
+[Haskell](https://www.haskell.org/) is a functional programming language. Haskell uses [type classes](http://eed3si9n.com/learning-scalaz/polymorphism.html#Ad-hoc+polymorphism) 
+to help structure functional code by means of functional design patterns, which is a structured way to solve common problems in functional code. 
+The [Scala](http://www.scala-lang.org/) programming language’s standard library however, does not contain these type classes, so it is not possible 
+for a functional programmer using Scala to leverage these design patterns. [Scalaz](https://github.com/scalaz/scalaz) is a library that tries to bring 
+some of the concepts from Haskell into the Scala world. The following graph is the Typeclassopedia (encyclopedia of type classes) that Scalaz 
+brings to the scala world. The Typeclassopedia is a set of interrelated type classes that have proven extremely handy for **structuring functional code**. 
+These type classes help you solve common problems in functional code in a structured way. 
 
+![Image Here]
 
-Legend:
+**Legend**:
 Solid arrows: is-a relation: every Monad is an Applicative is a Functor, every Traversable is a Functor
 The dotted line is some other relationship: (can be used by?)
 The greyed out things: typeclasses that are not in the Haskell standard libraries but are in Scalaz v7+
 
-
-Functor
-A functor is a function that can be applied to a value. This turns out to be very useful. If you start with the number 1 and apply a function to it, for example the function: val f =  (_: Int) + 2 and apply it f(1) you arrive at the answer 3. Simple enough. But a functor has an important twist.
-Computational Context
-For example, if you have a domain object, such as a House and you want to apply a function to a value in the house, say a specific room, then House needs to have a method on its class that takes a function as an argument. That function will be used by House to apply it to the room to produce an output. The output stays in the house. For example, perhaps your functions paints the room. The room is still there and the original color is still there. But now there is a new color that covers the room.
+##  Functor
+A [Functor](http://eed3si9n.com/learning-scalaz/Functor.html) is a function that can be applied to a value. This turns out to be very useful. 
+If you start with the number 1 and apply a function to it, for example the function: `val f =  (_: Int) + 2` and apply it `f(1)` you arrive at the answer 3. 
+Simple enough. But a Functor has an important twist.
 
-A functor is a design pattern that applies a function to a value inside of a computational context like a House. There are a number of fancy rules that go along with this key idea. In scala, the map operation on class A means that class A is a functor assuming it obeys the functor rules that are not detailed here. If you use the example of a list, a functor would allow you to apply a function to each element of a list and return a list where each element has been replaced by the function's output for that element.
+## Computational Context
+For example, if you have a domain object, such as a **House** and you want **to apply a function to a value in the house**, say a specific room, 
+then House needs to have a **method** on its class that **takes a function** as an argument. That function **will be used by House** to apply it 
+to the room to produce an output. **The output stays in the house**. For example, perhaps your functions paints the room. The room is still there 
+and the original color is still there. But now there is a new color that covers the room.
 
-That's it. In the programmer's world, a functor is usually expressed as a class that has a map function although there are other properties, the functor laws that must also be true.
-Scala List[A] is a Functor
-A Scala List is a good way to play around and understand the functor concepts. A scala List takes a type parameter eg. Int to create a List of type Int “List[Int]”. We can construct the list and apply the function to each element of the list using the map method. The new values stay in the List computational context.
+A Functor is a mathematical construct and a **design pattern** that **applies a function to a value inside of a computational context** like a House. 
+There are a number of [fancy rules](https://github.com/scalaz/scalaz/blob/series/7.1.x/core/src/main/scala/scalaz/Functor.scala#L90) that go along with this 
+key idea. In scala, the **map** operation on class `A` means that class `A` is a Functor assuming it obeys the Functor rules that are not detailed here. 
+If you use the example of a list, a Functor would allow you to apply a function to each element of a list and return a list where each element has been 
+replaced by the function's output for that element.
 
-Using Ammonite (brew install ammonite-repl):
-amm@ List[Int](1,2,3).map ((_: Int) + 1)
-res1: List[Int] = List(2, 3, 4)
-Scala Option[A] is a Functor
-A Scala Option is a functor because it has a map method that applies the function to the value it contains. The new value stays in the Option computational context.
+That's it. In the programmer's world, a Functor is usually expressed as a class that has a **map** function although there are other properties, 
+the functor laws that must also be true.
 
-Using Ammonite (brew install ammonite-repl):
-amm@ Option(1).map((_:Int)+1)
-res1: Option[Int] = Some(2)
-Scala Future[A] is a Functor
-A Scala Future is a functor because it has a map method that applies the function to the value it contains. The new value stays in the Future computational context.
+## Scala List[A] is a Functor
+A Scala List is a good way to play around and understand the functor concepts. A scala List takes a type parameter eg. Int to create a List of type Int 
+`List[Int]`. We can construct the list and apply the function to each element of the list using the map method. The new values stay in the List's computational context.
 
-Using Ammonite (brew install ammonite-repl):
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
+
+```scala
+scala> List[Int](1,2,3).map ((_: Int) + 1)
+res8: List[Int] = List(2, 3, 4)
+```
+
+## Scala Option[A] is a Functor
+A Scala Option is a Functor because it has a **map** method that applies the function to the value it contains. 
+The new value stays in the Option's computational context.
+
+```scala
+scala> Option(1).map((_:Int)+1)
+res9: Option[Int] = Some(2)
+```
+
+##  Scala Future[A] is a Functor
+A Scala Future is a Functor because it has a **map** method that applies the function to the value it contains. 
+The new value stays in the Future's computational context.
+
+```scala
 import scala.concurrent._
 import scala.concurrent.ExecutionContext.Implicits.global
-amm@ Future[Int](1).map ((_: Int) + 1).foreach(println)
+scala> Future[Int](1).map ((_: Int) + 1).foreach(println)
 2
-Scala contains no types from category theory
-The Scala standard library does not contain a Functor type. To be more precise, the Scala standard library does not contain any of the types from category theory. It does not contain Functor, Applicative, Monad and so on. Scala contains types that can have the behavior of for example a Functor or Monad. These “behavioral types” have certain methods (like map or flatMap) that, when applied can behave like a Functor or Monad. Some of these types we already know, the List, Option and Future are some examples of Scala types that behave like types from category theory and there are many more. These “behavioral types” do not carry the name like eg. ListFunctor, OptionFunctor or FutureFunctor nor inherit behavior from a supertype like eg. Functor. So how do we know which types are actually a Functor or a Monad? That is a very good question and not easy to answer. One way is to look at the API documentation of a type and look for the marker methods like map and flatMap. 
-Scalaz’s Functor Typeclass
-A functor has a bit of strange syntax. To use a scalaz functor, you need to specify a type that takes a type. A scala List takes a type parameter so we can use List as the type parameter to the Functor smart constructor. Since the smart constructor does not take any arguments, you just write Functor[List] to create an instance. Once you have an instance you can use it directly.
-Semigroup
-A Semigroup is an object that express an binary association operation. It is defined for a set, for example, like the set of Int in scala. This type of design pattern may seem so high-level as to be useless. However, it expresses the most basic idea of append for the set it describes. If you add numbers together, add items to a list or "add" together two of your domain objects then a Semigroup expresses this concept.
+```
 
-Using Ammonite (brew install ammonite-repl):
+## Scala contains no types from category theory
+The Scala standard library **does not** contain a Functor type. To be more precise, the Scala standard library does not contain any 
+of the types from category theory. It does not contain Functor, Applicative, Monad and so on. Scala contains types that can have the 
+behavior of for example a Functor or Monad. These “behavioral types” have certain methods (like map or flatMap) that, when applied 
+can behave like a Functor or Monad. Some of these types we already know, the List, Option and Future are some examples of Scala types 
+that behave like types from category theory and there are many more. These “behavioral types” **do not** carry the name like eg. 
+ListFunctor, OptionFunctor or FutureFunctor nor inherit behavior from a supertype like eg. Functor. 
+
+So how do we know which types are actually a Functor or a Monad? That is a very good question and not easy to answer. 
+One way is to look at the API documentation of a type and look for the marker methods like **map** and **flatMap**. 
+
+## Scalaz’s Functor Typeclass
+A Functor has a bit of strange syntax. To use a scalaz functor, you need to specify a type that takes a type. A scala List takes a type 
+parameter so we can use List as the type parameter to the Functor smart constructor. Since the smart constructor does not take any arguments, 
+you just write `Functor[List]` to create an instance. Once you have an instance you can use it directly.
+
+## Semigroup
+A **Semigroup** is an object that [express an binary association operation](https://www.youtube.com/watch?v=x9hoPIMNPw4). 
+It is defined for a set, for example, like the set of Int in scala. This type of design pattern may seem so high-level as to be useless. 
+However, it expresses the most basic idea of **append** for the set it describes. If you add numbers together, add items to a list or "add" 
+together two of your domain objects then a **Semigroup** expresses this concept.
+
+Using the [Ammonite](https://github.com/lihaoyi/Ammonite) REPL: (brew install ammonite-repl):
+
+```scala
 load.ivy("org.scalaz" %% "scalaz-core" % "7.2.2")
 import scalaz._
 import Scalaz._
@@ -435,37 +479,7 @@ amm@ val slist = Semigroup[List[Int]]
 slist: Semigroup[List[Int]] = scalaz.std.ListInstances$$anon$4@ae04104
 amm@ slist.append(List(1, 2), List(3, 4))
 res2: List[Int] = List(1, 2, 3, 4)
+```
 
-For more information: Learning Scalaz - Semigroup
-
-
-Monoid
-//
-
-Applicative
-Category theory uses mathematical concepts to express design patterns. For example, the pattern “where you add two objects together; a.k.a. adding stuff together” is called Applicative in category theory. Adding two numbers together seems like a very fine grained concept to call out as a pattern. If you abstract adding stuff together, you can end up with a pattern that enables you to add anything together, for example you could add two error messages together, adding an element to a list or adding two domain objects together and so on; you’ll end up with the ‘Applicative’ which is a functional design pattern.
-
-For more information: Learning Scalaz - Applicative
-
-Source: http://raichoo.blogspot.nl/2011/07/from-functions-to-monads-in-scala.html
-
-
-Books
-Functional programming in Scala (you should read this one!)
-Scala in depth
-Category Theory for Java Programmers
-Idiomatic Scala: Your options do not match
-Daniel Westheide: The neophyte’s guide to Scala
-Learning Scalaz
-Monoids for programmers
-My scalaz-stream user notes - aappddeevv
-Web Page
-Scala Typeclassopedia - John Kodumal
-Understanding Monads - Haskell Wikibooks
-Practical Future[Option[A]] in Scala - Andraz Bajt
-Video
-Commutative, Associative and Distributive Properties
-Composable application architecture with reasonably priced monads - Rúnar Bjarnason
-Scala Typeclassopedia - John Kodumal
-Type classes in Scala - Dan Rosen
+For more information: [Learning Scalaz - Semigroup](http://eed3si9n.com/learning-scalaz/Monoid.html#Semigroup)
 
