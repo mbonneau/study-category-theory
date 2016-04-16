@@ -236,104 +236,146 @@ function `A => B` to `List[A] => List[B]` and so on.
 
 Let's check it out, first we define a function.
 
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
 
--- draft
-
-Using Ammonite (brew install ammonite-repl):
-amm@ val f = (_:Int) + 1
+```scala
+scala> val f = (_: Int) + 1
 f: Int => Int = <function1>
+```
+We can now use the function **f** with Option, there was no need to write a special version of **f** that only works with Option, 
+it also works on other Functors like List, Future, etc. 
 
-We can now reuse the function f with Option, there was no need to write a special version of f that only works with Option, it also works on other Functors like List, Future, etc. 
+```scala
+scala> Option(1) map f
+res0: Option[Int] = Some(2)
+```
 
-amm@ Option(1) map f
-res1: Option[Int] = Some(2)
+The second ingredient we need to make our Functor complete is a morphism that 
+maps a value of type A to a value of type `F[A]`. In the case of Option this is just 
+the factory (creational pattern) function: 
 
-The second ingredient we need to make our Functor complete is a morphism that maps a value of type A to a value of type F[A]. In the case of Option this is just the factory (creational pattern) function: 
-
-amm@ Option(1)
+```scala
+scala> Option(1)
 res1: Option[Int] = Some(1)
-
-
-
+```
 
-Endofunctors (A functor that maps a category to itself)
+## Endofunctors (A functor that maps a category to itself)
 Now, let's assume that we want something like this: 
 
+```scala
+scala> :paste
+Some(1) map {
+    case x if x % 2 == 0 => Some("YES!")
+    case _               => None
+}
+res0: Option[Option[String]] = Some(None)
+```
 
-Using Ammonite (brew install ammonite-repl):
-amm@ Some(1) map {
-               case x if x % 2 == 0 => Some("YES!")
-               case _               => None
-               }
-res1: Option[Option[String]] = Some(None)
+We want to use a function of type **Int => Option[String]** with Option's map method. But what's that? 
+We get an **Option[Option[**String**]]**. That's stupid, now I have to unpack one Option to get the result I actually wanted. 
 
-We want to use a function of type Int => Option[String] with Option's map method. But what's that? We get an Option[Option[String]]. That's stupid, now I have to unpack one Option to get the result I actually wanted. 
+What happened here? Remember how we mapped a function of type **A => B** to a function of type **F[A] => F[B]** in the previous 
+section about functors? What we did now is: we mapped a function of type **Int => Option[String]** to a function of **Option**[Int] => **Option[Option**[String**]]**. 
+Yikes! We mapped something into an Option **and** into an Option this is how we ended up with an **Option[Option**[String**]]**. 
+You can think of this as a result of a **composition** of two Option Functors. 
 
-What happened here? Remember how we mapped a function of type A => B to a function of type F[A] => F[B] in the previous section about functors? What we did now is: we mapped a function of type Int => Option[String] to a function of Option[Int] => Option[Option[String]]. Yikes! We mapped something into an Option and into an Option this is how we ended up with an Option[Option[String]]. You can think of this as a result of a composition of two Option Functors. 
+This is actually a special kind of Functor that maps a category unto itself and is called an **Endofunctor**, so when you end up with 
+**Option[Option**[A**]]**, or **List[List**[A**]]** or a **Future[Future**[A**]]** or more abstract, **mapped a category unto itself**, 
+this is a mathematical structure called an **Endofunctor** (read on).
 
-This is actually a special kind of Functor that maps a category unto itself and is called an Endofunctor, so when you end up with Option[Option[A]], or List[List[A]] or a Future[Future[A]] or more abstract, mapped a category unto itself, this is a mathematical structure called an Endofunctor (read on).
+## Natural Transformations (Morphisms between Functors)
+So we have the following:
 
-
-Natural Transformations (morphisms between Functors)
-Now that we have morphisms between objects of a Category which are functions, and Functors which are morphisms between categories it's time to introduce morphisms between Functors. 
+- Morphisms between objects of a single [Category](https://en.wikipedia.org/wiki/Category_(mathematics)) which are the **functions** we all know, 
+- **Functors** which are **morphisms between categories**  
 
-Why do we need this? Well in the last example we ended up with an Endofunctor (we mapped a Category unto itself). We need to get rid of one of the Options. We do this with a morphism that maps the composition of 2 Functors F (F composed with F) to the Functor F. 
+Now it's time to introduce **morphisms between Functors**.
+
+Why do we need this? Well in the last example we ended up with an **Endofunctor** (we mapped a Category unto itself). 
+We need to get rid of one of the Options. We do this with a morphism that maps the composition of 
+two **Functors F (F composed with F)** to the **Functor F**. 
 
 Let's do a concrete example that involves List: 
 
-Using Ammonite (brew install ammonite-repl):
-amm@ List(1,2,3) map { x => List(x + 1) }
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
+
+```scala
+scala> List(1,2,3) map { x => List(x + 1) }
 res1: List[List[Int]] = List(List(2), List(3), List(4))
+```
 
-It happened again, but this time we ended up with a List[List[Int]]. We now need a Natural Transformation to join those lists together, this Natural Transformation is called flatten in Scala. 
+It happened again, but this time we ended up with a **List[List**[Int**]]**. We now need a 
+[Natural Transformation](https://en.wikipedia.org/wiki/Natural_transformation) to join those lists 
+together, this **Natural Transformation** is called **flatten** in Scala. 
 
-amm@  List(1,2,3) map { x => List(x + 1) } flatten
+```scala
+scala> List(1,2,3) map { x => List(x + 1) } flatten
 res2: List[Int] = List(2, 3, 4)
+```
 
-In Scala, List comes with a method that does both in one step, it's called flatMap. 
+In Scala, List comes with a method that does both in one step, it's called **flatMap**. 
 
-amm@  List(1,2,3) flatMap { x => List(x + 1) }
+```scala
+scala> List(1,2,3) flatMap { x => List(x + 1) }
 res3: List[Int] = List(2, 3, 4)
+```
 
 This enables us to chain functions together in a very convenient way. 
 
-amm@  Some(1) flatMap { x => Some(2) flatMap { y => Some(x + y) } }
+```scala
+scala> Some(1) flatMap { x => Some(2) flatMap { y => Some(x + y) } }
 res4: Option[Int] = Some(3)
+```
 
 or a little more concise 
 
-amm@  Some(1) flatMap { x => Some(2) map { y => x + y } }
+```scala
+scala> Some(1) flatMap { x => Some(2) map { y => x + y } }
 res5: Option[Int] = Some(3)
+```
 
+## Monads (A monoid in the category of endofunctors)
+This is actually what makes up a Monad. It's an **Endofunctor** (A functor that maps a category to itself) with 
+two **Natural Transformations** (morphisms between Functors) called **unit** and **join** (which is called flatten in Scala). 
+They are such a fundamental concept that Scala features a syntactic sugar for them, the [for-comprehension](http://nerd.kelseyinnis.com/blog/2013/11/12/idiomatic-scala-the-for-comprehension/). 
 
-
-Monads (A monoid in the category of endofunctors)
-This is actually what makes up a Monad. It's an Endofunctor (A functor that maps a category to itself) with two Natural Transformations (morphisms between Functors) called unit and join (which is called flatten in Scala). They are such a fundamental concept that Scala features a syntactic sugar for them, the for-comprehension. The last example above can be written in the following way: 
+The last example above can be written in the following way: 
 
+Using the [Scala](http://www.scala-lang.org/) REPL: (brew install scala):
 
-Using Ammonite (brew install ammonite-repl):
-amm@ for {
-                x <- Option(1)
-                y <- Option(2)
-               } yield (x + y)
-res1: Option[Int] = Some(3)
+```scala
+scala> :paste
+for {
+    x <- Option(1)
+    y <- Option(2)
+} yield (x + y)
+res6: Option[Int] = Some(3)
+```
 
 Which translates to:
 
-amm@  Option(1) flatMap(x => Option(2) map(y => x + y))
-res2: Option[Int] = Some(3)
-Purpose
-Monads are a very general algebraic construction. They are not only limited to Option and List. In general, monads host an effect. There are also types one will encounter in practice that have very much Monad-like behaviour, but are not actually. Let’s consider some of them using the perspective of their effect:
+```scala
+scala> Option(1) flatMap(x => Option(2) map(y => x + y))
+res7: Option[Int] = Some(3)
+```
 
-Option[T]: The potential containment of a single item of type T
-List[T]: The containment of a linear sequence of items of type T
-Set[T]: The containment of any number of unique items of type T
-Map[K, V]: The containment of any number of unique keys of type K that point to one value of type V
-Try[T]: Harbours a fallible computation, which either succeeds with some value of type T, or fails with some Throwable
-Future[T]: Represents an asynchronous computation whose outcome (of type T) may become available in the future, or will explicitly fail if one explicitly stops waiting for its result. May be seen as an asynchronous Try, although it is good practice to not flatten a Future[Try[T]] to Future[T].
-Validation[T] (commonly available outside the Scala library). Represents a validated value of type T, or a list of the violations if at least one validation failed for the value. Similar to Try; but where a Try[T] hosting some computation that may result in a T outcome will fail at the first exception encountered, Validation[T] will allow the continued application of validation rules, such that all violations may be captured.
+## Purpose
+Monads are a very general algebraic construction. They are not only limited to Option and List. 
+In general, monads host an effect. There are also types one will encounter in practice that have very much 
+Monad-like behaviour, but are not actually. Let’s consider some of them using the perspective of their effect:
 
-Try and Future are typically not considered actual Monads from a category theory perspective. For the developer, this usually makes no difference, but for those interested, one may consult stack-overflow and this blog.
+- [Option[A]](http://www.scala-lang.org/api/2.11.8/#scala.Option): The potential containment of a single item of type `A`. Represents optional values. Instances of Option are either an instance of scala.Some or the object None.
+- [List[A]](http://www.scala-lang.org/api/2.11.8/#scala.collection.immutable.List): The containment of a linear sequence of items of type `A`. It representing an ordered collections of elements of type T. This class comes with two implementing case classes scala.Nil and scala.:: that implement the abstract members isEmpty, head and tail.                                                                                                                                                                                                                                                                                              
+- [Set[A]](http://www.scala-lang.org/api/2.11.8/#scala.collection.immutable.Set): The containment of any number of unique items (it contains no duplicate elements) of type `A`. 
+- [Map[K, V]](http://www.scala-lang.org/api/2.11.8/#scala.collection.immutable.Map): The containment of any number of unique keys of type `K` that point to one value of type `V`.
+- [Try[T]](http://www.scala-lang.org/api/2.11.8/#scala.util.Try): Harbours a fallible computation, which either succeeds with some value of type `T`, or fails with some Throwable. The Try type represents a computation that may either result in an exception, or return a successfully computed value. It's similar to, but semantically different from the scala.util.Either type. Instances of `Try[T]`, are either an instance of `scala.util.Success[T]` or `scala.util.Failure[T]`.
+- [Future[T]](http://www.scala-lang.org/api/2.11.8/#scala.concurrent.Future): Represents an asynchronous computation whose outcome (of type `T`) may become available in the future, or will explicitly fail if one explicitly stops waiting for its result. May be seen as an asynchronous Try, although it is good practice to not flatten a Future[Try[T]] to Future[T].
+- [Validation[T]](http://eed3si9n.com/learning-scalaz/Validation.html): (commonly available outside the Scala library). Represents a validated value of type T, or a list of the violations if at least one validation failed for the value. Similar to Try; but where a Try[T] hosting some computation that may result in a T outcome will fail at the first exception encountered, Validation[T] will allow the continued application of validation rules, such that all violations may be captured.
+
+`Try` and `Future` are typically not considered actual Monads from a category theory perspective. For the developer, this usually makes no difference, 
+but for those interested, one may consult [stack-overflow](http://stackoverflow.com/questions/27454798/is-future-in-scala-a-monad) and the blog ['Scala's Either, Try and the M word' by Maurício Linhares](http://mauricio.github.io/2014/02/17/scala-either-try-and-the-m-word.html).
+
+-- draft
 
 Scala Typeclassopedia
 Haskell is a functional programming language. Haskell uses type classes to help structure functional code by means of functional design patterns, which is a structured way to solve common problems in functional code. The Scala programming language’s standard library however, does not contain these type classes, so it is not possible for a functional programmer using Scala to leverage these design patterns. Scalaz is a library that tries to bring some of the concepts from Haskell into the Scala world. The following graph is the Typeclassopedia (encyclopedia of type classes)  that Scalaz brings to the scala world. The Typeclassopedia is a set of interrelated type classes that have proven extremely handy for structuring functional code. These type classes help you solve common problems in functional code in a structured way. 
