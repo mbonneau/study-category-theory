@@ -39,8 +39,12 @@ Hello World!
 
 # Writing to files
 The book [Real World Haskell - Chapter 7. I/O](http://book.realworldhaskell.org/read/io.html) which
-is available online for free has an example on how to write to a file. Create a file `writefile.hs` 
-and put the following in it:
+is available online for free has an example on how to write to a file. To write to a file we should
+use the [writeFile](http://hackage.haskell.org/package/base-4.8.2.0/docs/Prelude.html#v:writeFile) computation.
+
+> A computation is a concept that does not result at all, until you run it. So a computation must be run. - [Haskell Mailing List: Computation vs Function](https://mail.haskell.org/pipermail/beginners/2009-April/001568.html)
+
+Create a file `writefile.hs` and put the following in it:
 
 ```haskell
 import Data.Char(toUpper)
