@@ -1,5 +1,5 @@
 # study-category-theory
-Study Functional Programming and Category Theory with [Scala](http://www.scala-lang.org/).
+This resource is for my study on Functional Programming and Category Theory. I will be using Haskell and Scala/Scalaz.
 
 # Disclaimer
 Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Scala/Scalaz expert. I'm a beginner that has made a lot of progress." 
