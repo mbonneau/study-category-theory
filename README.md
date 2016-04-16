@@ -110,7 +110,11 @@ The following are **free** resources online to learn Haskell:
 
 The following are **non free** books:
 
-- [Haskell Programming from First Principles by Christopher Allen and Julie Moronuki](https://gumroad.com/l/haskellbook)
+- [($12,-) Happy Learn Haskell Tutorial Volume 1 by Andreas Lattka](https://leanpub.com/happylearnhaskelltutorialvol1)
+- [($59,-) Haskell Programming from First Principles by Christopher Allen and Julie Moronuki](https://gumroad.com/l/haskellbook)
+
+If you are an absolute beginner like me, pick up [Happy Learn Haskell Tutorial](https://leanpub.com/happylearnhaskelltutorialvol1) and [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters),
+just to support the authors. Both not too expensive and in my honest opinion, great material!
 
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
