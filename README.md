@@ -104,6 +104,10 @@ The following are **free** resources online to learn Haskell:
 - [Learn You a Haskell for Great Good! by Miran Lipovača](http://learnyouahaskell.com/chapters)
 - [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](http://book.realworldhaskell.org/read/)
 
+## Haskell video
+
+- For the book [Learn you a Haskell for Great Good](http://learnyouahaskell.com/chapters), [Peter Drake has created a video series that give additional information about the subjects](https://www.youtube.com/watch?v=NBKnY7Z_w3I&list=PLS6urCrsYES24Fwzg5-Uga1QEbNm9kiU_). 
+
 The following are **non free** books:
 
 - [Haskell Programming from First Principles by Christopher Allen and Julie Moronuki](https://gumroad.com/l/haskellbook)
