@@ -1,4 +1,4 @@
-# 1.0 The REPL
+# The REPL
 Watch from [5'18](https://youtu.be/VGCE_3fjzU4?t=5m18s).
 
 What is the benefit of having the types at compile time? 
