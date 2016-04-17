@@ -125,6 +125,10 @@ The following are **non free** books:
 If you are an absolute beginner like me, pick up [Happy Learn Haskell Tutorial](https://leanpub.com/happylearnhaskelltutorialvol1) and [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters),
 just to support the authors. Both not too expensive and in my honest opinion, great material!
 
+# Embedded Haskell
+It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popular open-source single-board microcontroller, with an Atmel AVR processor and on-board input/output support. For more information see the 
+[Arduino section on HaskellWiki](https://wiki.haskell.org/Arduino).
+
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
 time let me [learn Scalaz](http://eed3si9n.com/learning-scalaz/). 
