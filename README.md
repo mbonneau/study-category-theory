@@ -98,20 +98,29 @@ ghci
 
 Let's [learn us a Haskell](http://learnyouahaskell.com/).
 
+## Haskell video
+
+- For the book [Learn you a Haskell for Great Good](http://learnyouahaskell.com/chapters), [Peter Drake has created a video series that give additional information about the subjects](https://www.youtube.com/watch?v=NBKnY7Z_w3I&list=PLS6urCrsYES24Fwzg5-Uga1QEbNm9kiU_). 
+- [Lambda Days 2015 - A Year of Haskell by Justin Leitgeb](https://www.youtube.com/watch?v=wZ0RQG3mFPw)
+- [LambdaConf 2015 - Modeling Data in Haskell for Beginners Chris Allen](https://www.youtube.com/watch?v=p-NBJm0kIYU)
+- [Linux.conf.au 2016 - Haskell is Not For Production and Other Tales by Katie Miller](https://www.youtube.com/watch?v=mlTO510zO78)
+- [Strange Loop - "Writing a game in Haskell" by Elise Huard](https://www.youtube.com/watch?v=1MNTerD8IuI)
+
+## Must see videos
+
+- [Haskell 3: Types and Type Classes by Peter Drake](https://www.youtube.com/watch?v=x3uF7fcQwWE) 
+
 ## Haskell books
 The following are **free** resources online to learn Haskell:
 
 - [Learn You a Haskell for Great Good! by Miran Lipovača](http://learnyouahaskell.com/chapters)
 - [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](http://book.realworldhaskell.org/read/)
 
-## Haskell video
-
-- For the book [Learn you a Haskell for Great Good](http://learnyouahaskell.com/chapters), [Peter Drake has created a video series that give additional information about the subjects](https://www.youtube.com/watch?v=NBKnY7Z_w3I&list=PLS6urCrsYES24Fwzg5-Uga1QEbNm9kiU_). 
-
 The following are **non free** books:
 
 - [($12,-) Happy Learn Haskell Tutorial Volume 1 by Andreas Lattka](https://leanpub.com/happylearnhaskelltutorialvol1)
 - [($59,-) Haskell Programming from First Principles by Christopher Allen and Julie Moronuki](https://gumroad.com/l/haskellbook)
+- [($12,-) Game programming in Haskell by Elise Huard](https://leanpub.com/gameinhaskell)
 
 If you are an absolute beginner like me, pick up [Happy Learn Haskell Tutorial](https://leanpub.com/happylearnhaskelltutorialvol1) and [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters),
 just to support the authors. Both not too expensive and in my honest opinion, great material!
