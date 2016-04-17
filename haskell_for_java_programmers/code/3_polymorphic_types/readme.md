@@ -7,6 +7,7 @@ A polymorphic type (or type variable) is a type that will be bound to a concrete
 
 In Haskell, types have uppercase letters. So Integer, Num, Bool, etc.
 
+## Haskell Classes
 ![Haskell Classes](https://github.com/dnvriend/study-category-theory/blob/master/img/haskell_classes.gif)
 
 ```haskell
