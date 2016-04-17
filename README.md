@@ -82,9 +82,7 @@ The [ghc-mod](http://www.mew.org/~kazu/proj/ghc-mod/en/ghc-mod.html) command and
 are backend commands to enrich Haskell programming on editors including Emacs, Vim, and Sublime. 
  
 # GHCi
-[GHCi](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-introduction) is GHC's interactive environment, 
-in which Haskell expressions can be interactively evaluated and programs can be interpreted. Let's configure it. Create
-the file `~/.ghci` and put the following in it:
+[GHCi](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html#ghci-introduction) is GHC's interactive environment, in which Haskell expressions can be interactively evaluated and programs can be interpreted. Let's configure it. Create the file `~/.ghci` and put the following in it:
 
 ```bash
 :set prompt "ghci> "
@@ -95,6 +93,8 @@ Now launch the GHC interactive console:
 ```bash
 ghci
 ```
+
+GHCi supports commands. GHCi commands all begin with ‘:’ and consist of a single command name followed by zero or more parameters. For an overview please read the [GHCi users guide - Commands](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci-commands.html).
 
 Let's [learn us a Haskell](http://learnyouahaskell.com/).
 
