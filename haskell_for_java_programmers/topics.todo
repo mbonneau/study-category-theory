@@ -1,0 +1,93 @@
+Haskell for Java Programmers
+  Venkat Subramaniam
+  Email: venkats@agiledeveloper.com
+  Twitter: @venkat_s
+  http://www.agiledeveloper.com download link
+  
+Topics:
+- What's special about Haskell?
+  - Purely functional programming language
+  - Healthy dose of static typing that does not get in the way
+  - Enforces purity to a great extent
+  - Clearly separates pure-core from impure-peripherals
+  - Easy to prove correctness and perform low level optimizations
+- let's warm up to Haskell
+- REPL
+  - ghci
+    "hello haskell"
+    :set +t
+    .ghci file
+    :type it
+    :set +m for multiple lines
+- types
+  - static
+  - strong
+  - inferred
+  - polymorphic types
+- lists
+  - creating
+    - specific values
+    - range of values
+      - series ..
+      - every other
+      - skip 2
+  - list operations
+    - concatenate
+    - cons
+    - head
+    - tail
+    - take
+    - drop
+    - init
+    - last
+    - elem
+    - filter
+			-even or odd for example
+			-our own functions
+    - takeWhile
+    - dropWhile
+- tuple
+  -creating a pair
+  -fst
+  -snd
+  -what about non-pairs?
+   - creating
+   - accessing using case ? of
+- statements vs expressions
+  - if expression
+- functions
+  - defining a function
+  - pure functions
+- polymorphic (type) functions
+- the true nature of functions in Haskell
+- functions with multiple parameters
+- partially applied functions
+- lazy evaluation
+- recursion and pattern matching
+  - Pattern matching - factorial
+   - Pattern matching with guard - factorial negative input
+- using where to define a local function
+- lambda expressions
+- sections
+	- infix operators
+	- binary functions
+- function composition
+	- total double of even values
+	- using .
+- purity and immutability
+- realistically we can't live with full purity
+- a pure core with a thin ring of impurity
+- explicit, controlled impurity
+	- IO
+	- actione
+	- do
+	- >>
+	- >>=
+- reading a file
+  - meaning of return
+- running on the JVM
+- Summary
+
+You can download this topics list and code examples from:
+	http://www.agiledeveloper.com	 - downloads link
+	

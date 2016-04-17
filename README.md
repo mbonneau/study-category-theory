@@ -86,6 +86,7 @@ are backend commands to enrich Haskell programming on editors including Emacs, V
 
 ```bash
 :set prompt "ghci> "
+:set +t
 ```
  
 Now launch the GHC interactive console: 
@@ -105,7 +106,7 @@ Let's [learn us a Haskell](http://learnyouahaskell.com/).
 - [LambdaConf 2015 - Modeling Data in Haskell for Beginners Chris Allen](https://www.youtube.com/watch?v=p-NBJm0kIYU)
 - [Linux.conf.au 2016 - Haskell is Not For Production and Other Tales by Katie Miller](https://www.youtube.com/watch?v=mlTO510zO78)
 - [Strange Loop - "Writing a game in Haskell" by Elise Huard](https://www.youtube.com/watch?v=1MNTerD8IuI)
-
+- [FunctionalConf 2014 - Haskell for Everyday Programmers by Venkat Subramaniam](https://www.youtube.com/watch?v=VGCE_3fjzU4)
 ## Must see videos
 
 - [Haskell 3: Types and Type Classes by Peter Drake](https://www.youtube.com/watch?v=x3uF7fcQwWE) 

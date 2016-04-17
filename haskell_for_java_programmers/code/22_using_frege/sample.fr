@@ -1,0 +1,12 @@
+package example.Sample where
+
+native getProperty java.lang.System.getProperty :: String -> IO String
+pure native sqrt java.lang.Math.sqrt :: Double -> Double
+
+main = do
+  putStrLn("hello")
+  putStr "java version: "
+  getProperty "java.version" >>= putStrLn
+  putStrLn("Sqrt of 4 is " ++ show(sqrt 4))
+  strBldr <- StringBuilder.new("test")
+  strBldr.toString >>= putStrLn
