@@ -54,6 +54,9 @@ ghci> print [x | x <- [1..5]]
 
 ghci> [x | x <- [50..100], x `mod` 7 == 3]
 [52,59,66,73,80,87,94]
+
+ghci> concat [[1,2],[3,4],[5,6]]
+[1,2,3,4,5,6]
 ```
 
 ```scala
@@ -113,4 +116,7 @@ res19: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3, 4, 5)
 
 scala> for (x <- 50 to 100 if x % 7 == 3) yield x
 res20: scala.collection.immutable.IndexedSeq[Int] = Vector(52, 59, 66, 73, 80, 87, 94)
+
+scala> List(List(1,2),List(3,4),List(5,6)).flatten
+res27: List[Int] = List(1, 2, 3, 4, 5, 6)
 ```
