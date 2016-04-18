@@ -18,18 +18,30 @@ Note: The following is in context of programming and not mathematically correct,
 - __Functional Programming__: The practice of composing programs using functions [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming),
 - __Category Theory__: the study of collections of concepts (types) and arrows (functions/morphisms) and the relationships between them [Wikipedia](https://en.wikipedia.org/wiki/Category_theory), 
 - __Concept__: a concept is a type, like String, Int, and so on,
-- __Arrow__: an arrow is a morphism between concepts (types), something that converts from one concept (type) to another. Usually a morphism, which is a function defined against two types, that converts one type to another type, 
-- __Category__: a category is a grouping of concepts (types) and arrows (functions/morphisms)
+- __Object__: an alternative name for a concept,
+- __Type__: an alternative name for a concept,
+- __Arrow__: an arrow is a morphism (function) between concepts (types), something that converts from one concept (type) to another. Usually a morphism, which is a function defined against two types, that converts one type to another type, 
+- __Composability__: Arrows are composable, this is the most important part of arrows,
+- __Category__: a category is a bunch of objects/grouping of objects (concepts/types) and a bunch of arrows (functions/morphisms) connecting these objects and an object is abstract. Objects don't have any structure. The only way you can think about objects is how objects connect to other objects by means of arrows. Its like a graph, but it might have infinitely many objects and infinately many arrows between any two objects. It can also be two dots with one arrow, but it can also be no dots and no arrows - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=20m20s)
+- Nodes: objects can have a name, 
 - __Functor__: functors are transformations from one category (grouping of types) to another category (grouping of types), 
 that can also transform and preserve morphisms. A functor would be something that convert cats into dogs.
 - __Morphism__: A morphism is the changing of one value in a category (grouping of types) to another in the same category (grouping of types), thus a morphism is a function that converts from one type to another. For example, a morphism is something that can change a fat cat into a slim cat [Wikipedia](https://en.wikipedia.org/wiki/Morphism)
-- __Isomorphism__: [Isomorphism](http://mathworld.wolfram.com/Isomorphism.html) is a very general concept that appears in several areas of mathematics. The word derives from the Greek **iso**, meaning **"equal,"** and **morphosis**, meaning **"to form"** or **"to shape."**.  An isomorphism is a map that preserves sets and relations among elements.
-- __Homomorphism__: similarity of form.
+- __Isomorphism__: [Isomorphism](http://mathworld.wolfram.com/Isomorphism.html) is a very general concept that appears in several areas of mathematics. The word derives from the Greek **iso**, meaning **"equal,"** and **morphosis**, meaning **"to form"** or **"to shape."**.  An isomorphism is a map that preserves sets and relations among elements,
+- __Homomorphism__: similarity of form,
+- __Proposal__: something proposed/an assumption,
+- __Proposition__: A statement that affirms or denies something and is either true or false,
+- __Axiom__: An axiom is a proposition regarded as self-evidently true without proof,
+- __Associative__: (a math operation) yielding an equivalent result independent of the grouping of the terms,
 
 # Types
 - [Lambda Days 2016 - Truth about Types by Bartosz Milewski](https://www.youtube.com/watch?v=dgrucfgv2Tw)
 
 > We write our programs in a way is composable, split a huge problem in small problems, solve the small pieces seperately and compose the solutions to these problems into one bigger program. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=5m40s)
+
+> In category theory, an object in a category corresponds to a type corresponds to a proposition. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=18m55s)
+
+> There are different kinds of category, a Set is one kind of category in which 'objects' are sets, and arrows are functions that go from one set to another set. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=27m28s)
 
 ## System Design
 It is very important to share the vocabulary that we will be using in further discussions. We will be using the vocabulary that
