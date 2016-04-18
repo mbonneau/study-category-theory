@@ -27,6 +27,9 @@ that can also transform and preserve morphisms. A functor would be something tha
 (grouping of types), thus a morphism is a function that converts from one type to another. For example, a morphism is 
 something that can change a fat cat into a slim cat [Wikipedia](https://en.wikipedia.org/wiki/Morphism)
 
+# Types
+- [Lambda Days 2016 - Truth about Types by Bartosz Milewski](https://www.youtube.com/watch?v=dgrucfgv2Tw)
+
 ## System Design
 It is very important to share the vocabulary that we will be using in further discussions. We will be using the vocabulary that
 consists of `containers`, `components` and `classes/code`. 
@@ -129,6 +132,19 @@ just to support the authors. Both not too expensive and in my honest opinion, gr
 # Embedded Haskell
 It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popular open-source single-board microcontroller, with an Atmel AVR processor and on-board input/output support. For more information see the 
 [Arduino section on HaskellWiki](https://wiki.haskell.org/Arduino).
+
+# Frege - A Haskell for the JVM
+[Frege](https://github.com/Frege/frege) is a Haskell for the JVM. The online [Frege REPL](http://try.frege-lang.org/). [Frege](https://github.com/Frege) consists of a number of projects for example, the [compiler/runtime](https://github.com/Frege/frege), the [Frege REPL](https://github.com/Frege/frege-repl) and a lot more projects and tools.
+
+## Installation
+For now we are only interested in the [Frege REPL](https://github.com/Frege/frege-repl). Download the latest version in `zip` format from the [releases](https://github.com/Frege/frege-repl/releases) page and unzip it and launch `$FREGE_HOME/bin/frege-repl`. 
+
+## Video
+The following are Frege video's:
+
+- [Frege, a Haskell for the JVM by Dierk König](https://www.youtube.com/watch?v=1P1-HXNfFPc)
+- [JavaOne 2015 - Frege: Purely Functional Programming for the JVM](https://www.youtube.com/watch?v=Svz-_ujrSX4)
+- [Lambda Days 2016 - Getting Started with Frege by Lech Glowiak](https://www.youtube.com/watch?v=YxUCZ4DDNmk)
 
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same

@@ -10,3 +10,4 @@
 *.o
 writefile
 writefile.txt
+/frege/
