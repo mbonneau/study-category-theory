@@ -118,6 +118,8 @@ Let's [learn us a Haskell](http://learnyouahaskell.com/).
 ## Haskell video
 
 - For the book [Learn you a Haskell for Great Good](http://learnyouahaskell.com/chapters), [Peter Drake has created a video series that give additional information about the subjects](https://www.youtube.com/watch?v=NBKnY7Z_w3I&list=PLS6urCrsYES24Fwzg5-Uga1QEbNm9kiU_). 
+
+- [Channel 9 - C9 Lectures - Functional Programming Fundamentals by Eric Meijer](https://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals)
 - [Lambda Days 2015 - A Year of Haskell by Justin Leitgeb](https://www.youtube.com/watch?v=wZ0RQG3mFPw)
 - [LambdaConf 2015 - Modeling Data in Haskell for Beginners Chris Allen](https://www.youtube.com/watch?v=p-NBJm0kIYU)
 - [Linux.conf.au 2016 - Haskell is Not For Production and Other Tales by Katie Miller](https://www.youtube.com/watch?v=mlTO510zO78)
@@ -158,6 +160,15 @@ The following are Frege video's:
 - [Frege, a Haskell for the JVM by Dierk König](https://www.youtube.com/watch?v=1P1-HXNfFPc)
 - [JavaOne 2015 - Frege: Purely Functional Programming for the JVM](https://www.youtube.com/watch?v=Svz-_ujrSX4)
 - [Lambda Days 2016 - Getting Started with Frege by Lech Glowiak](https://www.youtube.com/watch?v=YxUCZ4DDNmk)
+
+# John Von Neumann
+- [John Von Neumann Documentary](https://www.youtube.com/watch?v=VTS9O0CoVng)
+- [Von Neumann Architecture](https://www.youtube.com/watch?v=RZMh7pASX_o)
+
+# Alan Turing
+- [Alan Turing - BBC Horizon Documentary](https://www.youtube.com/watch?v=GH1WYUKP3hk)
+- [Alan Turing: Pioneer of the Information Age](https://www.youtube.com/watch?v=p7Lv9GxigYU)
+- [Turing Machines](https://www.youtube.com/watch?v=gJQTFhkhwPA)
 
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
