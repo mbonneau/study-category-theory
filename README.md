@@ -2,8 +2,7 @@
 This resource is for my study on Functional Programming and Category Theory. I will be using Haskell and Scala/Scalaz.
 
 # Disclaimer
-Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Scala/Scalaz expert. I'm a beginner that has made a lot of progress." 
-which also applies to me I guess. So don't learn from me, but maybe, get inspired and go look at Functional Programming and Scalaz. 
+Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz expert. I'm a beginner that has made a lot of progress." which also applies to me I guess. So don't learn from me, but maybe, get inspired and go look at Functional Programming, Haskell, Scala and Scalaz. 
 
 # Books to read
 The following are books to read if you want to learn Scala and Functional Programming
@@ -12,6 +11,18 @@ The following are books to read if you want to learn Scala and Functional Progra
  - [Functional Programming in Scala - Paul Chiusano and Rúnar Bjarnason](https://www.manning.com/books/functional-programming-in-scala) - You should buy and read this one to learn Functional Programming,
  - [Functional Reactive Domain Modelling - Debasish Ghosh](https://www.manning.com/books/functional-and-reactive-domain-modeling) - Teaches you how to create domain models using Functional Programming, 
  - [My Scalaz stream notes](https://www.gitbook.com/@aappddeevv) - Free for download its a good introduction to Scalaz
+
+# Category Theory Video
+
+- [Category Theory, The essence of interface-based design by Erik Meijer](https://www.youtube.com/watch?v=JMP6gI5mLHc)
+- [Channel 9 - Don't fear the Monad by Brian Beckman (2012)](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+- [Channel 9 - Functional Programming by Erik Meijer (2012)](https://www.youtube.com/watch?v=z0N1aZ6SnBk)
+- [Functional Programming from First Principles by Erik Meijer](https://www.youtube.com/watch?v=a-RAltgH8tw)
+- [Category Theory by Tom LaGatta](https://www.youtube.com/watch?v=o6L6XeNdd_k)
+- [Category Theory Lulz by Ken Scambler](https://www.youtube.com/watch?v=jDhMDgU7Koc)
+- [Monads and Gonads by Douglas Crockford](https://www.youtube.com/watch?v=b0EF0VTs9Dc)
+- [London Haskell Group - Why Do Monads Matter? by Derek Wright](https://www.youtube.com/watch?v=3q8xYFDYLeI)
+- [London Haskell Group - The Algebra of Algebraic Data Types by Chris Taylor](https://www.youtube.com/watch?v=YScIPA8RbVE)
 
 # Definitions
 Note: The following is in context of programming and not mathematically correct, and should 
@@ -119,12 +130,15 @@ Let's [learn us a Haskell](http://learnyouahaskell.com/).
 
 - For the book [Learn you a Haskell for Great Good](http://learnyouahaskell.com/chapters), [Peter Drake has created a video series that give additional information about the subjects](https://www.youtube.com/watch?v=NBKnY7Z_w3I&list=PLS6urCrsYES24Fwzg5-Uga1QEbNm9kiU_). 
 
-- [Channel 9 - C9 Lectures - Functional Programming Fundamentals by Eric Meijer](https://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals)
+- [Channel 9 - C9 Lectures - Functional Programming Fundamentals by Eric Meijer](https://channel9.msdn.com/Series/C9-Lectures-Erik-Meijer-Functional-Programming-Fundamentals) [on youtube](https://www.youtube.com/watch?v=UIUlFQH4Cvo&list=PLoJC20gNfC2gpI7Dl6fg8uj1a-wfnWTH8)
 - [Lambda Days 2015 - A Year of Haskell by Justin Leitgeb](https://www.youtube.com/watch?v=wZ0RQG3mFPw)
 - [LambdaConf 2015 - Modeling Data in Haskell for Beginners Chris Allen](https://www.youtube.com/watch?v=p-NBJm0kIYU)
 - [Linux.conf.au 2016 - Haskell is Not For Production and Other Tales by Katie Miller](https://www.youtube.com/watch?v=mlTO510zO78)
 - [Strange Loop - "Writing a game in Haskell" by Elise Huard](https://www.youtube.com/watch?v=1MNTerD8IuI)
 - [FunctionalConf 2014 - Haskell for Everyday Programmers by Venkat Subramaniam](https://www.youtube.com/watch?v=VGCE_3fjzU4)
+- [The Road to Running Haskell at Facebook Scale - Jon Coens](https://www.youtube.com/watch?v=sl2zo7tzrO8)
+- [HaskellCast](https://www.youtube.com/channel/UC0pv4sIiJ404ubqUJ2e4WzA)
+
 ## Must see videos
 
 - [Haskell 3: Types and Type Classes by Peter Drake](https://www.youtube.com/watch?v=x3uF7fcQwWE) 
