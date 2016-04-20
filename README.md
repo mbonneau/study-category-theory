@@ -179,7 +179,7 @@ The following are Frege video's:
 [F-sharp](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)) can be run [cross platform](http://fsharp.org/guides/mac-linux-cross-platform/). F# comes preinstalled with the mono brew formula:
 
 ```fsharp
-brew install mono
+$ brew install mono
 $ fsharpi
 F# Interactive for F# 4.0 (Open Source Edition)
 Freely distributed under the Apache 2.0 Open Source License
@@ -234,6 +234,41 @@ val cube : x:int -> int
 
 > cube 4;;
 val it : int = 64
+```
+
+# LINQ
+[Language Integrated Query](https://en.wikipedia.org/wiki/Language_Integrated_Query) (LINQ, pronounced "link") is a Microsoft .NET Framework component that adds native data querying capabilities to .NET languages, although ports exist for Java, PHP, JavaScript and ActionScript.
+
+[LINQ](https://msdn.microsoft.com/en-us/library/bb397926.aspx) extends the language by the addition of query expressions, which are akin to SQL statements, and can be used to conveniently extract and process data from arrays, enumerable classes, XML documents, relational databases, and third-party data sources. Other uses, which utilize query expressions as a general framework for readably composing arbitrary computations, include the construction of event handlers or monadic parsers.
+
+- [Typesafe’s Slick is Not About SQL](https://blog.jooq.org/2013/12/30/typesafes-slick-is-not-about-sql/)
+- [LINQ analogues in Scala?](http://stackoverflow.com/questions/3785413/linq-analogues-in-scala)
+
+# Erlang
+[Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language)) is a general-purpose, concurrent, functional programming language. It is also a garbage-collected runtime system. The sequential subset of Erlang supports eager evaluation, single assignment, and dynamic typing. Erlang is known for its designs that are well suited for systems with the following characteristics:
+
+- Distributed
+- Fault-tolerant
+- Soft real-time,
+- Highly available, non-stop applications
+- Hot swapping, where code can be changed without stopping a system.
+
+## Documentation
+- [Erlang Documentation](http://www.erlang.org/docs)
+
+## Installing Erlang
+Erlang can be installed with the brew formula:
+
+```erlang
+$ brew install erlang
+$ erl
+Erlang/OTP 18 [erts-7.3] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V7.3  (abort with ^G)
+1> Fun1 = fun (X) -> X+1 end.
+#Fun<erl_eval.6.50752066>
+2> Fun1(2).
+3
 ```
 
 # Logic in Action
@@ -331,6 +366,10 @@ Carl Eddie Hewitt is a computer scientist who designed the Planner programming l
 - [Hewitt, Meijer and Szyperski: The Actor Model (everything you wanted to know...)](https://www.youtube.com/watch?v=7erJ1DV_Tlo)
 - [Carl Hewitt - Actors for CyberThings](https://www.youtube.com/watch?v=DNbJY333vUs)
 
+## Joe Armstrong (Erlang)
+
+- [Joe Armstrong - On Erlang, OO, Concurrency, Shared State and the Future, Part 1](https://www.youtube.com/watch?v=7Rg7kxT9Qyw)
+
 ## Erik Meijer (1963)
 [Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) is a Dutch computer scientist. From 2000 to early 2013 he was a software architect for Microsoft where he headed the Cloud Programmability Team. He then founded Applied Duality Inc. in 2013. Before that, he was an associate professor at Utrecht University. He received his Ph.D. from Nijmegen University in 1992. Erik Meijer's research has included the areas of functional programming (particularly Haskell) compiler implementation, parsing, programming language design, XML, and foreign function interfaces. His work at Microsoft included C#, Visual Basic, LINQ, Volta, and the Reactive programming framework (Reactive Extensions) for .NET.
 
@@ -338,6 +377,8 @@ Carl Eddie Hewitt is a computer scientist who designed the Planner programming l
 - [One Hacker Way by Erik Meijer](https://www.youtube.com/watch?v=FvMuPtuvP5w)
 - [Functional Programming from First Principles by Erik Meijer](https://www.youtube.com/watch?v=a-RAltgH8tw)
 - [What does it mean to be Reactive? by Erik Meijer](https://www.youtube.com/watch?v=sTSQlYX5DU0)
+- [Erik Meijer and Bart De Smet - LINQ-to-Anything](https://www.youtube.com/watch?v=gT0a-BXDufE)
+- [Erik Meijer and Dave Thomas - Objects, Functions, Virtual Machines, IDEs and More](https://www.youtube.com/watch?v=O7Wokgvq0Dc)
 
 ## Roland Kuhn ()
 After earning a PhD in high-energy particle physics and while working as a systems engineer in the space business, Roland came in contact with Akka. He started contributing to the open-source project in 2010 and has been employed by Typesafe since 2011 where he has been leading the Akka team since November 2012.
