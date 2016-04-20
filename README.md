@@ -72,8 +72,7 @@ consists of `containers`, `components` and `classes/code`.
  * In a RDBMS: A component could be a logical grouping of functionality; based upon a number of tables, views, stored procedures, functions, triggers, etc,
  
 # Haskell
-[GHC](https://www.haskell.org/ghc/) (Glorious Glasgow Haskell Compilation System), is a state-of-the-art, open source, 
-compiler and interactive environment (ghci) for the functional language [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language)).
+[GHC](https://www.haskell.org/ghc/) (Glorious Glasgow Haskell Compilation System), is a state-of-the-art, open source, compiler and interactive environment (ghci) for the functional language [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language)).
 
 ## Installing
 Using brew:
@@ -98,9 +97,7 @@ For a very cool tutorial (buy the book): [Learn you a Haskell for great good!](h
 [read the whole book online for free](http://learnyouahaskell.com/chapters).
  
 ## Cabal 
-[Cabal](https://www.haskell.org/cabal/) (Common Architecture for Building Applications and Libraries) is a system for building and packaging 
-Haskell libraries and programs. It defines a common interface for package authors and distributors to easily build their applications in a 
-portable way. Cabal is part of a larger infrastructure for distributing, organizing, and cataloging Haskell libraries and programs. 
+[Cabal](https://www.haskell.org/cabal/) (Common Architecture for Building Applications and Libraries) is a system for building and packaging Haskell libraries and programs. It defines a common interface for package authors and distributors to easily build their applications in a portable way. Cabal is part of a larger infrastructure for distributing, organizing, and cataloging Haskell libraries and programs. 
 
 * [Cabal Documentation](https://downloads.haskell.org/~ghc/7.0.3/docs/html/Cabal/index.html)
 
@@ -157,6 +154,10 @@ The following are **non free** books:
 
 If you are an absolute beginner like me, pick up [Happy Learn Haskell Tutorial](https://leanpub.com/happylearnhaskelltutorialvol1) and [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters),
 just to support the authors. Both not too expensive and in my honest opinion, great material!
+
+# Online documentation
+- [A tour of the Haskell prelude](http://teaching.csse.uwa.edu.au/units/CITS3211/lectureNotes/tourofprelude.html#init)
+- [C2 - Haskell Language](http://c2.com/cgi/wiki?HaskellLanguage)
 
 # Embedded Haskell
 It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popular open-source single-board microcontroller, with an Atmel AVR processor and on-board input/output support. For more information see the 
@@ -259,7 +260,7 @@ val it : int = 64
 ## Installing Erlang
 Erlang can be installed with the brew formula:
 
-```erlang
+```bash
 $ brew install erlang
 $ erl
 Erlang/OTP 18 [erts-7.3] [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
@@ -369,6 +370,10 @@ Carl Eddie Hewitt is a computer scientist who designed the Planner programming l
 ## Joe Armstrong (Erlang)
 
 - [Joe Armstrong - On Erlang, OO, Concurrency, Shared State and the Future, Part 1](https://www.youtube.com/watch?v=7Rg7kxT9Qyw)
+- ["The Mess We're In" by Joe Armstrong](https://www.youtube.com/watch?v=lKXe3HUG2l4)
+- [K things I know about building Resilient Reactive Systems by Joe Armstrong](https://www.youtube.com/watch?v=rQIE22e0cW8)
+- [The How and Why of Fitting Things Together - Joe Armstrong](https://www.youtube.com/watch?v=ed7A7r6DBsM)
+- [A Few Improvements to Erlang - Joe Armstrong](https://www.youtube.com/watch?v=h8nmzPh5Npg)
 
 ## Erik Meijer (1963)
 [Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) is a Dutch computer scientist. From 2000 to early 2013 he was a software architect for Microsoft where he headed the Cloud Programmability Team. He then founded Applied Duality Inc. in 2013. Before that, he was an associate professor at Utrecht University. He received his Ph.D. from Nijmegen University in 1992. Erik Meijer's research has included the areas of functional programming (particularly Haskell) compiler implementation, parsing, programming language design, XML, and foreign function interfaces. His work at Microsoft included C#, Visual Basic, LINQ, Volta, and the Reactive programming framework (Reactive Extensions) for .NET.
