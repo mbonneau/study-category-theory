@@ -175,6 +175,67 @@ The following are Frege video's:
 - [JavaOne 2015 - Frege: Purely Functional Programming for the JVM](https://www.youtube.com/watch?v=Svz-_ujrSX4)
 - [Lambda Days 2016 - Getting Started with Frege by Lech Glowiak](https://www.youtube.com/watch?v=YxUCZ4DDNmk)
 
+# F-sharp
+[F-sharp](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)) can be run [cross platform](http://fsharp.org/guides/mac-linux-cross-platform/). F# comes preinstalled with the mono brew formula:
+
+```fsharp
+brew install mono
+$ fsharpi
+F# Interactive for F# 4.0 (Open Source Edition)
+Freely distributed under the Apache 2.0 Open Source License
+
+For help type #help;;
+
+>
+```
+
+## Introduction
+[F-sharp](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)) is a strongly typed, multi-paradigm programming language that encompasses functional, imperative, and object-oriented programming techniques. F# is most often used as a cross-platform CLI language, but can also be used to generate JavaScript and GPU code.
+
+F# is developed by the F# Software Foundation, Microsoft and open contributors. An open source, cross-platform compiler for F# is available from the F# Software Foundation. F# is also a fully supported language in Visual Studio and [Xamarin Studio](https://www.xamarin.com/studio). Other tools supporting F# development include [Mono](http://fsharp.org/use/mac/), MonoDevelop, SharpDevelop, MBrace and WebSharper.
+
+F# originated as .NET implementation of a core of the [OCaml](https://en.wikipedia.org/wiki/OCaml) programming language, and has also been influenced by C#, Python, Haskell, Scala and Erlang.
+
+## Using the F-sharp REPL
+The REPL is called 'F# Interactive' and can be run by executing `fsharpi`.  It accepts F# code, compiles and executes it, then prints the results. This allows you to quickly and easily experiment with F# without needing to create new projects or build a full application to test the results of a code snippet. 
+
+The REPL accepts F# code until you terminate the input with `;;` and a newline (enter). If the REPL evaluates an expression that was not assigned to a value, it will instead assign it to the name `it`, just like Haskell does. 
+
+For example:
+
+```fsharp
+$ fsharpi
+F# Interactive for F# 4.0 (Open Source Edition)
+Freely distributed under the Apache 2.0 Open Source License
+
+For help type #help;;
+
+> let x = 42;;
+
+val x : int = 42
+
+> x * 2;;
+val it : int = 84
+>
+```
+The REPL will process input and displays the name, type, and value of the identifiers. For example, in the example above the value x was introduced with type int and value 42.
+
+You can also type multiple expressions, just terminate the input with `;;` and a newline (enter).
+
+```fsharp
+> let x = 1
+- let y = 2.3
+- float x + y
+- let cube x = x * x * x;;
+
+val x : int = 1
+val y : float = 2.3
+val cube : x:int -> int
+
+> cube 4;;
+val it : int = 64
+```
+
 # Logic in Action
 [Logic in Action](http://www.logicinaction.org/) is an open source project and aims at the development of elementary and intermediate courses in logic in electronic form. All material is freely available. Further interactive educational support is continuously being developed. The project provides individual chapters of our self-contained introduction to logic. Some of the material below comes from [Wikipedia](https://en.wikipedia.org) and/or [Logic in Action (note its non secure http)](http://www.logicinaction.org/).
 
@@ -196,31 +257,36 @@ Hilbert's work had started logic on this course of clarification; the need to un
 - [Alan Turing: Pioneer of the Information Age](https://www.youtube.com/watch?v=p7Lv9GxigYU)
 - [Turing Machines](https://www.youtube.com/watch?v=gJQTFhkhwPA)
 
-## Alonzo Church (1903 – 1995)
+## Alonzo Church (1903 – 1995) (LAMBDA-CALCULUS)
 [Alonzo Church](https://en.wikipedia.org/wiki/Alonzo_Church) was an American mathematician and logician who made major contributions to mathematical logic and the foundations of theoretical computer science. He is best known for the lambda calculus.
 
-## John McCarthy (1927 - 2011)
+## John McCarthy (1927 - 2011) (LISP)
 An [American computer scientist](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)) and the inventor of the LISP programming language.
 
 - [John McCarthy, on Philosophy of AI](https://www.youtube.com/watch?v=K13_sWm_gZw)
 - [John McCarthy, on Artificial Intelligence](https://www.youtube.com/watch?v=Ozipf13jRr4)
 
-## Peter Landin (1930 – 2009)
+## Peter Landin (1930 – 2009) (ISWIM)
 [Peter John Landin](https://en.wikipedia.org/wiki/Peter_Landin) was a British computer scientist. He was one of the first to realize that the lambda calculus could be used to model a programming language, an insight that is essential to development of both functional programming and denotational semantics.
 
 Peter Landin is responsible for inventing the SECD machine, the first abstract process virtual machine ever defined, and the [ISWIM](https://en.wikipedia.org/wiki/ISWIM) programming language, defining the Landin off-side rule and for coining the term 'syntactic sugar'. The off-side rule allows bounding scope declaration by use of white spaces as seen in languages such as Miranda, Haskell, Python and F# (using the "light" syntax).
 
-## John Backus (1924 - 2007)
+## John Backus (1924 - 2007) (FORTRAN)
 [John Warner Backus](https://en.wikipedia.org/wiki/John_Backus) was an American computer scientist. He directed the team that invented the first widely used high-level programming language [FORTRAN](https://en.wikipedia.org/wiki/Fortran) and was the inventor of the Backus-Naur form (BNF), a widely used notation to define formal language syntax. He also did research in function-level programming and helped to popularize it.
 
 Backus later worked on a "function-level" programming language known as [FP](https://en.wikipedia.org/wiki/FP_(programming_language)) which was described in his Turing Award lecture "Can Programming be Liberated from the von Neumann Style?". Sometimes viewed as Backus's apology for creating FORTRAN, this paper did less to garner interest in the FP language than to spark research into functional programming in general. 
 
 - [History of John Backus by Grady Booch and and John Backus (2006)](https://www.youtube.com/watch?v=dDsWTyLEgbk)
 
-## Robin Milner (1934 - 2010)
+## Robin Milner (1934 - 2010) (ML)
 [Robin Milner](https://en.wikipedia.org/wiki/Robin_Milner) was a British computer scientist, and a Turing Award winner. Milner is generally regarded as having made three major contributions to computer science. He developed LCF, one of the first tools for automated theorem proving. The language he developed for LCF, [ML](https://en.wikipedia.org/wiki/ML_(programming_language)), was the first language with polymorphic type inference and type-safe exception handling. In a very different area, Milner also developed a theoretical framework for analyzing concurrent systems, the calculus of communicating systems (CCS), and its successor, the pi-calculus. At the time of his death, he was working on bigraphs, a formalism for ubiquitous computing subsuming CCS and the pi-calculus.
 
 - [Life and Work of Dr.Robin Milner by Dr. Navin Kabra](https://www.youtube.com/watch?v=A-sKvgLc-Ik)
+
+### Hindley–Milner type system 
+In type theory and functional programming, [Hindley–Milner](https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system) (HM), also known as Damas–Milner or Damas–Hindley–Milner, is a classical type system for the lambda calculus with parametric polymorphism, first described by J. Roger Hindley and later rediscovered by Robin Milner. Luis Damas contributed a close formal analysis and proof of the method in his PhD thesis.
+
+Among HM's more notable properties is completeness and its ability to deduce the most general type of a given program without the need of any type annotations or other hints supplied by the programmer. __Algorithm W__ is a fast algorithm, performing type inference in almost linear time with respect to the size of the source, making it practically usable to type large programs. Hindley-Milner is preferably used for functional languages. It was first implemented as part of the type system of the programming language ML. Since then, HM has been extended in various ways, most notably by constrained types as used in Haskell.
 
 ## David Turner (1946)
 David A. Turner (born 1946) is a British computer scientist. He is best known for inventing combinator graph reduction and for designing and implementing three seminal (lazy) functional programming languages [SASL](https://en.wikipedia.org/wiki/SASL_(programming_language)) (untyped purely functional lazy/non-strict), [KRC](https://en.wikipedia.org/wiki/Kent_Recursive_Calculator) and [Miranda](https://en.wikipedia.org/wiki/Miranda_(programming_language)) (pure, non-strict, polymorphic, higher order functional programming language), the last of which was awarded a medal for Technical Achievement by the British Computer Society (BCS Awards, 1990).
@@ -253,6 +319,11 @@ David A. Turner (born 1946) is a British computer scientist. He is best known fo
 
 - ["Java: The Good, Bad, and Ugly Parts" by Josh Bloch](https://www.youtube.com/watch?v=hcY8cYfAEwU)
 
+## Robert Cecil Martin (Uncle Bob) (SOLID principles)
+Robert Cecil Martin (colloquially known as Uncle Bob) is an American software engineer and author. 
+
+- [Functional Programming; What? Why? When?](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
+
 ## Carl Hewitt ()
 Carl Eddie Hewitt is a computer scientist who designed the Planner programming language for automated planning and the Actor model of concurrent computation, which have been influential in the development of both logic programming and object-oriented programming. 
 
@@ -266,6 +337,7 @@ Carl Eddie Hewitt is a computer scientist who designed the Planner programming l
 - [Interview with Erik Meijer](https://www.youtube.com/watch?v=y3FTPaQaVXo)
 - [One Hacker Way by Erik Meijer](https://www.youtube.com/watch?v=FvMuPtuvP5w)
 - [Functional Programming from First Principles by Erik Meijer](https://www.youtube.com/watch?v=a-RAltgH8tw)
+- [What does it mean to be Reactive? by Erik Meijer](https://www.youtube.com/watch?v=sTSQlYX5DU0)
 
 ## Roland Kuhn ()
 After earning a PhD in high-energy particle physics and while working as a systems engineer in the space business, Roland came in contact with Akka. He started contributing to the open-source project in 2010 and has been employed by Typesafe since 2011 where he has been leading the Akka team since November 2012.
