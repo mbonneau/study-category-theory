@@ -135,6 +135,7 @@ Let's [learn us a Haskell](http://learnyouahaskell.com/).
 - [FunctionalConf 2014 - Haskell for Everyday Programmers by Venkat Subramaniam](https://www.youtube.com/watch?v=VGCE_3fjzU4)
 - [The Road to Running Haskell at Facebook Scale - Jon Coens](https://www.youtube.com/watch?v=sl2zo7tzrO8)
 - [HaskellCast](https://www.youtube.com/channel/UC0pv4sIiJ404ubqUJ2e4WzA)
+- ["Coder Decoder: Functional Programmer Lingo Explained, with Pictures" by Katie Miller](https://www.youtube.com/watch?v=uwrCQmpZ8Ts)
 
 ## Must see videos
 
@@ -158,6 +159,7 @@ just to support the authors. Both not too expensive and in my honest opinion, gr
 # Online documentation
 - [A tour of the Haskell prelude](http://teaching.csse.uwa.edu.au/units/CITS3211/lectureNotes/tourofprelude.html#init)
 - [C2 - Haskell Language](http://c2.com/cgi/wiki?HaskellLanguage)
+- [WikiBooks - Haskell](https://en.wikibooks.org/wiki/Haskell)
 
 # Embedded Haskell
 It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popular open-source single-board microcontroller, with an Atmel AVR processor and on-board input/output support. For more information see the 

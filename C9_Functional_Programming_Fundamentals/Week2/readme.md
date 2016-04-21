@@ -10,9 +10,19 @@ The function (method) is the most important thing.
 - method receiver arguments in which the receiver and the arguments are evenly important.
 
 # The layout rule
-The following [rules](https://youtu.be/Sm7aEU-8enI?t=42m47s) apply to denote the block structure:
-- In a sequence of definitions, each definition must begin precisely in the same column this is because layout is used to denote block structure just like Python,
-- 
+The following [white space rules](https://youtu.be/Sm7aEU-8enI?t=42m47s) apply to denote the block structure:
+
+In a sequence of definitions, each definition must begin precisely in the same column this is because layout is used to denote block structure just like Python,
+
+# Variable notation
+The following variable notations apply:
+
+- A number will be an `n`,
+- A list will be called `xs`,
+_ A list of lists will be called `xss`, 
+
+# Function name and type names
+A function name starts with a lower case letter and types start with a capital letter.
 
 # The list
 The list is the universal data structure used in functional languages. You do everything with lists in functional languages; you never need to create your own data structures. There are a lot of operations defined in `Prelude` to 
@@ -103,5 +113,16 @@ ghci> average [1,2,3,4,5,6,7,8,9,10]
 it :: Int
 ```
 
-# Function name and type names
-A function name starts with a lower case letter and types start with a capital letter.
+# Homework
+1. Create a function `last'` that selects the last element of a list using the list functions except 'last'.
+
+```haskell
+let last' = xs !! (length xs - 1)
+```
+
+2. Create a function `init'` that removes the last element from a list using the list functions except 'init'.
+
+```haskell
+let init' = take (length xs - 1)
+```
+
