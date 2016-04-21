@@ -259,6 +259,10 @@ val it : int = 64
 ## Documentation
 - [Erlang Documentation](http://www.erlang.org/docs)
 
+## Erlang tutorials
+- [University of Kent - Erlang Massive Open Online Course (MOOC)](https://www.youtube.com/watch?v=yZ-e6ZT4G6U&list=PLlML6SMLMRgAooeL26mW502jCgWikqx_n)
+- [University of Kent - Erlang Master Classes](https://www.youtube.com/watch?v=YZjAHRu4oF8&list=PLlML6SMLMRgCaVx42utIleC2aerD504qj)
+
 ## Installing Erlang
 Erlang can be installed with the brew formula:
 
