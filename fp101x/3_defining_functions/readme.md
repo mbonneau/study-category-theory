@@ -1,0 +1,2 @@
+# Defining Functions
+In this lecture we will introduce a range of mechanisms for defining functions in Haskell. We start with conditional expressions and guarded equations, then introduce pattern matching, and conclude with lambda expressions and sections.

@@ -1,0 +1,2 @@
+# List Comprehensions
+List comprehensions allow many functions over lists to be defined in a very concise manner. We start by explaining generators and guards, introduce the function zip and conclude with the notion of string comprehensions.
