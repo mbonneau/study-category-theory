@@ -330,6 +330,8 @@ In type theory and functional programming, [Hindley–Milner](https://en.wikiped
 
 Among HM's more notable properties is completeness and its ability to deduce the most general type of a given program without the need of any type annotations or other hints supplied by the programmer. __Algorithm W__ is a fast algorithm, performing type inference in almost linear time with respect to the size of the source, making it practically usable to type large programs. Hindley-Milner is preferably used for functional languages. It was first implemented as part of the type system of the programming language ML. Since then, HM has been extended in various ways, most notably by constrained types as used in Haskell.
 
+Here is an [explanation](http://dev.stephendiehl.com/fun/006_hindley_milner.html) how Hindley-Milner Inference works.
+
 ## David Turner (1946)
 David A. Turner (born 1946) is a British computer scientist. He is best known for inventing combinator graph reduction and for designing and implementing three seminal (lazy) functional programming languages [SASL](https://en.wikipedia.org/wiki/SASL_(programming_language)) (untyped purely functional lazy/non-strict), [KRC](https://en.wikipedia.org/wiki/Kent_Recursive_Calculator) and [Miranda](https://en.wikipedia.org/wiki/Miranda_(programming_language)) (pure, non-strict, polymorphic, higher order functional programming language), the last of which was awarded a medal for Technical Achievement by the British Computer Society (BCS Awards, 1990).
 
