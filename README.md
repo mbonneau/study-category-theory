@@ -12,6 +12,9 @@ The following are books to read if you want to learn Scala and Functional Progra
  - [Functional Reactive Domain Modelling - Debasish Ghosh](https://www.manning.com/books/functional-and-reactive-domain-modeling) - Teaches you how to create domain models using Functional Programming, 
  - [My Scalaz stream notes](https://www.gitbook.com/@aappddeevv) - Free for download its a good introduction to Scalaz
 
+# Functional Programming MOOC
+[edX](https://en.wikipedia.org/wiki/EdX), a massive open online course (MOOC) provider has the MOOC [FP101x](https://www.youtube.com/watch?v=YU2LP2QpUaE) where [Erik Meijer](https://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)) teaches functional programming using the pure functional programming language [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language)). You can apply for the course for __free__ using the [edx](https://www.edx.org/) and search for the course __Introduction to functional programming__, after you have created an account. 
+
 # Category Theory Video
 
 - [Category Theory, The essence of interface-based design by Erik Meijer](https://www.youtube.com/watch?v=JMP6gI5mLHc)
@@ -262,6 +265,7 @@ val it : int = 64
 ## Erlang tutorials
 - [University of Kent - Erlang Massive Open Online Course (MOOC)](https://www.youtube.com/watch?v=yZ-e6ZT4G6U&list=PLlML6SMLMRgAooeL26mW502jCgWikqx_n)
 - [University of Kent - Erlang Master Classes](https://www.youtube.com/watch?v=YZjAHRu4oF8&list=PLlML6SMLMRgCaVx42utIleC2aerD504qj)
+- [Erlang Workshop 2009](https://vimeo.com/album/129567)
 
 ## Installing Erlang
 Erlang can be installed with the brew formula:
@@ -401,6 +405,10 @@ After earning a PhD in high-energy particle physics and while working as a syste
 - [Go Reactive: Blueprint for Future Applications - Roland Kuhn - Trivento Summercamp](https://www.youtube.com/watch?v=auYuWBudVt8)
 - [Reactive Design Patterns - Roland Kuhn](https://www.youtube.com/watch?v=r4bJqgqpsIQ)
 
+# International Conference on Functional Programming
+- [ICFP - 2009](https://vimeo.com/album/126865)
+- [ICFP - 2010](https://vimeo.com/album/1453306)
+
 # Why use Scalaz? 
 That's a good question, let me get back on that, first let me [learn a Haskell](http://learnyouahaskell.com/chapters) and at the same
 time let me [learn Scalaz](http://eed3si9n.com/learning-scalaz/). 
@@ -410,3 +418,13 @@ time let me [learn Scalaz](http://eed3si9n.com/learning-scalaz/).
  - Message passing between modules using for comprehension,
  - Monad transformers :)
  
+ # Hamsters
+ [Hamsters](https://github.com/scala-hamsters/hamsters) is a micro Scala utility library. Compatible with functional programming beginners :). I only hope its feature set will remain simple, clean and small.
+
+ - If you want to do simple validations,
+ - If you need simple Monad Transformers, it supports Future[Option] and Future[Either],
+ - Supports lightweight hetrogeneous lists, like tuples but with an unknown length,
+ - Supports Union types, you can return a number of several return types, no need to return a tuple with Option,
+ - Supports a right-biased Either.
+
+ So, most of the features beginner functional programmers need to use!

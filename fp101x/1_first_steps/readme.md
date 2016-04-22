@@ -1,0 +1,2 @@
+# Types and Classes
+In this lecture we introduce types and type classes, two of the most fundamental concepts in Haskell. We start by informally explaining what types are and how they are used in Haskell, then present a number of basic types and ways to build compound types by composing smaller types, discuss function types in more detail, and conclude with the concept of parametric polymorphism (generics) and type classes.

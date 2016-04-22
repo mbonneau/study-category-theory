@@ -68,3 +68,10 @@ add'' = \x -> (\y -> x + y)
 odds' :: (Enum a, Num a) => a -> [a]
 odds' n = map (\x -> x*2 + 1) [0..n-1]
 
+-- Homework 1.
+
+-- Homework 2.
+
+-- Homework 3.
+
+-- Homework 4.

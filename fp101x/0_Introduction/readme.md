@@ -1,0 +1,2 @@
+# Introduction
+This lecture sets the stage for the rest of the course. We start by reviewing the notion of function, then introduce the concept of functional programming, summarize the main features and history of Haskell, and conclude with a couple of small appetizers that give a taste of Functional Programming and Haskell.
