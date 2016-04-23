@@ -5,6 +5,13 @@ This resource is for my study on Functional Programming and Category Theory. I w
 Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz expert. I'm a beginner that has made a lot of progress." which also applies to me I guess. So don't learn from me, but maybe, get inspired and go look at Functional Programming, Haskell, Scala and Scalaz. 
 
 # Category Theory Video
+- [Introduction to Category Theory 1 - Steven Roman](https://www.youtube.com/watch?v=If6VUXZIB-4)
+- [Introduction to Category Theory 2 - Steven Roman](https://www.youtube.com/watch?v=leFJdbZy7Ys)
+- [Introduction to Category Theory 3 - Steven Roman](https://www.youtube.com/watch?v=-ocEgjnQMgg)
+- [Introduction to Category Theory 4 - Steven Roman](https://www.youtube.com/watch?v=ZUnThAu1ORU)
+- [Introduction to Category Theory 5 - Steven Roman](https://www.youtube.com/watch?v=1_b7U62_uEw)
+- [Normal Subgroups, Quotient groups and Congruence Relations - Steven Roman](https://www.youtube.com/watch?v=7exk-zI2-3g)
+
 - [Category Theory, The essence of interface-based design by Erik Meijer](https://www.youtube.com/watch?v=JMP6gI5mLHc)
 - [Channel 9 - Don't fear the Monad by Brian Beckman (2012)](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
 - [Channel 9 - Functional Programming by Erik Meijer (2012)](https://www.youtube.com/watch?v=z0N1aZ6SnBk)
