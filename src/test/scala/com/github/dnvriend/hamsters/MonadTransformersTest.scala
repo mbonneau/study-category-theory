@@ -16,11 +16,9 @@
 
 package com.github.dnvriend.hamsters
 
-import io.github.hamsters.{ FutureEither, FutureOption }
-import io.github.hamsters.Validation._
-
-import scala.concurrent.duration._
 import com.github.dnvriend.TestSpec
+import io.github.hamsters.Validation._
+import io.github.hamsters.{FutureEither, FutureOption}
 
 import scala.concurrent.Future
 
