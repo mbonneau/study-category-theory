@@ -65,9 +65,9 @@ class OptionTest extends TestSpec {
    * map, flatMap, filter and foreach.
    *
    * A less idiomatic way to use scala.Option values is via pattern matching.
-    *
-    * Using HOF is not a matter of coding style
-    *
+   *
+   * Using HOF is not a matter of coding style
+   *
    */
 
   "idiomatic Option" should "not pattern matched" in {

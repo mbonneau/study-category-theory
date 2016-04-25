@@ -63,6 +63,9 @@ Let's [learn us a Haskell](http://learnyouahaskell.com/).
 - [The Road to Running Haskell at Facebook Scale - Jon Coens](https://www.youtube.com/watch?v=sl2zo7tzrO8)
 - [HaskellCast](https://www.youtube.com/channel/UC0pv4sIiJ404ubqUJ2e4WzA)
 - ["Coder Decoder: Functional Programmer Lingo Explained, with Pictures" by Katie Miller](https://www.youtube.com/watch?v=uwrCQmpZ8Ts)
+- [Simon Meier - A primer to commercial Haskell programming](https://www.youtube.com/watch?v=ywOvfjpbYR4)
+- [Jasper Van der Jeugt - Haskell: mistakes I made (and how to fix them)
+Simon Meier](https://www.youtube.com/watch?v=S3WGPuqfBLg)
 
 ## Must see videos
 

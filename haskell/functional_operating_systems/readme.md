@@ -13,6 +13,3 @@ We build applications in a __safe and compositional style__ using functional pro
 
 ## Papers
 - [A Principled Approach to Operating System Construction in Haskell - Hallgren, Jones, Leslie & Tolmach](http://ogi.altocumulus.org/~hallgren/ICFP2005/house.pdf)
-
-# Windows subsystem for Linux
-<iframe src="https://channel9.msdn.com/Blogs/Seth-Juarez/Windows-Subsystem-for-Linux-Architectural-Overview/player?format=html5" width="1280" height="720" allowFullScreen frameBorder="0"></iframe>
