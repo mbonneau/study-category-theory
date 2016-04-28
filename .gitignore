@@ -5,6 +5,7 @@
 /project/target/
 /target/
 /.idea/
+/.vscode/
 *.iml
 *.hi
 *.o

@@ -59,3 +59,32 @@ that can also transform and preserve morphisms. A functor would be something tha
 - [ICFP - 2009](https://vimeo.com/album/126865)
 - [ICFP - 2010](https://vimeo.com/album/1453306)
  
+# Visual Studio Code
+[Visual Studio Code](https://code.visualstudio.com/) a.k.a. __'Code'__ is a lightweight but powerful source code editor which runs on your desktop
+and is available for Windows, OS X and Linux. Code is an open source source code editor developed by Microsoft. It comes with built-in support for 
+JavaScript, TypeScript, Node.js, Markdown and git and has a rich ecosystem of extensions for other languages and runtimes that are available on 
+the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/VSCode).
+
+## Installation
+Code can be installed using brew:
+
+```bash
+$ brew cask install visual-studio-code 
+```
+
+After installation, the editor can be found with Spotlight by typing: `code`.
+
+## Haskell support
+Code has support for Haskell by means of [Haskell extensions](https://marketplace.visualstudio.com/search?term=haskell&target=VSCode&sortBy=Relevance). 
+These extensions can be installed in Code by typing (⌘+P) and pasting:
+
+```
+ext install language-haskell
+```
+
+## Dart support
+Code has support for Dart and can be installed by typing (⌘+P) and pasting:
+
+```
+ext install dart
+```
