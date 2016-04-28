@@ -88,3 +88,18 @@ Code has support for Dart and can be installed by typing (⌘+P) and pasting:
 ```
 ext install dart
 ```
+
+## Haskell build
+Code has a build option (SHIFT+CMD+B), but this has to be configured (F1: Configure Task Runner), replace the code with the following:
+
+```json
+{
+	"version": "0.1.0",
+	"command": "runghc",
+	"isShellCommand": true,
+	"args": ["${file}"],
+	"showOutput": "always"
+}
+```
+
+You can now run a haskell file when opened. 
