@@ -102,4 +102,9 @@ Code has a build option (SHIFT+CMD+B), but this has to be configured (F1: Config
 }
 ```
 
-You can now run a haskell file when opened. 
+You can now run a haskell file when opened, but note that you'll have to have `main` in scope like so:
+
+```haskell
+main :: IO ()
+main = putStrLn "Hello World, this is Haskell!"
+```

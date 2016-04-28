@@ -38,3 +38,16 @@ palindrome xs = reverse xs == xs
 
 twice :: (a -> a) -> a -> a
 twice f x     = f (f x)
+
+x = add (1,2)
+
+main :: IO ()
+main = do
+       putStrLn $ "add (1,2): " ++ (show $ add (1,2))
+       putStrLn $ "add' 1 2: " ++ (show $ add' 1 2)
+       putStrLn $ "zeroto 5: " ++ (show $ zeroto 5)
+       putStrLn $ "length [1..5]: " ++ (show $ length' [1..5])
+       putStrLn $ "second [10..15]: " ++ (show $ second [10..15])
+       putStrLn $ "swap (1,2): " ++ (show $ swap (1,2))
+       putStrLn $ "pair 1 2: " ++ (show $ pair 1 2)
+       putStrLn $ "double 5: " ++ (show $ double 5)
