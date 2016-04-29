@@ -4,9 +4,18 @@ import Data.Monoid
 doubleMe :: Num a => a -> a
 doubleMe x = x + x
 
-msg :: (Show a, Num a) => a -> String
-msg x = "doubleMe 5: " `Data.Monoid.mappend` show x
+doubleSmallNumber :: (Ord a, Num a) => a -> a
+doubleSmallNumber x = if x > 100 then x else doubleMe x 
+
+echo :: String -> String -> IO ()
+echo msg_one msg_two = putStrLn $ msg_one `Data.Monoid.mappend` msg_two 
+
+concat' :: (Enum a, Num a) => [a] -> [a] -> [a]
+concat' xs ys = xs `Data.Monoid.mappend` ys 
 
 main :: IO ()
 main = do
-       putStrLn . msg $ doubleMe 5
+       echo "doubleMe 5: " $ show $ doubleMe 5
+       echo "doubleSmallNumber 100: " $ show $ doubleSmallNumber 100
+       echo "doubleSmallNumber 101: " $ show $ doubleSmallNumber 101
+       echo "concat' [1,2] [3,4]: " $ show $ concat' [1,2] [3,4]

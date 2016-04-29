@@ -94,3 +94,6 @@ just to support the authors. Both not too expensive and in my honest opinion, gr
 # Embedded Haskell
 It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popular open-source single-board microcontroller, with an Atmel AVR processor and on-board input/output support. For more information see the 
 [Arduino section on HaskellWiki](https://wiki.haskell.org/Arduino).
+
+# Stack
+[stack](http://docs.haskellstack.org/en/stable/README/) is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.
