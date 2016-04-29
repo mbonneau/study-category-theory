@@ -51,13 +51,6 @@ that can also transform and preserve morphisms. A functor would be something tha
 > In category theory, an object in a category corresponds to a type corresponds to a proposition. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=18m55s)
 
 > There are different kinds of category, a Set is one kind of category in which 'objects' are sets, and arrows are functions that go from one set to another set. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=27m28s)
-
-# Logic in Action
-[Logic in Action](http://www.logicinaction.org/) is an open source project and aims at the development of elementary and intermediate courses in logic in electronic form. All material is freely available. Further interactive educational support is continuously being developed. The project provides individual chapters of our self-contained introduction to logic. Some of the material below comes from [Wikipedia](https://en.wikipedia.org) and/or [Logic in Action (note its non secure http)](http://www.logicinaction.org/).
-
-# International Conference on Functional Programming
-- [ICFP - 2009](https://vimeo.com/album/126865)
-- [ICFP - 2010](https://vimeo.com/album/1453306)
  
 # Visual Studio Code
 [Visual Studio Code](https://code.visualstudio.com/) a.k.a. __'Code'__ is a lightweight but powerful source code editor which runs on your desktop
