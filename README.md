@@ -75,11 +75,42 @@ These extensions can be installed in Code by typing (⌘+P) and pasting:
 ext install language-haskell
 ```
 
-## Dart support
-Code has support for Dart and can be installed by typing (⌘+P) and pasting:
+## Haskell lint support
+You'll first have to install [hlint](https://github.com/ndmitchell/hlint)
+
+```bash
+$ cabal install hlint
+```
+
+Cabal will install hlint to `/Users/your-user-name/Library/Haskell/bin`.
+
+Now install the [hlint extension](https://marketplace.visualstudio.com/items?itemName=hoovercj.haskell-linter) (⌘+P) and pasting:
 
 ```
-ext install dart
+ext install haskell-linter
+```
+
+### Configuring hlint
+Set the following (⌘+P) + settings.json: 
+
+```json
+{
+	"haskell.hlint.executablePath": "/Users/your-user-name/Library/Haskell/bin/hlint",
+	"haskell.hlint.run": "onType", // also: "onSave", "never"
+    "haskell.hlint.logLevel": "log"
+}
+```
+
+__Note:__ Please replace __your-user-name__ with the directory name of your system.
+
+### Setting hits
+HLint's hints can be [configured](https://github.com/ndmitchell/hlint#choosing-a-package-of-hints) (⌘+P) + settings.json:
+
+```json
+{
+	"haskell.hlint.hints": ["Default", "Dollar", "Generalise"],
+    "haskell.hlint.ignore": ["Redundant do"],
+}
 ```
 
 ## Haskell build
@@ -100,4 +131,31 @@ You can now run a haskell file when opened, but note that you'll have to have `m
 ```haskell
 main :: IO ()
 main = putStrLn "Hello World, this is Haskell!"
+```
+
+## Show spaces and tabs in editor
+Set the following (⌘+P) + settings.json: 
+
+```json
+{
+	"editor.renderWhitespace": true,
+	"editor.insertSpaces": true
+}
+```
+
+## Autosave
+Set the following (⌘+P) + settings.json:
+
+```json
+{
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 1000,
+}
+```
+
+## Dart support
+Code has support for Dart and can be installed by typing (⌘+P) and pasting:
+
+```
+ext install dart
 ```
