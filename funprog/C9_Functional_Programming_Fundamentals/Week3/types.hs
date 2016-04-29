@@ -1,3 +1,5 @@
+module Week3 where
+
 add :: Num a => (a, a) -> a
 add (x, y) = x + y
 
@@ -43,6 +45,7 @@ x = add (1,2)
 
 main :: IO ()
 main = do
+       putStrLn "Week3"
        putStrLn $ "add (1,2): " ++ (show $ add (1,2))
        putStrLn $ "add' 1 2: " ++ (show $ add' 1 2)
        putStrLn $ "zeroto 5: " ++ (show $ zeroto 5)

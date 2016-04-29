@@ -1,3 +1,5 @@
+module Week4 where
+
 abs' :: Int -> Int
 abs' n = if n >= 0 then n else -n
 
@@ -5,7 +7,7 @@ abs' n = if n >= 0 then n else -n
 
 signum' :: Int -> Int
 signum' n = if n < 0 then -1 else 
-	          if n == 0 then 0 else 1
+            if n == 0 then 0 else 1
 
 -- guarded equations
 
@@ -66,7 +68,10 @@ add'' = \x -> (\y -> x + y)
 
 -- lambda in a map function
 odds' :: (Enum a, Num a) => a -> [a]
-odds' n = map (\x -> x*2 + 1) [0..n-1]
+odds' n = fmap (\x -> x*2 + 1) [0..n-1]
+
+main :: IO ()
+main = putStrLn "Week 4"
 
 -- Homework 1.
 
@@ -75,3 +80,4 @@ odds' n = map (\x -> x*2 + 1) [0..n-1]
 -- Homework 3.
 
 -- Homework 4.
+

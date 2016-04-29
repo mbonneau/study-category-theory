@@ -1,3 +1,5 @@
+module Week2 where
+
 double :: Num a => a -> a
 double x = x + x
 
@@ -15,8 +17,8 @@ average xs = sum xs `div` length xs
 
 main :: IO ()
 main = do
-       putStrLn $ "Double 2: " ++ (show $ double 2)
-       putStrLn $ "Quadruple 4: " ++ (show $ quadruple 4)
-       putStrLn $ "Factorial: 10" ++ (show $ factorial 10)
-       putStrLn $ "Average [1..20]: " ++ (show $ average [1..20])
-       
+    putStrLn "Week2"
+    putStrLn $ "Double 2: " ++ (show $ double 2)
+    putStrLn $ "Quadruple 4: " ++ (show $ quadruple 4)
+    putStrLn $ "Factorial: 10" ++ (show $ factorial 10)
+    putStrLn $ "Average [1..20]: " ++ (show $ average [1..20])

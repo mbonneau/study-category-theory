@@ -1,3 +1,5 @@
+module Week5 where
+import Data.Monoid
 
 squared :: (Enum a, Num a) => a -> [a]
 squared n = [x^2 | x <- [1..n]]  
@@ -15,10 +17,11 @@ only_even :: Integral a => a -> [a]
 only_even n = [x | x <- [1..n], even x]
 
 echo :: String -> String -> IO ()
-echo msg_one msg_two = putStrLn $ msg_one ++ msg_two 
+echo msg_one msg_two = putStrLn $ msg_one `Data.Monoid.mappend` msg_two 
 
 main :: IO ()
 main = do
+       putStrLn "Week 5"
        echo "squared [1..5]: " $ show $ squared 5
        echo "two_generators: " $ show two_generators
        echo "correlated_subqueries: " $ show correlated_subqueries
