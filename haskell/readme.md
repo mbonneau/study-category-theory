@@ -97,3 +97,18 @@ It is also possible to use Haskell on the [Arduino](http://arduino.cc/) a popula
 
 # Stack
 [stack](http://docs.haskellstack.org/en/stable/README/) is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.
+
+# Monoids
+- [Monoids without tears](https://fsharpforfunandprofit.com/posts/monoids-without-tears/)
+- [Monoids in practice](https://fsharpforfunandprofit.com/posts/monoids-part2/)
+- [Working with non-monoids](https://fsharpforfunandprofit.com/posts/monoids-part3/)
+- [Monoids Tour](https://www.schoolofhaskell.com/user/mgsloan/monoids-tour)
+
+- 'monoidal operations'.
+- Commutative, Associative
+
+# How to design and code a complete program
+- [How to design and code a complete program](https://fsharpforfunandprofit.com/posts/recipe-part1/) 
+
+# Why I won't be writing a monad tutorial
+- [Why I won't be writing a monad tutorial](https://fsharpforfunandprofit.com/posts/why-i-wont-be-writing-a-monad-tutorial/)
