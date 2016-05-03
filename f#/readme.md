@@ -1,6 +1,9 @@
 # F-sharp
 [F-sharp](https://en.wikipedia.org/wiki/F_Sharp_(programming_language)) can be run [cross platform](http://fsharp.org/guides/mac-linux-cross-platform/). F# comes preinstalled with the mono brew formula:
 
+- [Fsharp for fun and profit](https://fsharpforfunandprofit.com/posts/cycles-and-modularity-in-the-wild/)
+- [Comparing F# and C# with dependency networks](http://evelinag.com/blog/2014/06-09-comparing-dependency-networks/#.Vyes5KOLRE5)
+
 ```fsharp
 $ brew install mono
 $ fsharpi

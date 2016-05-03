@@ -10,6 +10,10 @@ brew link ghc
 brew link --overwrite ghc
 cabal update
 cabal install ghc-mod
+# to plot graphics
+brew cask install aquaterm 
+brew install gnuplot
+cabal install easyplot
 ```
  
 Downloading, installing and compiling/building `ghc-mod` can take some time and heat up your CPU a little. 

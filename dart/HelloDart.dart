@@ -15,10 +15,10 @@ main() {
 
   // higher order function twice, it takes a function f and a value x
   // it looks like a lambda expression in haskel
-  twice(f,x) => f(f(x));
+  twice(f, x) => f(f(x));
 
   // defined as a lambda, looks more like Haskell
   //var twice = (f,x) => f(f(x));
 
-  print(twice(f,3));
+  print(twice(f, 3));
 }

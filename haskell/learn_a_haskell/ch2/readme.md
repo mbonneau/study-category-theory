@@ -1,3 +1,15 @@
+# Learn you a Haskell - Typeclasses
+See: [Learn you a Haskell - Typeclasses](http://learnyouahaskell.com/types-and-typeclasses)
+
+## Believe the type!
+Haskell has a static type system. The type of every expression is known at compile time, which leads to safer code. That's good because it's better to 
+catch errors, such as dividing a boolean by a number, at compile time instead of having your program crash at runtime! 
+Everything in Haskell has a type, so the compiler can (quickly - yes its quick!) reason quite a lot about your program before compiling it.
+Understanding the type system is a very important part of learning Haskell and other type safe languages for that matter.  
+
+## About those types
+See: [Li Haoyi Haoyi blog about type safety](http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html).
+
 # Lists
 Lists can be used to solve a whole bunch of problems in functional programming. So use them in both Scala and Haskell!
 

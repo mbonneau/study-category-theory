@@ -1,4 +1,5 @@
 module Week4 where
+import Data.Monoid
 
 abs' :: Int -> Int
 abs' n = if n >= 0 then n else -n
@@ -7,7 +8,7 @@ abs' n = if n >= 0 then n else -n
 
 signum' :: Int -> Int
 signum' n = if n < 0 then -1 else 
-            if n == 0 then 0 else 1
+              if n == 0 then 0 else 1
 
 -- guarded equations
 
@@ -38,7 +39,7 @@ not' True = False
 -- pattern matching on lists
 
 head' :: [a] -> a
-head' (x:_) = x
+head' (x: _) = x
 
 -- n + k patterns n is a number and k is a constant
 -- but n+k patterns are removed from Haskell 2010
@@ -70,8 +71,16 @@ add'' = \x -> (\y -> x + y)
 odds' :: (Enum a, Num a) => a -> [a]
 odds' n = fmap (\x -> x*2 + 1) [0..n-1]
 
+-- output
+echo :: String -> String -> IO ()
+echo msg_one msg_two = putStrLn $ msg_one `Data.Monoid.mappend` msg_two 
+
 main :: IO ()
-main = putStrLn "Week 4"
+main = do
+       echo "abs' 1: " $ show $ abs' 1
+       echo "abs' (-1): " $ show $ abs' (-1)
+       echo "head' [1,2,3]: " $ show $ head' [1,2,3]
+       
 
 -- Homework 1.
 
