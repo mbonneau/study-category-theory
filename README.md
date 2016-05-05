@@ -52,6 +52,9 @@ that can also transform and preserve morphisms. A functor would be something tha
 
 > There are different kinds of category, a Set is one kind of category in which 'objects' are sets, and arrows are functions that go from one set to another set. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=27m28s)
  
+# History of programming languages
+- [History of programming languages](http://cdn.oreillystatic.com/news/graphics/prog_lang_poster.pdf) 
+ 
 # Visual Studio Code
 [Visual Studio Code](https://code.visualstudio.com/) a.k.a. __'Code'__ is a lightweight but powerful source code editor which runs on your desktop
 and is available for Windows, OS X and Linux. Code is an open source source code editor developed by Microsoft. It comes with built-in support for 

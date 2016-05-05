@@ -6,3 +6,7 @@
 # International Conference on Functional Programming
 - [ICFP - 2009](https://vimeo.com/album/126865)
 - [ICFP - 2010](https://vimeo.com/album/1453306)
+
+# Functional Thinking
+- ["Functional Thinking" - Neal Ford](https://www.youtube.com/watch?v=7aYS9PcAITQ)
+- [Jessica Kerr "Functional Principles for Object Oriented Development"](https://www.youtube.com/watch?v=pMGY9ViIGNU)

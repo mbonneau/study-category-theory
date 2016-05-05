@@ -3,12 +3,61 @@ See: [Learn you a Haskell - Typeclasses](http://learnyouahaskell.com/types-and-t
 
 ## Believe the type!
 Haskell has a static type system. The type of every expression is known at compile time, which leads to safer code. That's good because it's better to 
-catch errors, such as dividing a boolean by a number, at compile time instead of having your program crash at runtime! 
+catch errors, such as dividing a boolean by a number, at compile time instead of having your program crash at runtime! The compiler's knowledge of Types lets 
+you mitigate the consequences of your mistakes, often turning them into straightforward-to-fix-during-development compilation errors, 
+thus provides Safety in developing your code.
+
 Everything in Haskell has a type, so the compiler can (quickly - yes its quick!) reason quite a lot about your program before compiling it.
 Understanding the type system is a very important part of learning Haskell and other type safe languages for that matter.  
 
-## About those types
+## Type safety?
 See: [Li Haoyi Haoyi blog about type safety](http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html).
+
+## What are type variables?
+A type variable is a variable that can be of a certain type. It allows us to easily write very general functions if they don't use 
+any specific behavior of the types in them. Functions that have type variables are called polymorphic functions.  
+
+## What is a typeclass?
+A typeclass is a sort of interface that defines some behavior. If a type is a part of a typeclass, that means that it supports and implements 
+the behavior the typeclass describes.
+
+## What is a class constraint?
+In the type definition of the following function: 
+
+```haskell
+> $t (==)
+(==) :: (Eq a) => a -> a -> Bool  
+```
+...everything before the `=>` symbol is called a __class constraint__. We can read the previous type declaration like this: the equality function takes any 
+two values that are of the same type and returns a Bool. The type of those two values must be a member of the __Eq__ class (this was the class constraint).
+
+The __Eq__ typeclass provides an interface for testing for equality. Any type where it makes sense to test for equality between two values of that type 
+should be a member of the __Eq__ class. All standard Haskell types except for IO (the type for dealing with input and output) and functions are a part 
+of the __Eq__ typeclass.
+
+## Some basic typeclasses
+- __Eq__ is used for types that support equality testing. The functions its members implement are `==` and `/=`. 
+  So if there's an Eq class constraint for a type variable in a function, it uses `==` or `/=` somewhere inside its definition. 
+  All the types we mentioned previously except for functions are part of Eq, so they can be tested for equality.
+- __Ord__ is for types that have an ordering. Ord covers all the standard comparing functions such as `>`, `<`, `>=` and `<=`. 
+  The `compare` function takes two Ord members of the same type and returns an ordering. __Ordering__ is a type that can be `GT`, `LT` or `EQ`, 
+  meaning greater than, lesser than and equal, respectively.
+- __Show__ is for types that can be presented as strings. All types covered so far except for functions are a part of Show. The most used function 
+  that deals with the Show typeclass is `show`. It takes a value whose type is a member of Show and presents it to us as a string.
+- __Read__ is sort of the opposite typeclass of Show. The `read` function takes a string and returns a type which is a member of Read.
+- __Enum__ members are sequentially ordered types — they can be enumerated. The main advantage of the Enum typeclass is that we can use its types 
+  in list ranges. They also have defined successors and predecesors, which you can get with the `succ` and `pred` functions. Types in this class: 
+  (), Bool, Char, Ordering, Int, Integer, Float and Double.
+- __Bounded__ members have an upper and a lower bound. The functions `minBound` and `maxBound` are interesting because they have a type of 
+  __(Bounded a) => a__. In a sense they are polymorphic constants. All tuples are also part of Bounded if the components are also in it.
+- __Num__ is a numeric typeclass. Its members have the property of being able to act like numbers. To join Num, a type must already be friends with `Show` and `Eq`.
+- __Integral__ is also a numeric typeclass. Num includes all numbers, including real numbers and integral numbers, __Integral__ includes only integral 
+ (whole) numbers. In this typeclass are __Int__ and __Integer__.
+- __Floating__ includes only floating point numbers, so __Float__ and __Double__.
+
+
+
+
 
 # Lists
 Lists can be used to solve a whole bunch of problems in functional programming. So use them in both Scala and Haskell!
