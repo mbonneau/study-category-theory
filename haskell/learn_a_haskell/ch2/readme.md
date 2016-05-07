@@ -1,17 +1,61 @@
 # Learn you a Haskell - Typeclasses
+## Resources used
 See: [Learn you a Haskell - Typeclasses](http://learnyouahaskell.com/types-and-typeclasses)
+See: [Strategic Scala Style: Practical Type Safety](http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html)
+
+__Disclaimer:__ The following is mostly taken from other resources on  the Internet, but this is the way I learn. I search resources for a subject and gather them all in one place, I read the content and create my own copy so I really understand the subject.  
+
+## What is a type?
+A __Type__ is an abstract concept. It is not 'something concrete' in a programming language like an interface or a class. A type is something you know about a __value__ in your program at compile time. It is _knowledge_ about a value, for example:
+
+- Something which is an __Int__ definitely contains a 32 bit integer from _-2147483648_ to _2147483647_
+- Something which is a __Option[T]__ definitely contains either a _Some[T]_, or _None_
+- Something which is a __CharSequence__ definitely contains _Chars_ and lets me call _.length_, _.chatAt_, and _.subsequence_ methods, but I don't know whether it is a _String_, a _StringBuffer_, or something else. You don't know if it's mutable or immutable, how its stores its contents, or what the performance characteristics are.
+- Something which is a __String__ also has characters, but you know it's immutable, stores its contents in an internal array of characters, and has _O(1)_ lookup to look up Chars by index
+
+The _type_ of a value tells you both what something _can be_, and what it _cannot be_. A __Option[String]__ can be _Some_ or _None_, but it cannot be a _32 bit integer_! In statically typed languages like eg. Haskell and Scala, this is not something you need to check in your code: it is something you can rely on being correct, with the compiler checking during compilation.
+
+This __knowledge about the value__ is exactly what comprises the __"Type"__ of a value. So __types__ let you _describe to the compiler things you know about the values in your program_.
+
+## What is a type not?
+### A Class
+Because a type is an abstract concept that exactly defines what a value is, a type cannot be a class. Yes, in Java, and Scala on the JVM, all types are represented by classes (or interfaces). This does not hold true in e.g. Scala.js, where you can define types to be synthetic (traits extending js.Any) with no remnants left behind to inspect after everything is compiled, or in other programming languages.
+
+While the types being backed by classes is a true fact, __it is an implementation detail__ that is mostly irrelevant to the discussion.
+
+## What is a type system?
+Basically every programming language has a different type system. Some have generics, some have reified generics (the types are (made) available (again) at runtime). Some, like Java, have reified types, where the "type" of a value always corresponds to a class or interface can be checked at runtime. Also in Java, generics are implemented using erasure, in which generic type parameters are simply __removed__ (after compilation) and are __not__ available at runtime. Other languages, like C, don't have reified types. Dynamic languages like Python do not have static types - types that are available at compile time - and so a type only exists at runtime.
+
+A type system __lets you describe to the compiler things you know about the values in your program__, _and_ __let it check that what you're doing is consistent with what you said you wanted to do__.
+
+## What is safety
+__Safety means that when you make a mistakes, the consequences are minor.__ 
+
+People make all sorts of mistakes: typos in code, poor load-estimation, copy-pasting the wrong command. When you make a mistake, what happens?
+
+- You see a red squiggly in your editor and fix it in 5 seconds,
+- You wait for a full compile, taking 10s, then fix it,
+- You run the test suite, which takes 10s (you're optimistic), then fix it,
+- You deploy the mistake, notice the bug a few hours later, fix it, and deploy the fix,
+- You deploy the mistake, the bug goes un-noticed for weeks, and even when noticed and fixed it takes weeks to clean up the mess of corrupted data that it left behind,
+- You deploy the mistake, and find your company totally bankrupt 45 minutes later. Your job, your team, your organization and plans, all gone.
+
+Ignoring the idea of "types" and "compile time", it is obvious that different environments have different levels of safety. even runtime errors can have smaller impact if caught early and are easy to debug, making Python's habit of throwing `TypeError` at runtime when something doesn't match significantly "Safer" than PHP's habit of coercing values when things don't match (which tends to mask/hide problems resulting in data-corruption and obscure/hard-to-trace bugs).
+
+## What is Type Safety?
+__Type-safety is making use of what we know of our values at compile-time to minimize the consequences of most mistakes.__
 
 ## Believe the type!
 Haskell has a static type system. The type of every expression is known at compile time, which leads to safer code. That's good because it's better to 
-catch errors, such as dividing a boolean by a number, at compile time instead of having your program crash at runtime! The compiler's knowledge of Types lets 
-you mitigate the consequences of your mistakes, often turning them into straightforward-to-fix-during-development compilation errors, 
-thus provides Safety in developing your code.
+catch errors, such as dividing a boolean by a number, at compile time instead of having your program crash at runtime! The compiler's knowledge of Types lets you mitigate the consequences of your mistakes, often turning them into straightforward-to-fix-during-development compilation errors, thus provides Safety in developing your code.
 
 Everything in Haskell has a type, so the compiler can (quickly - yes its quick!) reason quite a lot about your program before compiling it.
 Understanding the type system is a very important part of learning Haskell and other type safe languages for that matter.  
 
 ## Type safety?
 See: [Li Haoyi Haoyi blog about type safety](http://www.lihaoyi.com/post/StrategicScalaStylePracticalTypeSafety.html).
+
+The bottom line of his blog is: _...the compiler cannot help you verify_ when you aren't specific in describing the properties of the values that are present in your program using the abstract concept of types.
 
 ## What are type variables?
 A type variable is a variable that can be of a certain type. It allows us to easily write very general functions if they don't use 
