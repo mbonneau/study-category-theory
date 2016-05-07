@@ -69,7 +69,7 @@ the behavior the typeclass describes.
 In the type definition of the following function: 
 
 ```haskell
-> $t (==)
+> :t (==)
 (==) :: (Eq a) => a -> a -> Bool  
 ```
 ...everything before the `=>` symbol is called a __class constraint__. We can read the previous type declaration like this: the equality function takes any 
@@ -98,10 +98,6 @@ of the __Eq__ typeclass.
 - __Integral__ is also a numeric typeclass. Num includes all numbers, including real numbers and integral numbers, __Integral__ includes only integral 
  (whole) numbers. In this typeclass are __Int__ and __Integer__.
 - __Floating__ includes only floating point numbers, so __Float__ and __Double__.
-
-
-
-
 
 # Lists
 Lists can be used to solve a whole bunch of problems in functional programming. So use them in both Scala and Haskell!
