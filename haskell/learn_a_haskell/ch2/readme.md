@@ -28,6 +28,8 @@ Basically every programming language has a different type system. Some have gene
 
 A type system __lets you describe to the compiler things you know about the values in your program__, _and_ __let it check that what you're doing is consistent with what you said you wanted to do__.
 
+Type systems are generally formulated as collections of rules for checking the “consistency” of programs. This kind of checking exposes not only trivial mental slips, but also deeper conceptual errors, which frequently manifest as type errors.
+
 ## What is safety
 __Safety means that when you make a mistakes, the consequences are minor.__ 
 
