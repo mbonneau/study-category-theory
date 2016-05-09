@@ -38,3 +38,15 @@ Another way of dealing with name clashes is to do qualified imports. The Data.Ma
 
 ## Renaming qualified imports
 Typing out __Data.Map__ in front of every function from that module is kind of tedious. That's why we can rename the qualified import to something shorter: __import qualified Data.Map as M__  To reference Data.Map's filter function, we just use __M.filter__.  
+
+# Maybe Value
+The [Maybe](http://hackage.haskell.org/package/base-4.8.2.0/docs/Prelude.html#t:Maybe) type encapsulates an optional value. A value of type Maybe a either contains a value of type [Just](http://hackage.haskell.org/package/base-4.8.2.0/docs/Prelude.html#v:Just) a, or it is empty which is represented as [Nothing](http://hackage.haskell.org/package/base-4.8.2.0/docs/Prelude.html#v:Nothing). Using Maybe is a good way to deal with errors or exceptional cases without resorting to drastic measures such as error. The Maybe type is also a monad. It is a simple kind of error monad, where all errors are represented by Nothing. A richer error monad can be built using the [Either](http://hackage.haskell.org/package/base-4.8.2.0/docs/Data-Either.html#v:Either) type which has 
+two values, a Left a value which is _by convention_ a failure value, or a Right b value which is _by convention_ a success value.
+
+If you have ever worked with Scala you've encountered the [Option](http://www.scala-lang.org/api/current/#scala.Option) type that has the same behavior as the Maybe type, but it's values are [Some](http://www.scala-lang.org/api/current/#scala.Some) or [None](http://www.scala-lang.org/api/current/#scala.None$). Note that Scala's [Nothing](http://www.scala-lang.org/api/current/#scala.Nothing) type represents the bottom of Scala's type hierarchy and is the subtype of every type in Scala and [Any](http://www.scala-lang.org/api/current/#scala.Any) represents the root of the Scala class hierarchy, which every class in a Scala execution environment directly or indirectly inherits from.
+
+
+
+
+
+ 
