@@ -389,7 +389,7 @@ class PatternMatchTest extends TestSpec {
   }
 
   "val with patterns" should "match" in {
-    val (person1, person2) = Person("FooBar", 10) -> Person("Bazzoo", 15)
+    val (person1, person2) = Person("FooBar", 10) → Person("Bazzoo", 15)
     person1 shouldBe Person("FooBar", 10)
     person2 shouldBe Person("Bazzoo", 15)
 
@@ -403,7 +403,7 @@ class PatternMatchTest extends TestSpec {
   }
 
   "Generators" should "support pattern match" in {
-    val result = for ((key, value) ← Vector(1 -> "a", 2 -> "b")) yield s"$key,$value"
+    val result = for ((key, value) ← Vector(1 → "a", 2 → "b")) yield s"$key,$value"
     result shouldBe Vector("1,a", "2,b")
   }
 

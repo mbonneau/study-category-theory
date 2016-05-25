@@ -18,7 +18,8 @@ package com.github.dnvriend.hamsters
 
 import com.github.dnvriend.TestSpec
 import io.github.hamsters.Validation._
-import io.github.hamsters.{FutureEither, FutureOption}
+import io.github.hamsters.{ FutureEither, FutureOption }
+import io.github.hamsters.MonadTransformers._
 
 import scala.concurrent.Future
 

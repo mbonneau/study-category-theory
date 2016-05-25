@@ -18,8 +18,7 @@ package com.github.dnvriend.scalaz
 
 import com.github.dnvriend.TestSpec
 
-import scalaz._
-import Scalaz._
+import scalaz.syntax.std.option._
 
 class OptionTest extends TestSpec {
 

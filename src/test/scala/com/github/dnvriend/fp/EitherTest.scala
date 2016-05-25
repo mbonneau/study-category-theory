@@ -45,7 +45,8 @@ class EitherTest extends TestSpec {
         |for {
         | x ← success
         |} yield x
-      """.stripMargin)
+      """.stripMargin
+    )
   }
 
   /**

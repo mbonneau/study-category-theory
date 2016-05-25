@@ -234,7 +234,7 @@ class FunctionTest extends TestSpec {
 
   "A map" should "be a function" in {
     // a map is a function, thus is should be able to be applied
-    val map = Map("1" -> "Foo", "2" -> "Bar")
+    val map = Map("1" → "Foo", "2" → "Bar")
     // apply '1' and '2' to the function map (strange concept coming from Java)
     map("1") shouldBe "Foo"
     map("2") shouldBe "Bar"

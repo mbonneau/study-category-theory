@@ -73,4 +73,12 @@ scala> coolCar.year
 res1: Int = 1967
 ``` 
 
+## Type Parameters
+When we wish to create a type that takes a type parameter, eg, when we wish to create a type _Vector_ that can be used by multiple numeric types, it looks like this:
+
+```haskell
+data Vector a = Vector a a a deriving Show
+``
+
+The left side of the __=__, the `data Vector a` part is the _type constructor_. The right side of the __=__, the `Vector a a a deriving Show` part is the _value constructor_. 
 

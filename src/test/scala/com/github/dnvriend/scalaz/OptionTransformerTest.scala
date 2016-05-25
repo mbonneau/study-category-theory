@@ -84,10 +84,10 @@ class OptionTransformerTest extends TestSpec {
   class DetermineCountryCodeService(personRepository: PersonRepository, countryRepository: CountryRepository) {
     def determineCountryCode(personId: Long): Future[Option[String]] = {
       val result: OptionT[Future, String] = for {
-        person ← OptionT(personRepository.findPerson(1))
-        address ← OptionT(Future.successful(person.address))
-        country ← OptionT(countryRepository.findCountry(address.addressId))
-        code ← OptionT(Future.successful(country.code))
+        person ← optionT(personRepository.findPerson(1))
+        address ← optionT(Future.successful(person.address))
+        country ← optionT(countryRepository.findCountry(address.addressId))
+        code ← optionT(Future.successful(country.code))
       } yield code
       result.run
     }
