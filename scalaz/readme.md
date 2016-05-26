@@ -27,6 +27,17 @@ import scalaz.syntax.std.all._ // injects operators to all standard types
 import scalaz._, Scalaz._ // all the above
 ```
 
+---
+
+## Uber import
+```scala
+// imports *all* implicit conversions that provide *syntax* 
+// as well as type class instances and other functions
+// aka  the uber import, to be backwards compatible with Scalaz 6
+
+import scalaz.Scalaz._  
+```
+
 # Links
 - [Scalaz cheat sheet](http://eed3si9n.com/learning-scalaz/scalaz-cheatsheet.html)
 
