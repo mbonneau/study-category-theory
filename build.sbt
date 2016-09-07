@@ -6,20 +6,19 @@ version := "1.0.0"
 
 scalaVersion := "2.11.8"
 
-// http://scala-hamsters.github.io/hamsters/releases/io.github.scala-hamsters/hamsters_2.11/1.0.0-BETA1/ivys/ivy.xml
-resolvers += Resolver.url("github repo for hamsters", url("http://scala-hamsters.github.io/hamsters/releases/"))(Resolver.ivyStylePatterns)
-
 libraryDependencies ++= {
-  val akkaVersion = "2.4.6"
+  val akkaVersion = "2.4.10"
+  val scalazVersion = "7.2.5"
+  val hamstersVersion = "1.0.4"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
     "com.typesafe.akka" %% "akka-stream" % akkaVersion,
     "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
-    "io.github.scala-hamsters" %% "hamsters" % "1.0.2",
-    "org.scalaz" %% "scalaz-core" % "7.2.2",
+    "io.github.scala-hamsters" %% "hamsters" % hamstersVersion,
+    "org.scalaz" %% "scalaz-core" % scalazVersion,
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-    "org.typelevel" %% "scalaz-scalatest" % "0.3.0" % Test,
+    "org.typelevel" %% "scalaz-scalatest" % "1.0.0" % Test,
     "org.scalatest" %% "scalatest" % "2.2.6" % Test
   )
 }
@@ -41,7 +40,6 @@ SbtScalariform.autoImport.scalariformPreferences := SbtScalariform.autoImport.sc
   .setPreference(AlignSingleLineCaseStatements, true)
   .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 100)
   .setPreference(DoubleIndentClassDeclaration, true)
-  .setPreference(RewriteArrowSymbols, true)
 
 // enable updating file headers //
 import de.heikoseeberger.sbtheader.license.Apache2_0
