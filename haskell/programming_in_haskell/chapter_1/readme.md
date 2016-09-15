@@ -1,3 +1,11 @@
+# Chapter 1 Notes:
+- The haskell application doesn't work in the REPL:
+
+```haskell
+sum [] = 0
+sum (n:ns) = n + sum ns
+```
+
 # Chapter 1 Exercises
 
 1. Give another possible calculation for the result of `double (double 2)`

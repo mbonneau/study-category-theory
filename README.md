@@ -22,6 +22,16 @@ Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a
 - [London Haskell Group - Why Do Monads Matter? by Derek Wright](https://www.youtube.com/watch?v=3q8xYFDYLeI)
 - [London Haskell Group - The Algebra of Algebraic Data Types by Chris Taylor](https://www.youtube.com/watch?v=YScIPA8RbVE)
 
+# Books
+- [Steve Awodey - Category Theory Second Edition](https://www.amazon.com/Category-Theory-Oxford-Logic-Guides/dp/0199237182/ref=asap_bc?ie=UTF8)
+
+What is Category Theory? It is the abstract theory of functions, and because functions are _everywhere_ and everywhere that functions are,
+there are categories. Maybe Category Theory should have been called _Abstract Function Theory_ (AFT)!
+
+The the notion of a category arose in order to define a functor. 
+The notion of a functor arose to define natural transformations. 
+The notion of natural transformations arose to define adjoints. 
+
 # Definitions
 Note: The following is in context of programming and not mathematically correct, and should 
 - __Functional Programming__: The practice of composing programs using functions [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming),
@@ -52,6 +62,22 @@ that can also transform and preserve morphisms. A functor would be something tha
 
 > There are different kinds of category, a Set is one kind of category in which 'objects' are sets, and arrows are functions that go from one set to another set. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=27m28s)
  
+# Yoneda Lemma
+In mathematics, specifically in category theory, the [Yoneda lemma](https://ncatlab.org/nlab/show/Yoneda+lemma) is an abstract result on functors of the type morphisms into a fixed object.
+
+# Modern ideas in FP
+The two most important ideas in modern Functional programming are:
+
+1. __Data first:__ Functional programming is all about putting data first. First define what kinds of data we have in a problem domain 
+and what kind of transformations we want on them. Then we are building up the data structures and the code to do the transformations.
+
+2. __Managing of side-effects:__ Functional programming is not (only) about pure funcions any more. Eventually programs will produce side-effects
+and side-effect management is a puzzle in many parts.
+
+So its about data management __and__ controlling side-effects.
+
+Data is represented by _Structure_ and Types are represented by _functions_. 
+
 # History of programming languages
 - [History of programming languages](http://cdn.oreillystatic.com/news/graphics/prog_lang_poster.pdf) 
  

@@ -1,0 +1,36 @@
+  //
+  // old notes
+  //
+
+  // see: http://underscore.io/blog/posts/2013/12/20/scalaz-monad-transformers.html
+  //  type Error[+A] = Disjunction[String, A] // which is the same as String \/ A
+  //  type Result[A] = OptionT[Error, A]
+
+  // as you are here, I am going to assume that you know what monad transformers are for,
+  // but in case you don't:
+
+  // The article above states that 'monad transformers' allow us to stack monads, but what does that mean?
+  // Well, basically it means that you can wrap/nest one monad inside another for example, using the standard Scala library:
+  // Option[Option[A]] would be a 'stack of monads', of a Future[Option[A]] or a String \/ Option[A], List[Option[A]], and so on.
+
+  // The problem monad transformers fix for us is giving us a simple and easy way (convenient), to work with this
+  // nested structure of monads without needing to inline-unwrap the nested monad.
+
+  // To effectively use Monad Transformers, we need three things:
+  // 1. Type Definitions
+  // 2. A way to construct values of these new types we defined
+  // 3. The removal of one layer of nesting when we use the monad
+
+  // For example, to use the 'OptionT' monad transformer, it has the following type:
+  // OptionT[M[_], A] which means that it is a monad transformer that constructs an Option[A] inside the monad 'M'.
+  // So monad transformers are build from the inside-out.
+  //
+
+  // 1. defining types
+
+  // We have just defined two types (aliases) for the monad we wrap around the Option. This is needed
+  // because of type-inference. OptionT expects M to have (one) kind (type), which is M[_], and that is a single parameter,
+  // but the Disjunction (\/) has two type parameters. By using a type-alias we can get from two parameters to one.
+
+  // 2. construct values of the defined types
+  //  val result: Result[Int] = 42.point[Result]
