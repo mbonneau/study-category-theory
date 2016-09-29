@@ -13,9 +13,10 @@ initialize ~= { _ =>
 }
 
 initialCommands in console := """
-    import scalaz._, Scalaz._
-    import scalaz.concurrent._ 
-    import scala.concurrent._
-    import scala.collection.immutable._
-    import scala.concurrent.ExecutionContext.Implicits.global
-    """
+import scalaz._, Scalaz._
+import scalaz.syntax.foldable1._ //  for foldable structures that are guaranteed to have at least one element
+import scalaz.concurrent._ 
+import scala.concurrent._
+import scala.collection.immutable._
+import scala.concurrent.ExecutionContext.Implicits.global
+"""

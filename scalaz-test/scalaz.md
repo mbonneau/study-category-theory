@@ -105,3 +105,98 @@ fooMonoid: scalaz.Monoid[Foo] = scalaz.Monoid$$anon$6@12ef69cf
 scala> (1 to 5).map(Foo.apply).toList.suml
 res27: Foo = Foo(15)
 ```
+
+# Scalaz StringOps
+String's toInt, toDouble etc throw exceptions. Scalaz provides nifty String parse methods that return validations
+
+Hoi! weer een klein stukje Scalaz! Stel dat we een tekst willen parsen en we doen dat met Scala, dan kunnen we de methoden .toInt, .toLong, toDouble, toFloat, toBoolean gebruiken. Dit zijn standaard methoden die je terug kunt vinden op het String object, dus nog niks Scalaz.. 
+
+scala> "1".toLong                                                                                                                                                                                                                                                                
+res27: Long = 1
+
+Voor het happy pad is dit prima, we hebben een "1" omgezet naar een Long value, prachtig, maar wat nu als we het volgende doen:
+
+scala> "".toLong                                                                                                                                                                                                                                                                 
+java.lang.NumberFormatException: For input string: ""                                                                                                                                                                                                                            
+
+Ah darn, een exception, wat zoveel wil zeggen dat ons programma nu stopt. What to do?? I know! Scalaz!
+
+Scalaz geeft ons een aantal methoden die we kunnen gebruiken op het String object om een String te parsen (so to speak) waaronder: parseBoolean, parseByte, parseShort, parseInt, parseLong, parseFloat, parseDouble, parseBigInt en parseBigDecimal. Poe, een boel methoden. Laten we eens kijken wat ze doen!
+
+scala> "1".parseLong                                                                                                                                                                                                                                                             
+res29: scalaz.Validation[NumberFormatException,Long] = Success(1)
+
+Het happy pad! Goed zeg, we hebben een resultaat, maar wat nu? Onze return type is geen Long, maar een rare scalaz.Validation. Laten we even snel naar de fout situatie kijken dan komen we hier op terug (I promise).
+
+scala> "".parseLong                                                                                                                                                                                                                                                              
+res30: scalaz.Validation[NumberFormatException,Long] = Failure(java.lang.NumberFormatException: For input string: "")
+
+Oke een fout situatie, we kunnen de String niet parsen en we krijgen een Failure met daarin een fout. In de goed situatie krijgen we een Success. Misschien is het opgevallen, maar de Failure en Success is niet van het type scala.util.Failure of scala.util.Success maar is een subtype van scalaz.Validation. Een detail maar wel goed om te weten.
+
+Omdat we met Scalaz werken zal het je niet verbazen dat we met hogere functies bezig zijn, met andere woorden we zijn (heavy) lifters :) Wat kunnen we met zo'n validation failure of validation success doen? 
+
+Wat we kunnen doen met zo'n validation is de waarde uit de validatie halen met bijvoorbeeld een default waarde stel het volgende:
+
+```
+scala> "".parseLong.getOrElse(0)                                                                                                                                                                                                                                                 
+res38: AnyVal = 0                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                 
+scala> "1".parseLong.getOrElse(0)                                                                                                                                                                                                                                                
+res39: AnyVal = 1
+```
+
+Met andere woorden, als de validatie faalt, dan hebben we een default waarde van 0, en als de validatie lukt, dan hebben we de waarde.
+
+Stel dat je programma met Scala's Option type werkt (en dat is prima btw), dan kun je een Validation omzetten in een Option:
+
+```
+scala> "".parseLong.toOption                                                                                                                                                                                                                                                     
+res40: Option[Long] = None                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                 
+scala> "1".parseLong.toOption                                                                                                                                                                                                                                                    
+res41: Option[Long] = Some(1)
+```
+
+Wat kunnen we nog meer met een Validation? De validation snapt de welbekende 'map' operatie, dus we kunnen het volgende doen:
+
+````
+scala> "1".parseLong.map(_ + 1)                                                                                                                                                                                                                                                  
+res45: scalaz.Validation[NumberFormatException,Long] = Success(2)                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                 
+scala> "".parseLong.map(_ + 1)                                                                                                                                                                                                                                                   
+res46: scalaz.Validation[NumberFormatException,Long] = Failure(java.lang.NumberFormatException: For input string: "")
+````
+
+Dus de map zal worden uitgevoerd als het parsen is gelukt, en anders niet. Nice! 
+
+Als we gebruik maken van control structures in onze code, dan zullen we ook willen weten of het parsen is gelukt of niet, ook dat kunnen we vragen aan Validation:
+
+```
+scala> "1".parseLong.isSuccess                                                                                                                                                                                                                                                   
+res58: Boolean = true                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                 
+scala> "1".parseLong.isFailure                                                                                                                                                                                                                                                   
+res59: Boolean = false
+```
+
+We kunnen ook side effects uitvoeren op het success resultaat van het parsen bijvoorbeeld:
+
+```
+scala> "1".parseLong.foreach(println)                                                                                                                                                                                                                                            
+1                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                 
+scala> "".parseLong.foreach(println)
+```
+
+Validation heeft een linker en een rechterkant, de Failure (links) en de Success (rechts). We kunnen expliciet aangeven dat we een map operatie willen uitvoeren
+aan de linker of rechter kan van het resultaat door middel van leftMap en rightMap. 
+
+```
+scala> "1".parseLong.rightMap(_ + 1)                                                                                                                                                                                                                                             
+res70: scalaz.Validation[NumberFormatException,Long] = Success(2)                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                 
+scala> "foo".parseLong.leftMap { t: Throwable => "Error while parsing to Long: " + t.getMessage }                                                                                                                                                                                
+res71: scalaz.Validation[String,Long] = Failure(Error while parsing to Long: For input string: "foo")
+```
+
+Met de map operatie kunnen we de type veranderen van bijvoorbeeld de linker kant. De Throwable kunnen we veranderen in een String wat handig is als we een duidelijke fout melding willen loggen of willen communiceren aan de client.
