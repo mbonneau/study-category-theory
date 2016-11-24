@@ -30,7 +30,6 @@ class ValidationTest extends TestSpec {
 
     val validation = Validation(e1, e2, e3)
     validation.failures should be(List("nan", "nan2"))
-    validation.successes should be(List(1))
   }
 
   "Either" should "compose using flatMap and map" in {

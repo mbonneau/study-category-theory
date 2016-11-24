@@ -6,10 +6,15 @@ version := "1.0.0"
 
 scalaVersion := "2.11.8"
 
+resolvers ++= Seq(
+  "scalaz" at "http://dl.bintray.com/scalaz/releases",
+  "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
+)
+
 libraryDependencies ++= {
-  val akkaVersion = "2.4.10"
+  val akkaVersion = "2.4.11"
   val scalazVersion = "7.2.6"
-  val hamstersVersion = "1.0.4"
+  val hamstersVersion = "1.0.7"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
@@ -17,8 +22,9 @@ libraryDependencies ++= {
     "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
     "io.github.scala-hamsters" %% "hamsters" % hamstersVersion,
     "org.scalaz" %% "scalaz-core" % scalazVersion,
+    "org.typelevel" %% "scalaz-outlaws" % "0.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-    "org.typelevel" %% "scalaz-scalatest" % "1.0.0" % Test,
+    "org.typelevel" %% "scalaz-scalatest" % "1.1.0" % Test,
     "org.scalatest" %% "scalatest" % "2.2.6" % Test
   )
 }

@@ -6,33 +6,24 @@ Much like Functor is for things that can be mapped over, Foldable is for things 
 
 # Scala List
 ```scala
-scala> val ys = List(1, 2, 3)
+scala> val xs = List(1, 2, 3)
 ys: List[Int] = List(1, 2, 3)
 
-scala> val intMonoid = implicitly[Monoid[Int]]
-intMonoid: scalaz.Monoid[Int] = scalaz.std.AnyValInstances$$anon$5@129a66ef
+// when we have an available Monoid for the parameterized type (List), 
+// we can collapse the Foldable using the monoid:
+scala> Foldable[List].fold(xs)
+res1: Int = 6
 
-scala> Foldable[List].foldLeft(ys, intMonoid.zero)(_ |+| _)
-res4: Int = 6
+scala> Foldable[List].foldLeft(xs, Monoid[Int].zero)(_ |+| _)
+res2: Int = 6
 
-scala> ys.foldLeft(intMonoid.zero)(_ |+| _)
-res5: Int = 6
+// We can import syntax for foldable, 
+// allowing us to "enhance" the foldable (List) 
+// with the new methods:
+scala> import scalaz.syntax.foldable._
+import scalaz.syntax.foldable._
 
-scala> Foldable[List].fold(ys)
-res8: Int = 6
 
-scala> Foldable[List].fold(List.empty[Int])
-res10: Int = 0
-
-scala> Foldable[List].foldLeft(List.empty[Int], intMonoid.zero)(_ |+| _)
-res13: Int = 0
-
-// scalaz supports getting instances with the following syntax
-scala> Monoid[Int]
-res15: scalaz.Monoid[Int] = scalaz.std.AnyValInstances$$anon$5@129a66ef
-
-scala> Foldable[List].foldLeft(List.empty[Int], Monoid[Int].zero)(_ |+| _)
-res16: Int = 0
 ```
 
 # NonEmptyList
