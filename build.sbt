@@ -6,15 +6,18 @@ version := "1.0.0"
 
 scalaVersion := "2.11.8"
 
-//resolvers ++= Seq(
+resolvers ++= Seq(
   "scalaz" at "http://dl.bintray.com/scalaz/releases",
-  "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
+  "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots",
+  Resolver.sonatypeRepo("releases"),
+  Resolver.sonatypeRepo("snapshots")
 )
 
 libraryDependencies ++= {
   val akkaVersion = "2.4.14"
   Seq(
     "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+    "com.chuusai" %% "shapeless" % "2.3.2",
     "io.github.scala-hamsters" %% "hamsters" % "1.0.7",
     "org.scalaz" %% "scalaz-core" % "7.2.7",
     "org.typelevel" %% "scalaz-outlaws" % "0.2",
