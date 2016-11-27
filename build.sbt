@@ -6,26 +6,22 @@ version := "1.0.0"
 
 scalaVersion := "2.11.8"
 
-resolvers ++= Seq(
+//resolvers ++= Seq(
   "scalaz" at "http://dl.bintray.com/scalaz/releases",
   "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
 )
 
 libraryDependencies ++= {
-  val akkaVersion = "2.4.11"
-  val scalazVersion = "7.2.6"
-  val hamstersVersion = "1.0.7"
+  val akkaVersion = "2.4.14"
   Seq(
-    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
-    "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
     "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
-    "io.github.scala-hamsters" %% "hamsters" % hamstersVersion,
-    "org.scalaz" %% "scalaz-core" % scalazVersion,
+    "io.github.scala-hamsters" %% "hamsters" % "1.0.7",
+    "org.scalaz" %% "scalaz-core" % "7.2.7",
     "org.typelevel" %% "scalaz-outlaws" % "0.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+    "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test,
     "org.typelevel" %% "scalaz-scalatest" % "1.1.0" % Test,
-    "org.scalatest" %% "scalatest" % "2.2.6" % Test
+    "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M1" % Test
   )
 }
 
@@ -55,4 +51,4 @@ headers := Map(
   "conf" -> Apache2_0("2016", "Dennis Vriend", "#")
 )
 
-enablePlugins(AutomateHeaderPlugin)
+enablePlugins(AutomateHeaderPlugin, PlayScala)

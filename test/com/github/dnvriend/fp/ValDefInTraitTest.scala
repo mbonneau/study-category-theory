@@ -17,7 +17,6 @@
 package com.github.dnvriend.fp
 
 import com.github.dnvriend.{ Person, TestSpec }
-import spray.json._
 
 class ValDefInTraitTest extends TestSpec {
 
@@ -36,12 +35,12 @@ class ValDefInTraitTest extends TestSpec {
    */
 
   class PersonRepository {
-    def persons: Seq[Person] = (20 to 22).map(age ⇒ Person(s"Person$age", age))
+    def people: Seq[Person] = (20 to 22).map(age ⇒ Person(s"Person$age", age))
   }
 
   trait NotInitializedPersonRoute {
     val personRepository: PersonRepository // abstract personRepository
-    val route: String = personRepository.persons.toJson.compactPrint // will be made 'stable' thus evaluated when initialized
+    val route: String = personRepository.people.toJson.toString // will be made 'stable' thus evaluated when initialized
   }
 
   object NotInializedRestService extends NotInitializedPersonRoute {
@@ -54,7 +53,7 @@ class ValDefInTraitTest extends TestSpec {
 
   trait PersonRoute {
     def personRepository: PersonRepository
-    def route: String = personRepository.persons.toJson.compactPrint
+    def route: String = personRepository.people.toJson.toString
   }
 
   object RestService extends PersonRoute {
@@ -62,6 +61,6 @@ class ValDefInTraitTest extends TestSpec {
   }
 
   "RestService" should "initialize correctly" in {
-    RestService.route shouldBe """[{"name":"Person20","age":20},{"name":"Person21","age":21},{"name":"Person22","age":22}]"""
+    RestService.route shouldBe """[{"firstName":"Person20","age":20},{"firstName":"Person21","age":21},{"firstName":"Person22","age":22}]"""
   }
 }

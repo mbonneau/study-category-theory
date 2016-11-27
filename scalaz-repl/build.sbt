@@ -4,7 +4,8 @@ val scalazVersion = "7.2.7"
 
 libraryDependencies ++= Seq(
     "org.scalaz" %% "scalaz-core" % scalazVersion,
-    "org.scalaz" %% "scalaz-concurrent" % scalazVersion
+    "org.scalaz" %% "scalaz-concurrent" % scalazVersion,
+    "org.typelevel" %% "scalaz-outlaws" % "0.2"
 )
 
 initialize ~= { _ =>
@@ -18,5 +19,6 @@ import scalaz.syntax.foldable1._ //  for foldable structures that are guaranteed
 import scalaz.concurrent._ 
 import scala.concurrent._
 import scala.collection.immutable._
+import scalaz.outlaws.std.utilTry._
 import scala.concurrent.ExecutionContext.Implicits.global
 """
