@@ -1,8 +1,15 @@
 # study-category-theory
-This resource is for my study on Functional Programming and Category Theory. I will be using Haskell and Scala/Scalaz.
+This resource is for my study on Functional Programming, Generic Programming, Typelevel Programming and Category Theory.
+I will be using Haskell and Scala/Scalaz and whatever else comes my way.
 
 # Disclaimer
-Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz expert. I'm a beginner that has made a lot of progress." which also applies to me I guess. So don't learn from me, but maybe, get inspired and go look at Functional Programming, Haskell, Scala and Scalaz. 
+Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz expert.
+I'm a beginner that has made a lot of progress." which also applies to me I guess. So don't learn from me,
+but maybe, get inspired and go look at Functional Programming, [Haskell](https://www.haskell.org/),
+[Scala](http://www.scala-lang.org/), [Scalaz](https://github.com/scalaz), [the typelevel project](https://github.com/typelevel),
+[Cats](https://github.com/typelevel/cats), [Scala Hamsters](https://github.com/scala-hamsters/hamsters),
+[Shapeless](https://github.com/milessabin/shapeless) and overal create happy and therefor easy to reason about
+composable functions when applied are called programs.
 
 # Category Theory Video
 - [Introduction to Category Theory 1 - Steven Roman](https://www.youtube.com/watch?v=If6VUXZIB-4)
