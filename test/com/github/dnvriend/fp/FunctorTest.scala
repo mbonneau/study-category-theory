@@ -50,15 +50,15 @@ class FunctorTest extends TestSpec {
    */
   trait Functor[T[_]] {
     def apply[A](x: A): T[A]
-    def map[A, B](x: T[A])(f: A ⇒ B): T[B]
+    def map[A, B](x: T[A])(f: A => B): T[B]
   }
 
   // example
 
   class Box[+A](x: A) {
     def get: A = x
-    def map[B](f: A ⇒ B): Box[B] = Box(f(x))
-    def flatMap[B](f: A ⇒ Box[B]) = f(x)
+    def map[B](f: A => B): Box[B] = Box(f(x))
+    def flatMap[B](f: A => Box[B]) = f(x)
   }
 
   object Box {
@@ -67,12 +67,12 @@ class FunctorTest extends TestSpec {
 
   class BoxAsFunctor extends Functor[Box] {
     override def apply[A](x: A): Box[A] = Box(x)
-    override def map[A, B](x: Box[A])(f: (A) ⇒ B): Box[B] = x.map(f)
+    override def map[A, B](x: Box[A])(f: (A) => B): Box[B] = x.map(f)
   }
 }
 
 trait Functor[F[_]] {
-  def map[A, B](fa: F[A])(f: A ⇒ B): F[B]
+  def map[A, B](fa: F[A])(f: A => B): F[B]
 }
 
 // the map definition of Functor must comply with the following rules...
@@ -80,11 +80,11 @@ trait FunctorLaws {
   // 1st law: If we map the id function over a functor, the functor that
   // we get back should be the same as the original functor.
   def identity[F[_], A](fa: F[A])(implicit F: Functor[F]): Boolean =
-    F.map(fa)(a ⇒ a) == fa
+    F.map(fa)(a => a) == fa
 
   // 2nd law: Composing two functions and then mapping the resulting function over a functor
   // should be the same as first mapping one function over the functor and then mapping the other one.
-  def composition[F[_], A, B, C](fa: F[A], f: A ⇒ B, g: B ⇒ C)(implicit F: Functor[F]): Boolean =
+  def composition[F[_], A, B, C](fa: F[A], f: A => B, g: B => C)(implicit F: Functor[F]): Boolean =
     F.map(F.map(fa)(f))(g) == F.map(fa)(f andThen g)
 }
 
@@ -92,9 +92,9 @@ trait FunctorLaws {
 // test:console
 object Functor {
   implicit val listFunctor: Functor[List] = new Functor[List] {
-    override def map[A, B](fa: List[A])(f: (A) ⇒ B): List[B] = fa.map(f)
+    override def map[A, B](fa: List[A])(f: (A) => B): List[B] = fa.map(f)
   }
   implicit val optionFunctor: Functor[Option] = new Functor[Option] {
-    override def map[A, B](fa: Option[A])(f: (A) ⇒ B): Option[B] = fa.map(f)
+    override def map[A, B](fa: Option[A])(f: (A) => B): Option[B] = fa.map(f)
   }
 }

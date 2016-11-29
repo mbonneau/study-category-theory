@@ -35,7 +35,7 @@ class ValDefInTraitTest extends TestSpec {
    */
 
   class PersonRepository {
-    def people: Seq[Person] = (20 to 22).map(age ⇒ Person(s"Person$age", age))
+    def people: Seq[Person] = (20 to 22).map(age => Person(s"Person$age", age))
   }
 
   trait NotInitializedPersonRoute {

@@ -55,9 +55,9 @@ class ForExpressionTest extends TestSpec {
     // and the name of the child
     type MotherAndChildName = (String, String)
     val xs: List[MotherAndChildName] = for {
-      p ← persons
+      p <- persons
       if !p.isMale
-      c ← p.children
+      c <- p.children
     } yield (p.name, c.name)
     xs shouldBe List(("Julie", "Lara"), ("Julie", "Bob"))
   }
@@ -90,8 +90,8 @@ class ForExpressionTest extends TestSpec {
 
   it should "find the title of all books whose author's last name is Gosling" in {
     val result = for {
-      b ← books
-      a ← b.authors
+      b <- books
+      a <- b.authors
       if a.startsWith("Gosling")
     } yield b.title
 
@@ -100,7 +100,7 @@ class ForExpressionTest extends TestSpec {
 
   it should "find the titles of all books that have the string 'Program' in their title" in {
     val result = for {
-      b ← books
+      b <- books
       if b.title.indexOf("Program") >= 0
     } yield b.title
 
@@ -113,11 +113,11 @@ class ForExpressionTest extends TestSpec {
 
   it should "find the names of all authors that have written at least two books in the database" in {
     val result = for {
-      b1 ← books
-      b2 ← books
+      b1 <- books
+      b2 <- books
       if b1 != b2;
-      a1 ← b1.authors
-      a2 ← b2.authors
+      a1 <- b1.authors
+      a2 <- b2.authors
       if a1 == a2
     } yield a1
 
@@ -125,11 +125,11 @@ class ForExpressionTest extends TestSpec {
 
     // let's remove the double entry
     def removeDuplicates(xs: List[String]): List[String] = xs match {
-      case Nil ⇒ xs
-      case head :: tail ⇒
+      case Nil => xs
+      case head :: tail =>
         head :: removeDuplicates(
           for {
-            x ← tail
+            x <- tail
             if x != xs.head
           } yield x
         )

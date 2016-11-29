@@ -60,8 +60,8 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
    */
 
   def validDBUser(dbObj: DBObject): Validation[String, User] = dbObj.user match {
-    case Some(user) ⇒ Success(user)
-    case _          ⇒ Failure(s"DBObject $dbObj does not contain a user object")
+    case Some(user) => Success(user)
+    case _          => Failure(s"DBObject $dbObj does not contain a user object")
   }
 
   "Validate DB Object" should "be able to validate on user" in {
@@ -72,15 +72,15 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
   }
 
   def postOfficeValid(address: Address): Boolean = address match {
-    case Address(city) if city == "R'lyeh" ⇒ false
-    case _                                 ⇒ true
+    case Address(city) if city == "R'lyeh" => false
+    case _                                 => true
   }
 
   def validAddress(user: Option[User]): Validation[String, Address] = user match {
-    case Some(User(_, _, Some(address))) if postOfficeValid(address) ⇒ address.success
-    case Some(User(_, _, Some(address)))                             ⇒ s"Invalid address: address: ${address.city} not recognized by postal service".failure
-    case Some(user @ User(_, _, None))                               ⇒ s"User: ${user.first} ${user.last} has no defined address".failure
-    case None                                                        ⇒ "No such user".failure
+    case Some(User(_, _, Some(address))) if postOfficeValid(address) => address.success
+    case Some(User(_, _, Some(address)))                             => s"Invalid address: address: ${address.city} not recognized by postal service".failure
+    case Some(user @ User(_, _, None))                               => s"User: ${user.first} ${user.last} has no defined address".failure
+    case None                                                        => "No such user".failure
   }
 
   "Validate User" should "be able to validate on address" in {
@@ -121,21 +121,21 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
   it should "cthulu to failure" in {
     validateUser(cthulu) should be a 'failure
     validateUser(cthulu) should matchPattern {
-      case Failure("Invalid address: address: R'lyeh not recognized by postal service") ⇒
+      case Failure("Invalid address: address: R'lyeh not recognized by postal service") =>
     }
   }
 
   it should "Jon Pretty to failure" in {
     validateUser(jonPretty) should be a 'failure
     validateUser(jonPretty) should matchPattern {
-      case Failure("User: Jon Pretty has no defined address") ⇒
+      case Failure("User: Jon Pretty has no defined address") =>
     }
   }
 
   it should "no such person to failure" in {
     validateUser(noSuchPerson) should be a 'failure
     validateUser(noSuchPerson) should matchPattern {
-      case Failure("DBObject DBObject(6,None) does not contain a user objectNo such user") ⇒
+      case Failure("DBObject DBObject(6,None) does not contain a user objectNo such user") =>
     }
 
     // !! Note, the "*>" on Validation appends all the errors together
@@ -156,23 +156,23 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
    * We can be explicit and construct a NonEmptyList, and also declare the types explicitly
    */
   def validDBUserNELExplicit(dbObj: DBObject): Validation[NonEmptyList[String], User] = dbObj.user match {
-    case Some(user) ⇒ Success(user)
-    case _          ⇒ Failure(NonEmptyList(s"DBObject $dbObj does not contain a user object"))
+    case Some(user) => Success(user)
+    case _          => Failure(NonEmptyList(s"DBObject $dbObj does not contain a user object"))
   }
 
   /**
    * Or we can use some helpful shortcuts, call .failureNel and declare the ValidationNel type
    */
   def validDBUserNel(dbObj: DBObject): ValidationNel[String, User] = dbObj.user match {
-    case Some(user) ⇒ Success(user)
-    case _          ⇒ s"DBObject $dbObj does not contain a user object".failureNel
+    case Some(user) => Success(user)
+    case _          => s"DBObject $dbObj does not contain a user object".failureNel
   }
 
   def validAddressNel(user: Option[User]): ValidationNel[String, Address] = user match {
-    case Some(User(_, _, Some(address))) if postOfficeValid(address) ⇒ address.success
-    case Some(User(_, _, Some(address)))                             ⇒ s"Invalid address: address: ${address.city} not recognized by postal service".failureNel
-    case Some(user @ User(_, _, None))                               ⇒ s"User: ${user.first} ${user.last} has no defined address".failureNel
-    case None                                                        ⇒ "No such user".failureNel
+    case Some(User(_, _, Some(address))) if postOfficeValid(address) => address.success
+    case Some(User(_, _, Some(address)))                             => s"Invalid address: address: ${address.city} not recognized by postal service".failureNel
+    case Some(user @ User(_, _, None))                               => s"User: ${user.first} ${user.last} has no defined address".failureNel
+    case None                                                        => "No such user".failureNel
   }
 
   def validateUserNel(dbObj: DBObject): ValidationNel[String, Address] =
@@ -180,7 +180,7 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
 
   "validating using NEL" should "no such person to failure" in {
     validateUserNel(noSuchPerson) should matchPattern {
-      case Failure(NonEmptyList(_, _)) ⇒
+      case Failure(NonEmptyList(_, _)) =>
     }
   }
 
@@ -193,22 +193,22 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
 
   "combining two validations" should "produce a new output" in {
     val result: ValidationNel[String, String] = (validDBUserNel(brendanCA) |@| validAddressNel(brendanCA.user)) {
-      case (user, address) ⇒
+      case (user, address) =>
         s"User ${user.first} ${user.last} lives in ${address.city}"
     }
     result should be a 'success
     result should matchPattern {
-      case Success("User Brendan McAdams lives in Sunnyvale") ⇒
+      case Success("User Brendan McAdams lives in Sunnyvale") =>
     }
   }
 
   it should "combine three validations" in {
     val result: ValidationNel[String, String] = (validDBUserNel(brendanCA) |@| validDBUserNel(brendanCA) |@| validDBUserNel(brendanCA)) {
-      case (user1, user2, user3) ⇒ s"${user1.first},${user2.first},${user3.first}"
+      case (user1, user2, user3) => s"${user1.first},${user2.first},${user3.first}"
     }
     result should be a 'success
     result should matchPattern {
-      case Success("Brendan,Brendan,Brendan") ⇒
+      case Success("Brendan,Brendan,Brendan") =>
     }
   }
 
@@ -226,9 +226,9 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
   }
 
   it should "be converted to Int using Try for each element" in {
-    def toInt(mayBeInts: List[String]): List[Try[Int]] = mayBeInts.map(x ⇒ Try(x.toInt))
+    def toInt(mayBeInts: List[String]): List[Try[Int]] = mayBeInts.map(x => Try(x.toInt))
     toInt(List("x", "y", "1")) should matchPattern {
-      case List(scala.util.Failure(_), scala.util.Failure(_), scala.util.Success(_)) ⇒
+      case List(scala.util.Failure(_), scala.util.Failure(_), scala.util.Success(_)) =>
     }
 
     toInt(List("x", "y", "1")).exists(_.isFailure) should be(true)
@@ -240,7 +240,7 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
   it should "be converted as a whole to failure or success using Try" in {
     def toInt(mayBeInts: List[String]): Try[List[Int]] = Try(mayBeInts map (_.toInt))
     toInt(List("x", "y", "1")) should matchPattern {
-      case scala.util.Failure(_) ⇒
+      case scala.util.Failure(_) =>
     }
 
     // it only gave us one failure and failed fast. Not able to accrue errors
@@ -248,7 +248,7 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
 
   it should "be converted and errors accrued using ValidationNel" in {
     def toInts(maybeInts: List[String]): ValidationNel[Throwable, List[Int]] = {
-      val validationList = maybeInts map { s ⇒
+      val validationList = maybeInts map { s =>
         Validation.fromTryCatchNonFatal(s.toInt :: Nil).toValidationNel
       }
       validationList reduce (_ +++ _)
@@ -258,11 +258,11 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
     // a single result where we can access either the successful value
     // or all errors found when parsing
     toInts(List("1", "2", "3")) should matchPattern {
-      case Success(List(1, 2, 3)) ⇒
+      case Success(List(1, 2, 3)) =>
     }
 
     toInts(List("1", "2", "3", "x", "z")) should matchPattern {
-      case Failure(NonEmptyList(_, _)) ⇒
+      case Failure(NonEmptyList(_, _)) =>
     }
   }
 
@@ -271,26 +271,26 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
    */
 
   it should "convert using a general validate method" in {
-    def validate[F[_]: Foldable, A, B: Monoid](in: F[A])(out: A ⇒ B): ValidationNel[Throwable, B] = {
-      in.foldMap(a ⇒ Validation.fromTryCatchNonFatal[B](out(a)).toValidationNel)
+    def validate[F[_]: Foldable, A, B: Monoid](in: F[A])(out: A => B): ValidationNel[Throwable, B] = {
+      in.foldMap(a => Validation.fromTryCatchNonFatal[B](out(a)).toValidationNel)
     }
     def toInts(maybeInts: List[String]): ValidationNel[Throwable, List[Int]] =
       validate(maybeInts)(_.toInt :: Nil)
 
     toInts(List("1", "2", "3")) should matchPattern {
-      case Success(List(1, 2, 3)) ⇒
+      case Success(List(1, 2, 3)) =>
     }
 
     validate(Option("x"))(_.toInt) should matchPattern {
-      case Failure(NonEmptyList(_)) ⇒
+      case Failure(NonEmptyList(_)) =>
     }
 
     validate(Option("1"))(_.toInt) should matchPattern {
-      case Success(1) ⇒
+      case Success(1) =>
     }
 
     validate(Vector("1"))(_.toInt) should matchPattern {
-      case Success(1) ⇒
+      case Success(1) =>
     }
   }
 

@@ -39,9 +39,9 @@ class ValidationTest extends TestSpec {
     val e3 = OK(3)
 
     val combine = for {
-      v1 ← e1
-      v2 ← e2
-      v3 ← e3
+      v1 <- e1
+      v2 <- e2
+      v3 <- e3
     } yield s"$v1-$v2-$v3"
 
     combine should be(OK("1-2-3"))
@@ -55,9 +55,9 @@ class ValidationTest extends TestSpec {
     val e3: Either[String, Int] = KO("nan2")
 
     val combine = for {
-      v1 ← e1
-      v2 ← e2
-      v3 ← e3
+      v1 <- e1
+      v2 <- e2
+      v3 <- e3
     } yield s"$v1-$v2-$v3"
 
     combine should be(KO("nan"))

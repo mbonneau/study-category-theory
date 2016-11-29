@@ -25,50 +25,50 @@ class FunctionTest extends TestSpec {
     val f0_1: Function0[Unit] = new Function0[Unit] {
       override def apply(): Unit = Unit
     }
-    val f0_2: Function0[Unit] = () ⇒ Unit
-    val f0_3: Unit = () ⇒ Unit
+    val f0_2: Function0[Unit] = () => Unit
+    val f0_3: Unit = () => Unit
 
     // all three are the same
     val f1_1: Function1[Unit, Unit] = new Function1[Unit, Unit] {
       override def apply(x: Unit): Unit = Unit
     }
-    val f1_2: Function1[Unit, Unit] = (x: Unit) ⇒ Unit
-    val f1_3: (Unit ⇒ Unit) = (x: Unit) ⇒ Unit
+    val f1_2: Function1[Unit, Unit] = (x: Unit) => Unit
+    val f1_3: (Unit => Unit) = (x: Unit) => Unit
 
     // all three are the same
     val f2_1: Function1[Int, Unit] = new Function1[Int, Unit] {
       override def apply(x: Int): Unit = Unit
     }
-    val f2_2: Function1[Int, Unit] = (x: Int) ⇒ Unit
-    val f2_3: (Int ⇒ Unit) = (x: Int) ⇒ Unit
+    val f2_2: Function1[Int, Unit] = (x: Int) => Unit
+    val f2_3: (Int => Unit) = (x: Int) => Unit
 
     // all three are the same
     val f3_1: Function[Int, Int] = new Function1[Int, Int] {
       override def apply(x: Int): Int = x
     }
-    val f3_2: Function1[Int, Int] = (x: Int) ⇒ x
-    val f3_3: Int ⇒ Int = (x: Int) ⇒ x
+    val f3_2: Function1[Int, Int] = (x: Int) => x
+    val f3_3: Int => Int = (x: Int) => x
 
     // all three are the same
     val f4_1: Function2[Int, Int, Unit] = new Function2[Int, Int, Unit] {
       override def apply(x: Int, y: Int): Unit = Unit
     }
-    val f4_2: Function2[Int, Int, Unit] = (x: Int, y: Int) ⇒ Unit
-    val f4_3: (Int, Int) ⇒ Unit = (x: Int, y: Int) ⇒ Unit
+    val f4_2: Function2[Int, Int, Unit] = (x: Int, y: Int) => Unit
+    val f4_3: (Int, Int) => Unit = (x: Int, y: Int) => Unit
 
     // all three are the same
     val f5_1: Function2[Int, Int, Int] = new Function2[Int, Int, Int] {
       override def apply(x: Int, y: Int): Int = x + y
     }
-    val f5_2: Function2[Int, Int, Int] = (x: Int, y: Int) ⇒ x + y
-    val f5_3: (Int, Int) ⇒ Int = (x: Int, y: Int) ⇒ x + y
+    val f5_2: Function2[Int, Int, Int] = (x: Int, y: Int) => x + y
+    val f5_3: (Int, Int) => Int = (x: Int, y: Int) => x + y
 
     // all three are the same
     val f6_1: Function3[Int, Int, Int, Unit] = new Function3[Int, Int, Int, Unit] {
       override def apply(x: Int, y: Int, z: Int): Unit = Unit
     }
-    val f6_2: Function3[Int, Int, Int, Unit] = (x: Int, y: Int, z: Int) ⇒ Unit
-    val f6_3: (Int, Int, Int) ⇒ Unit = (x: Int, y: Int, z: Int) ⇒ Unit
+    val f6_2: Function3[Int, Int, Int, Unit] = (x: Int, y: Int, z: Int) => Unit
+    val f6_3: (Int, Int, Int) => Unit = (x: Int, y: Int, z: Int) => Unit
   }
 
   "Functions" should "be able to be applied" in {
@@ -79,31 +79,31 @@ class FunctionTest extends TestSpec {
     // when you evaluate a function by applying a value to that function
     // it looks a lot like math:
 
-    val f: Int ⇒ Int = (x: Int) ⇒ x
+    val f: Int => Int = (x: Int) => x
     f(3) shouldBe 3
 
     // you can skip the type part if you wish:
 
-    val g = (x: Int) ⇒ x
+    val g = (x: Int) => x
     g(3) shouldBe 3
   }
 
   it should "look like math" in {
-    val f = (x: Int) ⇒ x * x
+    val f = (x: Int) => x * x
     f(2) shouldBe 4
 
-    val g = (x: Int) ⇒ x + x
+    val g = (x: Int) => x + x
     g(2) shouldBe 4
   }
 
   // see: http://www.purplemath.com/modules/fcncomp3.htm
 
   it should "be applied in sequence" in {
-    val f: Int ⇒ Int = (x: Int) ⇒ x * x
-    val g: Int ⇒ Int = (x: Int) ⇒ x + x + x
-    val h: Int ⇒ Int = (x: Int) ⇒ g(f(x))
-    val i: Int ⇒ Int = f andThen g
-    val j: Int ⇒ Int = f compose g
+    val f: Int => Int = (x: Int) => x * x
+    val g: Int => Int = (x: Int) => x + x + x
+    val h: Int => Int = (x: Int) => g(f(x))
+    val i: Int => Int = f andThen g
+    val j: Int => Int = f compose g
 
     // functions can be nested, this infuences the sequence of
     // evaluation which is first 'f' andThen 'g':
@@ -146,7 +146,7 @@ class FunctionTest extends TestSpec {
     // which is clearly not the case as they are methods! But why does the
     // compiler not complain?
 
-    def squareThenAdd(x: Int, f: Int ⇒ Int, g: Int ⇒ Int): Int = g(f(x))
+    def squareThenAdd(x: Int, f: Int => Int, g: Int => Int): Int = g(f(x))
     squareThenAdd(2, sqr, add) shouldBe 12
   }
 
@@ -159,17 +159,17 @@ class FunctionTest extends TestSpec {
     // compiler to the type Function1[Int, Int]. To show how this process works,
     // let's manually transform the method to a function:
 
-    def squareThenAdd(x: Int, f: Int ⇒ Int, g: Int ⇒ Int): Int = g(f(x))
+    def squareThenAdd(x: Int, f: Int => Int, g: Int => Int): Int = g(f(x))
 
     // create a new object of type Function[Int, Int] and
     // call the sqr method
-    val f: Int ⇒ Int = new Function1[Int, Int] {
+    val f: Int => Int = new Function1[Int, Int] {
       override def apply(x: Int): Int = sqr(x)
     }
 
     // create a new object of type Function[Int, Int] and
     // call the add method
-    val g: Int ⇒ Int = new Function1[Int, Int] {
+    val g: Int => Int = new Function1[Int, Int] {
       override def apply(x: Int): Int = add(x)
     }
 
@@ -195,7 +195,7 @@ class FunctionTest extends TestSpec {
     // for example, the function only has an answer for the input "ping", in
     // which it will return a "pong", but for all other inputs, it will throw a
     // 'Match Error'
-    val f: String ⇒ String = { case "ping" ⇒ "pong" }
+    val f: String => String = { case "ping" => "pong" }
     f("ping") shouldBe "pong"
     intercept[MatchError] {
       // evaluate the function by applying 'foo' to it
@@ -212,7 +212,7 @@ class FunctionTest extends TestSpec {
     // the literal '=>' which is shorthand for Function.
     // A partial function has the isDefinedAt method
     // so it can be checked
-    val f: PartialFunction[String, String] = { case "ping" ⇒ "pong" }
+    val f: PartialFunction[String, String] = { case "ping" => "pong" }
     // we can check whether the PartialFunction is defined for a given input
     // which is a big plus!
     f.isDefinedAt("ping") shouldBe true
@@ -257,8 +257,8 @@ class FunctionTest extends TestSpec {
     // 'f' is a PartialFunction that can be applied with 'List[Int]' and
     // returns a String.
     val f: PartialFunction[List[Int], String] = {
-      case Nil                     ⇒ "empty"
-      case first :: second :: tail ⇒ s"$first::$second::$tail"
+      case Nil                     => "empty"
+      case first :: second :: tail => s"$first::$second::$tail"
     }
 
     // As stated before, the PartialFunction can be applied with a List[Int], lets do so
@@ -276,9 +276,9 @@ class FunctionTest extends TestSpec {
     // when the tail is 'Nil', but when the tail is eg. a List(1, 2, 3) the nested
     // PartialFunction is not defined
     val f: PartialFunction[List[Int], String] = {
-      case Nil ⇒ "empty"
-      case head :: tail ⇒ tail match { // nested PartialFunction match is not exhaustive, so it will fail with List(_)
-        case Nil ⇒ "empty"
+      case Nil => "empty"
+      case head :: tail => tail match { // nested PartialFunction match is not exhaustive, so it will fail with List(_)
+        case Nil => "empty"
       }
     }
 

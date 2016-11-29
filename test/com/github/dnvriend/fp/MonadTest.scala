@@ -37,13 +37,13 @@ class MonadTest extends TestSpec {
    */
 
   trait M[T] {
-    self ⇒
+    self =>
     def get: T
 
-    def flatMap[U](f: T ⇒ M[U]): M[U]
+    def flatMap[U](f: T => M[U]): M[U]
 
     // flatMap method is also called 'bind'
-    def map[U](f: T ⇒ U): M[U]
+    def map[U](f: T => U): M[U]
 
     // in scala every monad also has a 'map' function
     def unit(x: T): M[T] // the Monad constructor, most often placed in the companion object of the monad
@@ -71,9 +71,9 @@ class MonadTest extends TestSpec {
 
   "Rule 1: Associativity: the sequence of evaluation does not matter" should "be true" in {
     val x = 2
-    val f: Int ⇒ Option[Int] = (x: Int) ⇒ Option(x * 2)
-    val g: Int ⇒ Option[Int] = (x: Int) ⇒ Option(x * 3)
-    Option(x).flatMap(f).flatMap(g) shouldBe Option(x).flatMap(x ⇒ f(x).flatMap(g))
+    val f: Int => Option[Int] = (x: Int) => Option(x * 2)
+    val g: Int => Option[Int] = (x: Int) => Option(x * 3)
+    Option(x).flatMap(f).flatMap(g) shouldBe Option(x).flatMap(x => f(x).flatMap(g))
   }
 
   /**
@@ -91,7 +91,7 @@ class MonadTest extends TestSpec {
 
   "Rule 2: Left Unit" should "be true" in {
     val x = 2
-    val f: Int ⇒ Option[Int] = (x: Int) ⇒ Option(x * 2)
+    val f: Int => Option[Int] = (x: Int) => Option(x * 2)
     (Option(x) flatMap f) shouldBe f(x)
   }
 
@@ -109,7 +109,7 @@ class MonadTest extends TestSpec {
 
   "Rule 3: Right Unit" should "be true" in {
     val x = 1
-    Option(x).flatMap(x ⇒ Option(x)) shouldBe Option(x)
+    Option(x).flatMap(x => Option(x)) shouldBe Option(x)
   }
 
   /**

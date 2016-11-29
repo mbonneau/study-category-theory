@@ -52,9 +52,9 @@ class KleisliTest extends TestSpec {
     // 3. Int => Option[Double]
     // 4. Return the Option[Double]
     (for {
-      x ← toStr(10)
-      y ← toInt(x)
-      z ← toDouble(y)
+      x <- toStr(10)
+      y <- toInt(x)
+      z <- toDouble(y)
     } yield z) shouldBe Option(20.0)
   }
 

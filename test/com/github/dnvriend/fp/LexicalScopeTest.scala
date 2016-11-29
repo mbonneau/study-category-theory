@@ -69,11 +69,11 @@ class LexicalScopeTest extends TestSpec { // this is the global scope
    * function () => String closes over those two variables and can be referenced from within
    * that function.
    */
-  def myModule: () ⇒ () ⇒ String = () ⇒ { // create a new scope using code block '{ .. }'
+  def myModule: () => () => String = () => { // create a new scope using code block '{ .. }'
     // lexical scope of the function 'greet'
     val name = "tim"
     val age = 28
-    val greet: () ⇒ String = () ⇒ s"Hello $name. Wow, you are $age years old."
+    val greet: () => String = () => s"Hello $name. Wow, you are $age years old."
     greet
   }
 
@@ -82,9 +82,9 @@ class LexicalScopeTest extends TestSpec { // this is the global scope
     greeter() shouldBe "Hello tim. Wow, you are 28 years old."
   }
 
-  def loops(max: Int): () ⇒ String = {
+  def loops(max: Int): () => String = {
     var i = 0
-    () ⇒ { // note; this is a Function0[String]
+    () => { // note; this is a Function0[String]
       while (i < max)
         i += 1
       i.toString

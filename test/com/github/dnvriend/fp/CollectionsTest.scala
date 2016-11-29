@@ -68,14 +68,14 @@ class CollectionsTest extends TestSpec {
     xs.foldLeft(1)(_ + _)
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x ← xs) yield x * 2
+    val xx = for (x <- xs) yield x * 2
     xx shouldBe Vector(2, 4, 6, 8, 10)
 
     // the Vector can also be created like this
-    val xy = for (x ← 1 to 5) yield x * 2
+    val xy = for (x <- 1 to 5) yield x * 2
     xy shouldBe Vector(2, 4, 6, 8, 10)
 
-    val xz = for (x ← 1 to 5 if x > 2) yield x
+    val xz = for (x <- 1 to 5 if x > 2) yield x
     xz shouldBe Vector(3, 4, 5)
 
     xs.foldLeft(1)(_ * _) shouldBe 120
@@ -116,10 +116,10 @@ class CollectionsTest extends TestSpec {
 
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x ← xs) yield x * 2
+    val xx = for (x <- xs) yield x * 2
     xx shouldBe List(2, 4, 6, 8, 10)
 
-    val xz = for (x ← 1 to 5 if x > 2) yield x
+    val xz = for (x <- 1 to 5 if x > 2) yield x
     xz shouldBe List(3, 4, 5)
 
     xs.foldLeft(1) { _ * _ } shouldBe 120
@@ -140,10 +140,10 @@ class CollectionsTest extends TestSpec {
 
     xs.sum shouldBe 1 + 2 + 3 + 4 + 5
 
-    val xx = for (x ← xs) yield x * 2
+    val xx = for (x <- xs) yield x * 2
     xx shouldBe Array(2, 4, 6, 8, 10)
 
-    val xz = for (x ← 1 to 5 if x > 2) yield x
+    val xz = for (x <- 1 to 5 if x > 2) yield x
     xz shouldBe Array(3, 4, 5)
 
     xs.foldLeft(1) { _ * _ } shouldBe 120
@@ -151,26 +151,26 @@ class CollectionsTest extends TestSpec {
 
   // manual map, flatMap and filter
 
-  def filter[A](seq: Seq[A])(p: A ⇒ Boolean): Seq[A] = {
+  def filter[A](seq: Seq[A])(p: A => Boolean): Seq[A] = {
     def helper(src: Seq[A], xs: Seq[A]): Seq[A] = src match {
-      case Nil          ⇒ xs
-      case head +: tail ⇒ if (p(head)) helper(tail, xs :+ head) else helper(tail, xs)
+      case Nil          => xs
+      case head +: tail => if (p(head)) helper(tail, xs :+ head) else helper(tail, xs)
     }
     helper(seq, Nil)
   }
 
-  def map[A, B](seq: Seq[A])(f: A ⇒ B): Seq[B] = {
+  def map[A, B](seq: Seq[A])(f: A => B): Seq[B] = {
     def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
-      case Nil          ⇒ xs
-      case head +: tail ⇒ helper(tail, xs :+ f(head))
+      case Nil          => xs
+      case head +: tail => helper(tail, xs :+ f(head))
     }
     helper(seq, Nil)
   }
 
-  def flatMap[A, B](seq: Seq[A])(f: A ⇒ Seq[B]): Seq[B] = {
+  def flatMap[A, B](seq: Seq[A])(f: A => Seq[B]): Seq[B] = {
     def helper(src: Seq[A], xs: Seq[B]): Seq[B] = src match {
-      case Nil          ⇒ xs
-      case head +: tail ⇒ helper(tail, xs ++ f(head))
+      case Nil          => xs
+      case head +: tail => helper(tail, xs ++ f(head))
     }
     helper(seq, Nil)
   }
@@ -180,7 +180,7 @@ class CollectionsTest extends TestSpec {
   }
 
   "manual flatMap" should "evaluate correctly" in {
-    flatMap(Seq(1, 2, 3)) { _ ⇒ Seq(1, 2, 3) } shouldBe Seq(1, 2, 3).flatMap(_ ⇒ Seq(1, 2, 3))
+    flatMap(Seq(1, 2, 3)) { _ => Seq(1, 2, 3) } shouldBe Seq(1, 2, 3).flatMap(_ => Seq(1, 2, 3))
   }
 
   "manual filter" should "evaluate correctly" in {

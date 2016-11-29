@@ -247,12 +247,12 @@ class TypeTest extends TestSpec {
 
   type Closable = { def close(): Unit } // define a structural type that only defines a method signature
 
-  def using[A <: Closable, B](stream: A)(f: A ⇒ B): B =
+  def using[A <: Closable, B](stream: A)(f: A => B): B =
     try f(stream) finally stream.close
 
   "Resource" should "always be closed after being used" in {
     val inputStream: InputStream = new FileInputStream(".gitignore")
-    val lines: List[String] = using(inputStream) { (is: InputStream) ⇒
+    val lines: List[String] = using(inputStream) { (is: InputStream) =>
       scala.io.Source.fromInputStream(is).getLines().toList
     }
     lines should not be 'empty

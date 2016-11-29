@@ -38,13 +38,13 @@ class StandardFlowTest extends TestSpec {
   //
   //  object AccountRepository {
   //    def findById(id: Long): Future[Option[Account]] = id match {
-  //      case 1            ⇒ Future.successful(Option(Account(1, 1000.00)))
-  //      case 2            ⇒ Future.successful(Option(Account(2, 5000.00)))
-  //      case 3            ⇒ Future.successful(Option(Account(3, 0.0)))
-  //      case 4            ⇒ Future.successful(Option(Account(4, 10000.00)))
-  //      case 5            ⇒ Future.successful(Option(Account(5, 500.00)))
-  //      case _ if id <= 0 ⇒ Future.failed(new RuntimeException("Database error"))
-  //      case _            ⇒ Future.successful(None)
+  //      case 1            => Future.successful(Option(Account(1, 1000.00)))
+  //      case 2            => Future.successful(Option(Account(2, 5000.00)))
+  //      case 3            => Future.successful(Option(Account(3, 0.0)))
+  //      case 4            => Future.successful(Option(Account(4, 10000.00)))
+  //      case 5            => Future.successful(Option(Account(5, 500.00)))
+  //      case _ if id <= 0 => Future.failed(new RuntimeException("Database error"))
+  //      case _            => Future.successful(None)
   //    }
   //
   //    def update(id: Long, amount: Double): Future[Unit] =
@@ -62,9 +62,9 @@ class StandardFlowTest extends TestSpec {
   //  object UpdateAccountService {
   //    def updateAccount(id: Long, amount: Double): Future[Done] =
   //      Source.fromFuture(AccountRepository.findById(id))
-  //        .map(account ⇒ GetAccountByIdResult(id, account))
+  //        .map(account => GetAccountByIdResult(id, account))
   //        .map(validateAccount)
-  //        .runForeach(_ ⇒ ())
+  //        .runForeach(_ => ())
   //
   //    def validateAccount(getAccountByIdResult: GetAccountByIdResult) = {
   //      validateAccountFound(getAccountByIdResult) *> (getAccountByIdResult)
@@ -72,12 +72,12 @@ class StandardFlowTest extends TestSpec {
   //    }
   //
   //    def validateAccountFound: PartialFunction[GetAccountByIdResult, UpdateAccountServiceError \/ Account] = {
-  //      case GetAccountByIdResult(_, None) ⇒ AccountNotFound(1L).left
+  //      case GetAccountByIdResult(_, None) => AccountNotFound(1L).left
   //    }
   //
   //    def validateAccountAmount: PartialFunction[GetAccountByIdResult, UpdateAccountServiceError \/ Account] = {
-  //      case GetAccountByIdResult(_, Some(account)) if account.amount < 1000 ⇒ AccountNotEnoughAmount.left
-  //      case GetAccountByIdResult(_, Some(account))                          ⇒ account.right
+  //      case GetAccountByIdResult(_, Some(account)) if account.amount < 1000 => AccountNotEnoughAmount.left
+  //      case GetAccountByIdResult(_, Some(account))                          => account.right
   //    }
   //  }
 }

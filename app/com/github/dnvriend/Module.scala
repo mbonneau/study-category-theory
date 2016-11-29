@@ -26,7 +26,7 @@ class Module extends AbstractModule {
   override def configure(): Unit = {
     bind(classOf[Int])
       .annotatedWith(Names.named("test.port"))
-      .toInstance(9001)
+      .toInstance(9999)
 
     bind(classOf[Timeout])
       .toInstance(Timeout(10.seconds))

@@ -62,10 +62,10 @@ class CaseClassesTest extends TestSpec {
   case class Unknown(message: String) extends CalcType
 
   def calcType(calc: Calculator): CalcType = calc match {
-    case Calculator("hp", "20B")  ⇒ Financial
-    case Calculator("hp", "48G")  ⇒ Scientific
-    case Calculator("hp", "30B")  ⇒ Business
-    case Calculator(brand, model) ⇒ Unknown(s"Calculator $brand, $model is of unknown type")
+    case Calculator("hp", "20B")  => Financial
+    case Calculator("hp", "48G")  => Scientific
+    case Calculator("hp", "30B")  => Business
+    case Calculator(brand, model) => Unknown(s"Calculator $brand, $model is of unknown type")
   }
 
   "case classes" should "be used with pattern matching" in {

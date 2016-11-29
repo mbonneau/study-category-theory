@@ -24,13 +24,13 @@ class OptionTest extends TestSpec {
 
   "composing options" should "be much simpler" in {
     (for {
-      x ← 1.some ? 2.some | 3.some
+      x <- 1.some ? 2.some | 3.some
     } yield x).value shouldBe 2
   }
 
   it should "be complex without scalaz" in {
     (for {
-      x ← Option(1).flatMap(_ ⇒ Option(2)).orElse(Option(3))
+      x <- Option(1).flatMap(_ => Option(2)).orElse(Option(3))
     } yield x).value shouldBe 2
   }
 
@@ -39,8 +39,8 @@ class OptionTest extends TestSpec {
     def foo(a: Int): Unit = ()
 
     someOption match {
-      case Some(a) ⇒ foo(a)
-      case None    ⇒ ()
+      case Some(a) => foo(a)
+      case None    => ()
     }
   }
 
@@ -74,8 +74,8 @@ class OptionTest extends TestSpec {
     def foo(a: Int): Int = a * 2
 
     someOption match {
-      case Some(a) ⇒ foo(a)
-      case None    ⇒ 1
+      case Some(a) => foo(a)
+      case None    => 1
     }
 
     // should be
@@ -87,7 +87,7 @@ class OptionTest extends TestSpec {
   }
 
   it should "use isDefined" in {
-    1.some.fold(false)(_ ⇒ true) shouldBe true
+    1.some.fold(false)(_ => true) shouldBe true
 
     // can become
     1.some.isDefined shouldBe true
@@ -96,8 +96,8 @@ class OptionTest extends TestSpec {
   it should "use map" in {
     def f(a: Int): Int = a * 2
     1.some match {
-      case Some(a) ⇒ Some(f(a))
-      case None    ⇒ None
+      case Some(a) => Some(f(a))
+      case None    => None
     }
     // this is equivalent to
     1.some map f
@@ -105,8 +105,8 @@ class OptionTest extends TestSpec {
 
   it should "use getOrElse" in {
     1.some match {
-      case Some(a) ⇒ a
-      case None    ⇒ 2
+      case Some(a) => a
+      case None    => 2
     }
 
     // this is equivalent to
@@ -116,8 +116,8 @@ class OptionTest extends TestSpec {
   it should "use fold" in {
     def f(a: Int): Int = a * 2
     1.some match {
-      case Some(a) ⇒ f(a)
-      case None    ⇒ 2
+      case Some(a) => f(a)
+      case None    => 2
     }
 
     // this is equivalent to
@@ -126,8 +126,8 @@ class OptionTest extends TestSpec {
 
   it should "use isEmpty" in {
     1.some match {
-      case Some(a) ⇒ false
-      case _       ⇒ true
+      case Some(a) => false
+      case _       => true
     }
 
     // use
@@ -136,8 +136,8 @@ class OptionTest extends TestSpec {
 
   it should "use nonEmpty or isDefined" in {
     1.some match {
-      case Some(a) ⇒ true
-      case _       ⇒ false
+      case Some(a) => true
+      case _       => false
     }
 
     // use
@@ -148,8 +148,8 @@ class OptionTest extends TestSpec {
 
   it should "use size" in {
     1.some match {
-      case Some(a) ⇒ 1
-      case None    ⇒ 0
+      case Some(a) => 1
+      case None    => 0
     }
 
     // use
@@ -158,8 +158,8 @@ class OptionTest extends TestSpec {
 
   it should "use orNull" in {
     1.some match {
-      case Some(a) ⇒ a
-      case _       ⇒ null
+      case Some(a) => a
+      case _       => null
     }
 
     // err, well, don't use null but if you have to use
@@ -169,8 +169,8 @@ class OptionTest extends TestSpec {
   it should "use filter" in {
     def p(a: Int): Boolean = false
     1.some match {
-      case Some(a) if p(a) ⇒ Some(a)
-      case _               ⇒ None
+      case Some(a) if p(a) => Some(a)
+      case _               => None
     }
 
     // use
@@ -182,8 +182,8 @@ class OptionTest extends TestSpec {
   it should "use filterNot" in {
     def p(a: Int): Boolean = false
     1.some match {
-      case Some(a) if !p(a) ⇒ Some(a)
-      case _                ⇒ None
+      case Some(a) if !p(a) => Some(a)
+      case _                => None
     }
 
     // use
@@ -192,8 +192,8 @@ class OptionTest extends TestSpec {
 
   it should "use contains" in {
     1.some match {
-      case Some(a) ⇒ a == 1
-      case _       ⇒ false
+      case Some(a) => a == 1
+      case _       => false
     }
 
     // use
@@ -203,8 +203,8 @@ class OptionTest extends TestSpec {
   it should "use exists" in {
     def p(a: Int): Boolean = false
     1.some match {
-      case Some(a) ⇒ p(a)
-      case None    ⇒ false
+      case Some(a) => p(a)
+      case None    => false
     }
 
     // use
@@ -217,8 +217,8 @@ class OptionTest extends TestSpec {
   it should "use forall" in {
     def p(a: Int): Boolean = false
     1.some match {
-      case Some(a) ⇒ p(a)
-      case None    ⇒ true
+      case Some(a) => p(a)
+      case None    => true
     }
 
     // use
@@ -228,8 +228,8 @@ class OptionTest extends TestSpec {
   it should "use count" in {
     def p(a: Int): Boolean = false
     1.some match {
-      case Some(a) if p(a) ⇒ 1
-      case _               ⇒ 0
+      case Some(a) if p(a) => 1
+      case _               => 0
     }
 
     // use count
@@ -238,11 +238,11 @@ class OptionTest extends TestSpec {
 
   it should "use foreach" in {
     1.some match {
-      case Some(a) ⇒ ()
-      case _       ⇒ ()
+      case Some(a) => ()
+      case _       => ()
     }
 
     // use foreach
-    1.some foreach (_ ⇒ ())
+    1.some foreach (_ => ())
   }
 }

@@ -88,8 +88,8 @@ class DisjunctionTest extends TestSpec with Matchers with DisjunctionValues with
   "comprehend over options" should "find a user, because dao returned a user" in {
     val brendan = Option(DBObject(1, Option(User("Brendan", "McAdams", None))))
     val result: Option[User] = for {
-      dao ← brendan
-      user ← dao.user
+      dao <- brendan
+      user <- dao.user
     } yield user
 
     result shouldBe 'defined
@@ -98,8 +98,8 @@ class DisjunctionTest extends TestSpec with Matchers with DisjunctionValues with
   it should "not find a user, because the dao did not return a user" in {
     val someOtherGuy = Option(DBObject(2, None))
     val result: Option[User] = for {
-      dao ← someOtherGuy
-      user ← dao.user
+      dao <- someOtherGuy
+      user <- dao.user
     } yield user
 
     result should not be 'defined // but what went wrong??
@@ -159,8 +159,8 @@ class DisjunctionTest extends TestSpec with Matchers with DisjunctionValues with
   "option to disjunction in dao" should "find a user, because dao returned a user" in {
     val brendan = Option(DBObject(1, Option(User("Brendan", "McAdams", None))))
     val result: String \/ User = for {
-      dao ← brendan \/> "No user by that ID"
-      user ← dao.user \/> "Join failed: no user object"
+      dao <- brendan \/> "No user by that ID"
+      user <- dao.user \/> "Join failed: no user object"
     } yield user
 
     result should be(right)
@@ -169,8 +169,8 @@ class DisjunctionTest extends TestSpec with Matchers with DisjunctionValues with
   it should "not find a user, because the dao did not return a user" in {
     val someOtherGuy = Option(DBObject(2, None))
     val result: String \/ User = for {
-      dao ← someOtherGuy \/> "No user by that ID"
-      user ← dao.user \/> "Join failed: no user object"
+      dao <- someOtherGuy \/> "No user by that ID"
+      user <- dao.user \/> "Join failed: no user object"
     } yield user
 
     result should be(left)

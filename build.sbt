@@ -20,10 +20,10 @@ libraryDependencies ++= {
     "com.chuusai" %% "shapeless" % "2.3.2",
     "io.github.scala-hamsters" %% "hamsters" % "1.0.7",
     "org.scalaz" %% "scalaz-core" % "7.2.7",
-    "org.typelevel" %% "scalaz-outlaws" % "0.2",
+    "org.typelevel" %% "scalaz-outlaws" % "0.3",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
     "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test,
-    "org.typelevel" %% "scalaz-scalatest" % "1.1.0" % Test,
+    "org.typelevel" %% "scalaz-scalatest" % "1.1.1" % Test,
     "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M1" % Test
   )
 }

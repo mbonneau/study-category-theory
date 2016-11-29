@@ -43,7 +43,7 @@ class EitherTest extends TestSpec {
       """
         |val success = Right("Success!")
         |for {
-        | x ← success
+        | x <- success
         |} yield x
       """.stripMargin
     )
@@ -60,39 +60,39 @@ class EitherTest extends TestSpec {
     val result: Either[String, Int] = try {
       Right("foo".toInt)
     } catch {
-      case ex: NumberFormatException ⇒
+      case ex: NumberFormatException =>
         Left("Please enter a number")
     }
 
     val success: Either[String, Int] = Right(1)
 
     // right biased flatMap, but returns a left
-    for (x ← result.right) yield x should matchPattern {
-      case Left(_) ⇒
+    for (x <- result.right) yield x should matchPattern {
+      case Left(_) =>
     }
 
     // either is also fail fast
     for {
-      x ← success.right
-      y ← result.right
-      z ← success.right
+      x <- success.right
+      y <- result.right
+      z <- success.right
     } yield (x + y + z) should matchPattern {
-      case Left(_) ⇒
+      case Left(_) =>
     }
 
     // left biased flatMap
-    for (x ← result.left) yield x should matchPattern {
-      case x: String ⇒
+    for (x <- result.left) yield x should matchPattern {
+      case x: String =>
     }
 
     // either is not default biased, we must configure the left or right
     // biased nature of the Either Monad, which is cumbersome
     (for {
-      x ← result.right
-      y ← result.right
-      z ← result.right
+      x <- result.right
+      y <- result.right
+      z <- result.right
     } yield x + y + z) should matchPattern {
-      case Left(_) ⇒
+      case Left(_) =>
     }
   }
 }

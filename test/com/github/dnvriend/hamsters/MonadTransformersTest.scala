@@ -29,22 +29,22 @@ class MonadTransformersTest extends TestSpec {
     def fob(a: String): Future[Option[String]] = Future(Some(a + "b"))
 
     val composedAB: Future[Option[String]] = (for {
-      a ← FutureOption(foa)
-      ab ← FutureOption(fob(a))
+      a <- FutureOption(foa)
+      ab <- FutureOption(fob(a))
     } yield ab).future
 
     composedAB.futureValue shouldBe Some("ab")
 
     val composedABWithNone: Future[Option[String]] = (for {
-      a ← FutureOption(Future.successful(None))
-      ab ← FutureOption(fob(a))
+      a <- FutureOption(Future.successful(None))
+      ab <- FutureOption(fob(a))
     } yield ab).future
 
     composedABWithNone.futureValue shouldBe None
 
     val composedABWithFailure: Future[Option[String]] = (for {
-      a ← FutureOption(Future.failed(new Exception("d'oh!")))
-      ab ← FutureOption(fob(a))
+      a <- FutureOption(Future.failed(new Exception("d'oh!")))
+      ab <- FutureOption(fob(a))
     } yield ab).future
 
     an[Exception] should be thrownBy composedABWithFailure.futureValue
@@ -54,13 +54,13 @@ class MonadTransformersTest extends TestSpec {
     def fo: Future[Option[(String, Int)]] = Future(Some(("a", 42)))
 
     val filtered = (for {
-      (a, i) ← FutureOption(fo) if i > 5
+      (a, i) <- FutureOption(fo) if i > 5
     } yield a).future
 
     filtered.futureValue shouldBe Some("a")
 
     val filtered2 = (for {
-      (a, i) ← FutureOption(fo) if i > 50
+      (a, i) <- FutureOption(fo) if i > 50
     } yield a).future
 
     filtered2.futureValue should not be defined
@@ -71,22 +71,22 @@ class MonadTransformersTest extends TestSpec {
     def feb(a: Int): Future[Either[String, Int]] = Future(OK(a + 2))
 
     val composedAB: Future[Either[String, Int]] = (for {
-      a ← FutureEither(fea)
-      ab ← FutureEither(feb(a))
+      a <- FutureEither(fea)
+      ab <- FutureEither(feb(a))
     } yield ab).future
 
     composedAB.futureValue shouldBe OK(3)
 
     val composedABWithNone: Future[Either[String, Int]] = (for {
-      a ← FutureEither(Future.successful(KO("d'oh!")))
-      ab ← FutureEither(feb(a))
+      a <- FutureEither(Future.successful(KO("d'oh!")))
+      ab <- FutureEither(feb(a))
     } yield ab).future
 
     composedABWithNone.futureValue shouldBe KO("d'oh!")
 
     val composedABWithFailure: Future[Either[String, Int]] = (for {
-      a ← FutureEither(Future.failed(new Exception("d'oh!")))
-      ab ← FutureEither(feb(a))
+      a <- FutureEither(Future.failed(new Exception("d'oh!")))
+      ab <- FutureEither(feb(a))
     } yield ab).future
 
     an[Exception] should be thrownBy composedABWithFailure.futureValue
@@ -96,13 +96,13 @@ class MonadTransformersTest extends TestSpec {
     def fe: Future[Either[String, (String, Int)]] = Future(OK(("a", 42)))
 
     val filtered = (for {
-      (a, i) ← FutureEither(fe) if i > 5
+      (a, i) <- FutureEither(fe) if i > 5
     } yield a).future
 
     filtered.futureValue shouldBe OK("a")
 
     val filtered2 = (for {
-      (a, i) ← FutureEither(fe) if i > 50
+      (a, i) <- FutureEither(fe) if i > 50
     } yield a).future
 
     filtered2.futureValue shouldBe KO("No value matching predicate")

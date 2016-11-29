@@ -94,9 +94,9 @@ class DealingWithErrorsTest extends TestSpec with DisjunctionMatchers {
 
   "Option" should "give fail fast semantics using flatMap to sequence computations" in {
     (for {
-      x ← 1.some
-      y ← none[Int]
-      z ← 3.some
+      x <- 1.some
+      y <- none[Int]
+      z <- 3.some
     } yield x + y + z) should not be 'defined
   }
 
@@ -123,19 +123,19 @@ class DealingWithErrorsTest extends TestSpec with DisjunctionMatchers {
     val result: String \/ Int = try {
       \/.right("foo".toInt)
     } catch {
-      case ex: NumberFormatException ⇒
+      case ex: NumberFormatException =>
         \/.left("Please enter a number")
     }
 
     (for {
-      x ← result
-      y ← result
-      z ← result
+      x <- result
+      y <- result
+      z <- result
     } yield x + y + z) should be(left)
 
     // or shorter
     val result2: Throwable \/ Int = \/.fromTryCatchNonFatal[Int] { "foo".toInt }
-    (for (x ← result2) yield x) should be(left)
+    (for (x <- result2) yield x) should be(left)
   }
 
   /**
