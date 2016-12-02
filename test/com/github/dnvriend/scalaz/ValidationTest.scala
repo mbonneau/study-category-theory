@@ -18,21 +18,43 @@ package com.github.dnvriend.scalaz
 
 import com.github.dnvriend.TestSpec
 import org.typelevel.scalatest.DisjunctionMatchers
+import play.api.libs.json._
 
 import scalaz._
 import Scalaz._
 import scala.util.Try
+
+// a quick domain (don't you just love Scala?)
+case class Address(city: String)
+case class User(first: String, last: String, address: Option[Address])
+case class DBObject(id: Long, user: Option[User])
+
+case class Person(firstName: Person.FirstName, lastName: Person.LastName, age: Person.Age)
+
+object Person {
+  case class FirstName(value: String) extends AnyVal
+  case class LastName(value: String) extends AnyVal
+  case class Age(value: Int) extends AnyVal
+
+  implicit val lnFormat = Json.format[LastName]
+  implicit val aFormat = Json.format[Age]
+  //  implicit val fnFormat = Json.format[FirstName]
+
+  val fnWrites = new Writes[FirstName] {
+    def writes(fn: FirstName) = JsString(fn.value)
+  }
+
+  implicit val fnFormat: Format[FirstName] =
+    Format(null, fnWrites)
+
+  implicit val format = Json.format[Person]
+}
 
 class ValidationTest extends TestSpec with DisjunctionMatchers {
 
   /**
    * Take a look at: https://www.parleys.com/tutorial/a-skeptics-look-scalaz-gateway-drugs
    */
-
-  // a quick domain (don't you just love Scala?)
-  case class Address(city: String)
-  case class User(first: String, last: String, address: Option[Address])
-  case class DBObject(id: Long, user: Option[User])
 
   /**
    * Validation:
@@ -271,9 +293,34 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
    */
 
   it should "convert using a general validate method" in {
+
+    // we have the following properties in the method 'validate':
+    //
+    // 1. F which is a Higher Kinded Type (types that have a type constructor) like eg. List, Option, etc
+    // 2. Foldable of F[_] which means that F[_] has the property Foldable, which means that it can be folded
+    // 3. A which is a simple type
+    // 4. B which is a simple type
+    // 5. Monoid of B which means there is proof/logic/implementation that B's can be 'appended/combined'
+    //
+    // 6. in: which is an F[A] so we have defined that the HKT is an F[A]
+    //    which means that we can Fold F[A]'s
+    //
+    // 7. out: which is a function of A => B. These functions are often used in higher-order-functions
+    //      which is a fancy word for functions that accept a function like .map()
+    //
+    // 8. The return type: ValidationNel[Throwable, B]
+    //
+    // 9. It uses the foldMap operation that needs a Monoid instance as we don't need (or have a way)
+    //    to define an explicit zero because the monoid definition already contains the zero definition
+    //    that would be absolutely redundant.
+    //
+    // phew that is a lot of logic in one line of code!
     def validate[F[_]: Foldable, A, B: Monoid](in: F[A])(out: A => B): ValidationNel[Throwable, B] = {
       in.foldMap(a => Validation.fromTryCatchNonFatal[B](out(a)).toValidationNel)
     }
+
+    // toInts uses the generalized (general/parameterized) method 'validate' to do validation
+    // of F[_] types, here a List[String], so F=List and A=String.
     def toInts(maybeInts: List[String]): ValidationNel[Throwable, List[Int]] =
       validate(maybeInts)(_.toInt :: Nil)
 
@@ -299,4 +346,18 @@ class ValidationTest extends TestSpec with DisjunctionMatchers {
    * allowing error accumulation instead of the *default* fail fast strategy of other types commonly used for
    * error handling.
    */
+
+  it should "" in {
+    def validateFirstName(firstName: Person.FirstName): ValidationNel[String, Person.FirstName] = firstName.successNel[String]
+    def validateLastName(lastName: Person.LastName): ValidationNel[String, Person.LastName] = lastName.successNel[String]
+    def validateAge(age: Person.Age): ValidationNel[String, Person.Age] = age.successNel[String]
+
+    // typesafe fields
+    val person = Person(Person.FirstName("firstName"), Person.LastName("lastName"), Person.Age(42))
+
+    val x: Validation[NonEmptyList[String], Person] =
+      (validateFirstName(person.firstName) |@| validateLastName(person.lastName) |@| validateAge(person.age)).apply(Person.apply)
+
+    println(Json.toJson(person).toString)
+  }
 }

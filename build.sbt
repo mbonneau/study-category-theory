@@ -6,29 +6,37 @@ version := "1.0.0"
 
 scalaVersion := "2.11.8"
 
-resolvers ++= Seq(
-  "scalaz" at "http://dl.bintray.com/scalaz/releases",
-  "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots",
-  Resolver.sonatypeRepo("releases"),
-  Resolver.sonatypeRepo("snapshots")
-)
+scalaOrganization := "org.typelevel" // use Typelevel's Scala instead of Lightbend Scala
 
-libraryDependencies ++= {
-  val akkaVersion = "2.4.14"
-  Seq(
-    "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-    "com.chuusai" %% "shapeless" % "2.3.2",
-    "io.github.scala-hamsters" %% "hamsters" % "1.0.7",
-    "org.scalaz" %% "scalaz-core" % "7.2.7",
-    "org.typelevel" %% "scalaz-outlaws" % "0.3",
-    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-    "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test,
-    "org.typelevel" %% "scalaz-scalatest" % "1.1.1" % Test,
-    "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M1" % Test
-  )
-}
+resolvers += "scalaz" at "http://dl.bintray.com/scalaz/releases"
+resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
+resolvers += Resolver.sonatypeRepo("releases")
+resolvers += Resolver.sonatypeRepo("snapshots")
 
-scalacOptions ++= Seq("-feature", "-language:higherKinds", "-language:implicitConversions", "-deprecation", "-Ybackend:GenBCode", "-Ydelambdafy:method", "-target:jvm-1.8", "-Xexperimental")
+val akkaVersion = "2.4.14"
+
+//libraryDependencies += "org.typelevel" %% "cats" % "0.8.1"
+libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.2"
+libraryDependencies += "io.github.scala-hamsters" %% "hamsters" % "1.0.7"
+libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.2.7"
+libraryDependencies += "org.typelevel" %% "scalaz-outlaws" % "0.3"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream" % akkaVersion
+
+libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
+libraryDependencies += "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test
+libraryDependencies += "org.typelevel" %% "scalaz-scalatest" % "1.1.1" % Test
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M1" % Test
+
+scalacOptions += "-Ypartial-unification" // enable fix for SI-2712
+scalacOptions += "-Yliteral-types"       // enable SIP-23 implementation
+scalacOptions += "-language:higherKinds"
+scalacOptions += "-Ybackend:GenBCode"
+scalacOptions += "-Ydelambdafy:method"
+scalacOptions += "-language:implicitConversions"
+scalacOptions += "-deprecation"
+scalacOptions += "-feature"
+scalacOptions += "-Xexperimental"
+scalacOptions += "-target:jvm-1.8"
 
 fork in Test := true
 

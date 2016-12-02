@@ -79,6 +79,8 @@ We implement our type class with instances for each type we care about. If we wa
 be in scope we can place them in the type class’ companion object. Otherwise we can place them in a separate library
 object for the user to import manually.
 
+The type class pattern is a ubiquitous pattern in Scala, its function is to provide a behavior for some type.
+
 ## Resolving instances
 Type classes are very flexible but they require us to define instances for every type we care about. Fortunately,
 the Scala compiler has a few tricks up its sleeve to resolve instances for us given sets of user-defined rules.
@@ -90,3 +92,15 @@ as “implicit resolution”, is what makes the type class pattern so powerful i
 
 Idioma c type class defini ons
 The commonly accepted idioma c style for type class defini ons includes a companion object containing some standard methods:
+
+```
+import shapeless.Generic
+
+case class UserWithAge(name: String, age: Int)
+val gen = Generic[UserWithAge]
+val u = UserWithAge("Julien", 30)
+
+val h = gen.to(u) // returns Julien :: 30 :: HNil
+gen.from(h) // return UserWithAge("Julien", 30)
+```
+

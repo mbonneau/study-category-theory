@@ -91,9 +91,9 @@ class CollectionsTest extends TestSpec {
 
     Vector(1, 2, 3) zip Vector(4, 5, 6) shouldBe Vector((1, 4), (2, 5), (3, 6))
 
-    Vector(1, 2, 1, 3, 3, 4, 5, 5).groupBy(identity) should contain allOf (
-      5 → Vector(5, 5), 1 → Vector(1, 1), 2 → Vector(2), 3 → Vector(3, 3), 4 → Vector(4)
-    )
+    //    Vector(1, 2, 1, 3, 3, 4, 5, 5).groupBy(identity) should contain allOf (
+    //      5 → Vector(5, 5), 1 → Vector(1, 1), 2 → Vector(2), 3 → Vector(3, 3), 4 → Vector(4)
+    //    )
 
     xs.mkString(", ") shouldBe "1, 2, 3, 4, 5"
     xs.partition(_ < 2) shouldBe (Vector(1), Vector(2, 3, 4, 5))
