@@ -17,7 +17,7 @@ val akkaVersion = "2.4.14"
 
 //libraryDependencies += "org.typelevel" %% "cats" % "0.8.1"
 libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.2"
-libraryDependencies += "io.github.scala-hamsters" %% "hamsters" % "1.0.7"
+libraryDependencies += "io.github.scala-hamsters" %% "hamsters" % "1.1.1"
 libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.2.7"
 libraryDependencies += "org.typelevel" %% "scalaz-outlaws" % "0.3"
 libraryDependencies += "com.typesafe.akka" %% "akka-stream" % akkaVersion

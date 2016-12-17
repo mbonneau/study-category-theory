@@ -195,3 +195,5 @@ Code has support for Dart and can be installed by typing (⌘+P) and pasting:
 ```
 ext install dart
 ```
+
+https://inoio.de/blog/2014/07/20/type-class-101-monoid/
