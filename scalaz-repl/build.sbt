@@ -30,6 +30,7 @@ import scalaz.outlaws.std.utilTry._
 import shapeless._
 import scala.reflect.runtime.universe._
 import scala.concurrent.ExecutionContext.Implicits.global
+import FutureOps._
 final case class Person(name: String, age: Int)
 final case class Cat(name: String, age: Int)
 val dennis = Person("Dennis", 42)
