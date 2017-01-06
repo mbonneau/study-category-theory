@@ -344,3 +344,23 @@ Within a category, there's ambiguity, except in the case of inheritance.
 An inherited implicit has lower precedence than one not inherited.
 
 Odersky said we look in the "implicit scope", which contains all sort of companion objects that bear some relation to the type which we search for -- "type which we search for" is the expected type. Josh says on 5.1.3 "implicit scope of the type it's looking for" -- again, expected type
+
+## Resolution order
+see: https://vimeo.com/20308847 ==> Implicits without the import tax
+see: http://eed3si9n.com/revisiting-implicits-without-import-tax
+see: http://eed3si9n.com/implicit-parameter-precedence-again
+see: http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits
+see: http://stackoverflow.com/questions/8623055/scala-implicit-parameter-resolution-precedence
+
+## Comment
+see: http://stackoverflow.com/questions/27875519/how-to-resolve-ambiguous-implicit-conversion-method-that-takes-same-input-type-i
+
+You can sometimes 'abuse' the implicit resolution order
+(e.g. by moving one of the implicits into a companion object,
+or a trait that a companion object extends, so that it would only be looked at
+after looking for implicits in your immediate scope).
+
+But generally you should probably just ensure that there's only one suitable implicit in scope.
+
+Remember you can always create inner scopes with {} and import an implicit just in that scope
+

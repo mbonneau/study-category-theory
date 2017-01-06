@@ -18,8 +18,6 @@ package com.github.dnvriend.typesystem
 
 import com.github.dnvriend.TestSpec
 
-import scala.collection.concurrent.RDCSS_Descriptor
-
 class VarianceTest extends TestSpec {
 
   /**
@@ -128,8 +126,11 @@ class VarianceTest extends TestSpec {
   }
 
   it should "assigned a List[String] to List[Object]" in {
-    "val xs: List[Object] = List.empty[String]" should compile
+    val xs: List[Any] = List.empty[String]
+    val ys: List[Any] = List.empty[Nothing] // A = Any, the top-level type and Nothing is the bottom level type
     // A List is Covariant, thus List[+A]
+    // being covariant, only A or the subtypes of A can be assigned, in this case
+    // any type of A like String, Int, and so on can be assigned
   }
 
   /**
