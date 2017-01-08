@@ -1,0 +1,16 @@
+# Group Theory
+
+- [Abstract Algebra](http://www.extension.harvard.edu/open-learning-initiative/abstract-algebra)
+- [Category Theory - Bartosz Milewski](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
+- [Category Theory for Programmers: The Preface](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+- [Category Theory for beginners](http://www.slideshare.net/kenbot/category-theory-for-beginners)
+- [Discrete Mathematics - Group Theory](https://www.tutorialspoint.com/discrete_mathematics/discrete_mathematics_group_theory.htm)
+- [Of Algebirds, Monoids, Monads, and Other Bestiary for Large-Scale Data Analytics](http://www.michael-noll.com/blog/2013/12/02/twitter-algebird-monoid-monad-for-large-scala-data-analytics/)
+- [Semigroup](https://en.wikipedia.org/wiki/Semigroup)
+- [Monoid](https://en.wikipedia.org/wiki/Monoid)
+- [Monoid](http://www.euclideanspace.com/maths/discrete/category/concrete/monoid/index.htm)
+- [Primers - Jeremy Kun](https://jeremykun.com/)
+- [scalding](https://github.com/twitter/scalding)
+- [Algebird - Abstract algebra for Scala](https://github.com/twitter/algebird)
+- [Algebird - Documentation](https://twitter.github.io/algebird/)
+- [Algebird - Tutorial](https://twitter.github.io/algebird/resources_for_learners.html)
