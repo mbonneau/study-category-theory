@@ -14,3 +14,4 @@
 - [Algebird - Abstract algebra for Scala](https://github.com/twitter/algebird)
 - [Algebird - Documentation](https://twitter.github.io/algebird/)
 - [Algebird - Tutorial](https://twitter.github.io/algebird/resources_for_learners.html)
+- [Scala: From a Functional Programming Perspective - Torra](http://www.springer.com/us/book/9783319464800)
