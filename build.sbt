@@ -63,3 +63,6 @@ headers := Map(
 )
 
 enablePlugins(AutomateHeaderPlugin, PlayScala)
+
+lazy val catsTest =
+  (project in file("cats-test"))
