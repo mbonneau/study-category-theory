@@ -2,7 +2,11 @@
 A small study project on [typelevel cats](https://github.com/typelevel/cats).
 
 ## Documentation
-Cats has great [documentation](http://typelevel.org/cats/)!
+- [Cats documentation](http://typelevel.org/cats/)
+
+## Book
+- [Advanced Scala with Cats Book - Noel Welsh and Dave Gurnell](http://underscore.io/books/advanced-scala/)
+- [Advanced Scala with Cats Book (preview) - Noel Welsh and Dave Gurnell](https://s3-us-west-2.amazonaws.com/book-sample/advanced-scala-preview-with-full-toc.pdf)
 
 ## Semigroup
 A [Semigroup](http://typelevel.org/cats/typeclasses/semigroup.html) is a binary associative operation that operates

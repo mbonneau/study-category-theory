@@ -8,6 +8,8 @@ scalaVersion := "2.12.1"
 
 libraryDependencies += "com.github.mpilquist" %% "simulacrum" % "0.10.0"
 libraryDependencies += "org.typelevel" %% "cats" % "0.9.0"
+libraryDependencies += "com.github.benhutchison" %% "mouse" % "0.6"
+
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1"
 
 // testing configuration
