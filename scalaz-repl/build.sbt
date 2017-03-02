@@ -7,9 +7,9 @@ resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
 resolvers += Resolver.sonatypeRepo("releases")
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.2.7"
-libraryDependencies += "org.scalaz" %% "scalaz-concurrent" % "7.2.7"
-libraryDependencies += "org.typelevel" %% "scalaz-outlaws" % "0.2"
+libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.2.9"
+libraryDependencies += "org.scalaz" %% "scalaz-concurrent" % "7.2.9"
+libraryDependencies += "org.typelevel" %% "scalaz-outlaws" % "0.3"
 libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.2"
 
 scalacOptions += "-Ypartial-unification" // enable fix for SI-2712

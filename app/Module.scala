@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.github.dnvriend
-
+import akka.actor.ActorSystem
+import akka.pattern.CircuitBreaker
 import akka.util.Timeout
-import com.google.inject.AbstractModule
+import com.google.inject.{ AbstractModule, Provides }
 import com.google.inject.name.Names
 
+import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 
 class Module extends AbstractModule {
@@ -30,5 +31,13 @@ class Module extends AbstractModule {
 
     bind(classOf[Timeout])
       .toInstance(Timeout(10.seconds))
+  }
+
+  @Provides
+  def circuitBreakerProvider(system: ActorSystem)(implicit ec: ExecutionContext): CircuitBreaker = {
+    val maxFailures: Int = 3
+    val callTimeout: FiniteDuration = 1.seconds
+    val resetTimeout: FiniteDuration = 10.seconds
+    new CircuitBreaker(system.scheduler, maxFailures, callTimeout, resetTimeout)
   }
 }

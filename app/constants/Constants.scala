@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.github
+package constants
 
-package object dnvriend {
+object Constants {
   final val TheAnswerToLifeTheUniverseAndEverything = 42
 }

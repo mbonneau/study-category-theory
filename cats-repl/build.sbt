@@ -1,17 +1,6 @@
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.1"
 
-scalaOrganization := "org.typelevel"
- 
-resolvers += "scalaz" at "http://dl.bintray.com/scalaz/releases"
-resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/stew/snapshots"
-resolvers += Resolver.sonatypeRepo("releases")
-resolvers += Resolver.sonatypeRepo("snapshots")
-
-libraryDependencies += "org.typelevel" %% "cats" % "0.8.1"
-libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.2"
-
-scalacOptions += "-Ypartial-unification" // enable fix for SI-2712
-scalacOptions += "-Yliteral-types"       // enable SIP-23 implementation
+libraryDependencies += "org.typelevel" %% "cats" % "0.9.0"
 
 initialize ~= { _ =>
   val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
@@ -23,7 +12,6 @@ import cats._
 import cats.implicits._
 import scala.concurrent._
 import scala.collection.immutable._
-import shapeless._
 import scala.reflect.runtime.universe._
 import scala.concurrent.ExecutionContext.Implicits.global
 final case class Person(name: String, age: Int)

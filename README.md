@@ -2,8 +2,8 @@
 This resource is for my study on Functional Programming, Generic Programming, Typelevel Programming and Category Theory.
 I will be using Haskell and Scala/Scalaz and whatever else comes my way.
 
-# Disclaimer
-Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz expert.
+## Disclaimer
+Quoting the great [Brendan McAdams](https://twitter.com/rit) "I am by no means a Haskell/Scala/Scalaz/Cats expert.
 I'm a beginner that has made a lot of progress." which also applies to me I guess. So don't learn from me,
 but maybe, get inspired and go look at Functional Programming, [Haskell](https://www.haskell.org/),
 [Scala](http://www.scala-lang.org/), [Scalaz](https://github.com/scalaz), [the typelevel project](https://github.com/typelevel),
@@ -12,6 +12,7 @@ but maybe, get inspired and go look at Functional Programming, [Haskell](https:/
 composable functions when applied are called programs.
 
 # Category Theory Video
+- [(0'31 hr) A practical introduction to category theory - Daniela Sfregola](https://www.youtube.com/watch?v=DsACb1HCcEA)
 - [Introduction to Category Theory 1 - Steven Roman](https://www.youtube.com/watch?v=If6VUXZIB-4)
 - [Introduction to Category Theory 2 - Steven Roman](https://www.youtube.com/watch?v=leFJdbZy7Ys)
 - [Introduction to Category Theory 3 - Steven Roman](https://www.youtube.com/watch?v=-ocEgjnQMgg)
@@ -29,7 +30,12 @@ composable functions when applied are called programs.
 - [London Haskell Group - Why Do Monads Matter? by Derek Wright](https://www.youtube.com/watch?v=3q8xYFDYLeI)
 - [London Haskell Group - The Algebra of Algebraic Data Types by Chris Taylor](https://www.youtube.com/watch?v=YScIPA8RbVE)
 
-# Books
+## Functional Programming Videos
+- [g ∘ f patterns by Mario Fusco](https://www.youtube.com/watch?v=zmU_ULBzZTQ)
+- [(0'51 hr) Javaslang - Functional Java Done Right - Grzegorz Piwowarek](https://www.youtube.com/watch?v=NxbatgLY3V4)
+- [(0'48 hr) Functional data structures in Java - Oleg Šelajev](https://www.youtube.com/watch?v=NWV5IrEg3c0)
+
+## Books
 - [Steve Awodey - Category Theory Second Edition](https://www.amazon.com/Category-Theory-Oxford-Logic-Guides/dp/0199237182/ref=asap_bc?ie=UTF8)
 
 What is Category Theory? It is the abstract theory of functions, and because functions are _everywhere_ and everywhere that functions are,
@@ -39,7 +45,7 @@ The the notion of a category arose in order to define a functor.
 The notion of a functor arose to define natural transformations. 
 The notion of natural transformations arose to define adjoints. 
 
-# Definitions
+## Definitions
 Note: The following is in context of programming and not mathematically correct, and should 
 - __Functional Programming__: The practice of composing programs using functions [Wikipedia](https://en.wikipedia.org/wiki/Functional_programming),
 - __Category Theory__: the study of collections of concepts (types) and arrows (functions/morphisms) and the relationships between them [Wikipedia](https://en.wikipedia.org/wiki/Category_theory), 
@@ -69,10 +75,10 @@ that can also transform and preserve morphisms. A functor would be something tha
 
 > There are different kinds of category, a Set is one kind of category in which 'objects' are sets, and arrows are functions that go from one set to another set. - [Bartosz](https://youtu.be/dgrucfgv2Tw?t=27m28s)
  
-# Yoneda Lemma
+## Yoneda Lemma
 In mathematics, specifically in category theory, the [Yoneda lemma](https://ncatlab.org/nlab/show/Yoneda+lemma) is an abstract result on functors of the type morphisms into a fixed object.
 
-# Modern ideas in FP
+## Modern ideas in FP
 The two most important ideas in modern Functional programming are:
 
 1. __Data first:__ Functional programming is all about putting data first. First define what kinds of data we have in a problem domain 
@@ -88,7 +94,7 @@ Data is represented by _Structure_ and Types are represented by _functions_.
 # History of programming languages
 - [History of programming languages](http://cdn.oreillystatic.com/news/graphics/prog_lang_poster.pdf) 
  
-# Visual Studio Code
+## Visual Studio Code
 [Visual Studio Code](https://code.visualstudio.com/) a.k.a. __'Code'__ is a lightweight but powerful source code editor which runs on your desktop
 and is available for Windows, OS X and Linux. Code is an open source source code editor developed by Microsoft. It comes with built-in support for 
 JavaScript, TypeScript, Node.js, Markdown and git and has a rich ecosystem of extensions for other languages and runtimes that are available on 

@@ -1,0 +1,26 @@
+<configuration debug="false" scan="true" scanPeriod="5 seconds">
+    <contextName>play-seed</contextName>
+    <jmxConfigurator />
+
+      <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+          <level>debug</level>
+        </filter>
+        <encoder>
+          <pattern>%date {ISO8601} - %logger -&gt; %-5level[%thread] %logger {0} - %msg%n</pattern>
+        </encoder>
+      </appender>
+      <!--<logger name="akka" level="debug"/>-->
+      <!-- <logger name="slick.backend.DatabaseComponent.action" level="debug"/> -->
+      <!-- <logger name="com.zaxxer.hikari.pool.HikariPool" level="debug"/> -->
+      <!-- <logger name="org.jdbcdslog.ConnectionLogger" level="debug"/> -->
+      <!-- <logger name="org.jdbcdslog.StatementLogger" level="debug"/> -->
+      <!-- <logger name="org.jdbcdslog.ResultSetLogger" level="debug"/> -->
+      <!-- <logger name="com.github.dnvriend" level="debug"/> -->
+      <!--<logger name="com.typesafe" level="debug"/>-->
+      <!--<logger name="cinnamon" level="debug"/>-->
+      
+      <root level="info">
+        <appender-ref ref="console"/>
+      </root>
+    </configuration>
