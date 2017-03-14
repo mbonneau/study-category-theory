@@ -8,8 +8,8 @@ I'm a beginner that has made a lot of progress." which also applies to me I gues
 but maybe, get inspired and go look at Functional Programming, [Haskell](https://www.haskell.org/),
 [Scala](http://www.scala-lang.org/), [Scalaz](https://github.com/scalaz), [the typelevel project](https://github.com/typelevel),
 [Cats](https://github.com/typelevel/cats), [Scala Hamsters](https://github.com/scala-hamsters/hamsters),
-[Shapeless](https://github.com/milessabin/shapeless) and overal create happy and therefor easy to reason about
-composable functions when applied are called programs.
+[Shapeless](https://github.com/milessabin/shapeless) and overall create happy and therefor easy to reason about
+composable functions that, when applied, are called programs.
 
 # Category Theory Video
 - [(0'31 hr) A practical introduction to category theory - Daniela Sfregola](https://www.youtube.com/watch?v=DsACb1HCcEA)
